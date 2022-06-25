@@ -5,11 +5,16 @@ const Navbar = () => {
   return (
     <section className='navbar'>
       <Link to='/'>
-        <span>mainPage</span>
+        <span>Intro</span>
       </Link>
+      <Link to='/mainpage'>
+        <span>Main Page</span>
+      </Link>
+
       <Link to='/recommended'>
         <span>핫플레이스</span>
       </Link>
+
       <Link to='/mypage'>
         <span>myPage</span>
       </Link>
