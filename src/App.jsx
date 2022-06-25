@@ -18,7 +18,7 @@ const App = props => {
             <Routes>
               <Route path='/' element={<MainPage />}></Route>
               <Route path='/recommended' element={<Recommended />}></Route>
-              <Route path='/mypage' element={<MyPage />}></Route>
+              <Route path='/mypage/*' element={<MyPage />}></Route>
             </Routes>
           </section>
         </main>
