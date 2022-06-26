@@ -2,9 +2,11 @@ import React from 'react';
 
 const Recommended = () => {
   return (
-    <>
-      <h1>핫플?</h1>
-    </>
+    <div>
+      <h1>hotPlace</h1>
+      <div>filter</div>
+      <div>recommend</div>
+    </div>
   );
 };
 
