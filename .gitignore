@@ -24,3 +24,9 @@ yarn-error.log*
 
 # API KEY
 .env
+
+# package-lock 
+package-lock.json
+
+# yarn
+yarn.lock
