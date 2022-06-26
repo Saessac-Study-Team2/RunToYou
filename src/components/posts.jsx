@@ -1,11 +1,13 @@
-import React from 'react';
-import Post from './post';
-const Posts = () => {
+import React from "react";
+import Post from "./post";
+const Posts = ({ posts }) => {
+  console.log(posts);
   return (
-    <>
-      <h1>게시글 모임 ㅎㅎ</h1>
-      <Post />
-    </>
+    <ul>
+      {posts.map((post, idx) => (
+        <Post key={idx} post={post} />
+      ))}
+    </ul>
   );
 };
 
