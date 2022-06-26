@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Navbar from './navbar';
+import Intro from './pages/intro';
 import MainPage from './pages/mainPage';
 import MyPage from './pages/myPage';
 import Recommended from './pages/recommended';
@@ -16,7 +17,8 @@ const App = props => {
           <Navbar />
           <section className='features'>
             <Routes>
-              <Route path='/' element={<MainPage />}></Route>
+              <Route path='/' element={<Intro />}></Route>
+              <Route path='/mainpage' element={<MainPage />}></Route>
               <Route path='/recommended' element={<Recommended />}></Route>
               <Route path='/mypage/*' element={<MyPage />}></Route>
             </Routes>
