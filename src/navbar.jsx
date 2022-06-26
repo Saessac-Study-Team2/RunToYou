@@ -8,7 +8,7 @@ const Navbar = () => {
         <span>mainPage</span>
       </Link>
       <Link to='/recommended'>
-        <span>핫플레이스</span>
+        <span>hotPlace</span>
       </Link>
       <Link to='/mypage'>
         <span>myPage</span>
