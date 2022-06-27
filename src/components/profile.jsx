@@ -10,7 +10,7 @@ const Profile = props => {
       <div className='profile__content'>
         <p className='profile__name'>user.name</p>
         <p className='profile__myplace'>user.preferPlace</p>
-        <p className='profile__introduce'>user.introduce</p>
+        <p className='profile__introduce'>user.aboutMe</p>
       </div>
     </section>
   );
