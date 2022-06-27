@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
+import { Tab, Tabs } from '@material-ui/core';
 
 import Profile from '../components/profile';
 import MyPost from '../components/myPost';
+import EditProfile from '../components/editProfile';
 // import Filtering from '../components/filtering';
 
 const MyPage = ({ posts, setPosts }) => {
   return (
     <>
-      <h1>Mypage</h1>
+      <Tabs>
+        <Tab component={Link} label='editprofile' to='editprofile' />
+      </Tabs>
+
+      <Profile />
+      <MyPost />
       <Routes>
-        <Route path='profile' element={<Profile />}></Route>
-        <Route path='myPost' element={<MyPost />}></Route>
+        <Route path='editprofile' element={<EditProfile />}></Route>
       </Routes>
     </>
   );
