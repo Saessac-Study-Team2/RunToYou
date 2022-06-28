@@ -9,9 +9,9 @@ const EditProfile = ({ addProfile }) => {
       event.target[2].value
     );
     const nickname = event.target[0].value;
-    const preferPlace = event.target[1].value;
-    const aboutMe = event.target[2].value;
-    addProfile({ nickname, preferPlace, aboutMe });
+    // const location = event.target[1].value;
+    const info = event.target[2].value;
+    addProfile({ nickname, info });
   };
 
   return (
