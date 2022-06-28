@@ -1,16 +1,18 @@
 import React from 'react';
-import profile from '../static/profile.png';
+// import profile from '../static/profile.png';
 
-const Profile = props => {
+const Profile = ({ user }) => {
+  const { nickName, info, userPicture } = { ...user[0] };
+  console.log(nickName, info);
   return (
     <section className='Profile'>
       <div className='profile__img'>
-        <img src={profile} />
+        <img src={userPicture}></img>
       </div>
       <div className='profile__content'>
-        <p className='profile__name'>user.name</p>
-        <p className='profile__myplace'>user.preferPlace</p>
-        <p className='profile__introduce'>user.aboutMe</p>
+        <p className='profile__name'>{nickName}</p>
+        {/* <p className='profile__myplace'>{data.group_concat(locationName)}</p> */}
+        <p className='profile__introduce'>{info}</p>
       </div>
     </section>
   );
