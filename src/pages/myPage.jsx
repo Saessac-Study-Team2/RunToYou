@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
-import { Tab, Tabs } from '@material-ui/core';
+import { Routes, Route } from 'react-router-dom';
+// import { Tab, Tabs } from '@material-ui/core';
 
 import Profile from '../components/profile';
 import MyPost from '../components/myPost';
@@ -9,48 +9,47 @@ import EditProfile from '../components/editProfile';
 
 const MyPage = ({ posts, setPosts }) => {
   const domain = 'http://34.168.215.145';
-  const [profile, setProfile] = useState({});
+  const [user, setUser] = useState({});
 
-  useEffect(() => {
-    getProfile();
-  }, []);
+  const getProfile = number => {
+    // const requestOptions = {
+    //   method: 'GET',
+    //   redirect: 'follow',
+    // };
 
-  const getProfile = id => {
-    return fetch(domain + `/user/1`)
-      .then(res => res.json())
-      .then(data => {
-        setProfile(data);
-      });
+    return fetch(`http://34.168.215.145/user/${number}`, { method: 'GET' })
+      .then(response => response.json())
+      .then(result => {
+        console.log('getres', result);
+        setUser(result);
+      })
+      .catch(error => console.log('error', error));
   };
 
-  const addProfile = ({ nickname, preferPlace, aboutMe }) => {
-    const myProfile = {
+  const addProfile = ({ nickname, info }) => {
+    const user = {
       nickname,
-      preferPlace,
-      aboutMe,
+      info,
     };
-
-    fetch(domain + `/user/asd`, {
+    fetch(domain + `/user/1`, {
       method: 'PUT',
       headers: {
-        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(myProfile),
+      body: JSON.stringify(user),
     }).then(res => {
-      if (res.status === 201) {
-        getProfile();
+      if (res.status === 200) {
+        getProfile(1);
       }
     });
-    console.log(myProfile, JSON.stringify(myProfile));
   };
+
+  useEffect(() => {
+    getProfile(1);
+  }, []);
   return (
     <>
-      <Tabs>
-        <Tab component={Link} label='editprofile' to='editprofile' />
-      </Tabs>
-
-      <Profile />
+      <Profile user={user} />
       <MyPost />
       <Routes>
         <Route
