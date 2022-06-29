@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
-// import Login from '../components/login';
-import SignUp from '../components/signUp';
-// import Guest from '../components/login';
+import { Link } from 'react-router-dom';
+
 import './intro.css';
 
-const Intro = props => {
-  const [showSignUp, setShowSignUp] = useState(false);
-  const togglePopUp = () => {
-    setShowSignUp(!showSignUp);
-  };
+const Intro = () => {
+  // const [showSignUp, setShowSignUp] = useState(false);
+  // const togglePopUp = () => {
+  // setShowSignUp(!showSignUp);
+  // };
   return (
     <div className='intro__bgImg'>
-      <button>Log in</button>
-      <button onClick={togglePopUp} className='signUP__btn'>
-        Sign up
-      </button>
-      {showSignUp ? <SignUp /> : null}
-      <button>Guest</button>
-      {/* <Login /> */}
-      {/* <Sign-up /> */}
-      {/* <Guest /> */}
+      <h1>Run To You</h1>
+      <Link to='/login'>
+        <button>Log in</button>
+      </Link>
+
+      <Link to='/signup'>
+        <button className='signUP__btn'>Sign up</button>
+      </Link>
+
+      <Link to='/mainpage'>
+        <button>Guest</button>
+      </Link>
     </div>
   );
 };
