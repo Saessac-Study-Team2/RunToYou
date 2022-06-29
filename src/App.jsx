@@ -6,6 +6,8 @@ import Intro from './pages/intro';
 import MainPage from './pages/mainPage';
 import MyPage from './pages/myPage';
 import Recommended from './pages/recommended';
+import SignUp from './pages/signUp';
+import Login from './pages/login';
 
 import './App.css';
 
@@ -18,6 +20,8 @@ const App = props => {
           <section className='features'>
             <Routes>
               <Route path='/' element={<Intro />}></Route>
+              <Route path='/signup' element={<SignUp />}></Route>
+              <Route path='/login' element={<Login />}></Route>
               <Route path='/mainpage' element={<MainPage />}></Route>
               <Route path='/recommended' element={<Recommended />}></Route>
               <Route path='/mypage/*' element={<MyPage />}></Route>
