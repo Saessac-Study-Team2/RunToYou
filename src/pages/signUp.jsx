@@ -12,19 +12,21 @@ import { LoadingButton } from '@mui/lab';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const IsValid = (password, confirmPassword) => {
-  if (password.length < 6 || confirmPassword.length < 6) {
-    return false;
-  } else if (password !== confirmPassword) {
-    return false;
-  } else {
-    return true;
-  }
+const IsValidID = id => {
+  const ID_REGEX = new RegExp('^[a-z0-9_-]{5,20}$');
+  return ID_REGEX.test(id);
+};
+const IsValidPW = (password, confirmPassword) => {
+  const PW_REGEX = new RegExp('^[a-zA-Z0-9]{8,16}$');
+  return PW_REGEX.test(password);
 };
 
 const SignUp = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [IsUnique, setIsUnique] = useState(false);
+  const [newID, setNewID] = useState(null);
+  const [newPW, setNewPW] = useState(null);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -32,35 +34,60 @@ const SignUp = () => {
     const id = data.get('id');
     const password = data.get('password');
     const confirmPassword = data.get('confirmPassword');
-
+    //모든 값이 들어 왔는 지 확인.
     if (!id || !password || !confirmPassword) {
       setError('모든 항목을 입력해주세요.');
       return;
+    } else {
+      //모든 값이 들어왔을 때
+      if (!IsValidID(id)) {
+        //id 확인
+        console.log('아이디유효성 통과못함');
+        setError(
+          '아이디는 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.'
+        );
+        return;
+      } else if (IsValidID(id)) {
+        console.log('id 유효성 통과');
+        let isOK = !checkId(id);
+        if (!isOK) {
+          setError('중복된 아이디 입니다.');
+          return;
+        }
+      } else if (!(password !== confirmPassword)) {
+        //비밀번호 두개 일치 확인.
+        setError('비밀번호가 일치하지 않습니다.');
+        return;
+      }
+      if (!IsValidPW(password)) {
+        //비밀번호
+        setError('8~16자 영문 대 소문자, 숫자를 사용하세요.');
+        return;
+      } else {
+        console.log('id,pw셋');
+        setNewID(id);
+        setNewPW(password);
+      }
     }
-    if (!IsValid(password, confirmPassword)) {
-      setError('비밀번호를 확인하세요.');
-      return;
-    }
-    postUserData(id, password);
   };
 
-  const confirmSignUp = (id, password) => {
+  useEffect(() => {
+    if (newID) signUp(newID, newPW);
+  }, [newID]);
+
+  const signUp = (id, password) => {
     const body = {
       userid: id,
       userpassword: password,
     };
 
-    if (checkId(id)) {
-      return fetch(`http://34.168.215.145/user/insert?`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      });
-    } else {
-      setError('아이디중복');
-    }
+    fetch(`http://34.168.215.145/user/insert?`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
   };
 
   const checkId = id => {
@@ -72,26 +99,12 @@ const SignUp = () => {
       .catch(error => console.log('error', error));
   };
 
-  const postUserData = async (id, password) => {
-    try {
-      // setLoading(true);
-      await checkId(id);
-      if (checkId(id)) await confirmSignUp(id, password);
-      else await alert('id 중복');
-      // await confirmSignUp(id, password);
-      // // console.log(checkId(id));
-      // checkId(id) ? console.log('가능') : console.log('중복');
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   //err message 2 초후 삭제.
   useEffect(() => {
     if (!error) return;
     setTimeout(() => {
       setError('');
-    }, 3000);
+    }, 2000);
   }, [error]);
 
   return (
@@ -172,4 +185,5 @@ const SignUp = () => {
     </Container>
   );
 };
+
 export default SignUp;
