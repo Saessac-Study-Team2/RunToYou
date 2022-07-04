@@ -24,17 +24,17 @@ const IsValidPW = (password, confirmPassword) => {
 const SignUp = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [IsUnique, setIsUnique] = useState(false);
   const [newID, setNewID] = useState(null);
   const [newPW, setNewPW] = useState(null);
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const id = data.get('id');
     const password = data.get('password');
     const confirmPassword = data.get('confirmPassword');
     //모든 값이 들어 왔는 지 확인.
+
     if (!id || !password || !confirmPassword) {
       setError('모든 항목을 입력해주세요.');
       return;
@@ -42,38 +42,34 @@ const SignUp = () => {
       //모든 값이 들어왔을 때
       if (!IsValidID(id)) {
         //id 확인
-        console.log('아이디유효성 통과못함');
         setError(
           '아이디는 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.'
         );
         return;
       } else if (IsValidID(id)) {
-        console.log('id 유효성 통과');
-        let isOK = !checkId(id);
+        let isOK = await checkId(id);
         if (!isOK) {
           setError('중복된 아이디 입니다.');
           return;
+        } else if (isOK) {
+          if (password !== confirmPassword) {
+            //비밀번호 두개 일치 확인.
+            setError('비밀번호가 일치하지 않습니다.');
+            return;
+          } else if (password === confirmPassword) {
+            if (!IsValidPW(password)) {
+              //비밀번호
+              setError('비밀번호는 8~16자 영문 대 소문자, 숫자를 사용하세요.');
+              return;
+            } else if (IsValidPW) {
+              setNewID(id);
+              setNewPW(password);
+            }
+          }
         }
-      } else if (!(password !== confirmPassword)) {
-        //비밀번호 두개 일치 확인.
-        setError('비밀번호가 일치하지 않습니다.');
-        return;
-      }
-      if (!IsValidPW(password)) {
-        //비밀번호
-        setError('8~16자 영문 대 소문자, 숫자를 사용하세요.');
-        return;
-      } else {
-        console.log('id,pw셋');
-        setNewID(id);
-        setNewPW(password);
       }
     }
   };
-
-  useEffect(() => {
-    if (newID) signUp(newID, newPW);
-  }, [newID]);
 
   const signUp = (id, password) => {
     const body = {
@@ -95,7 +91,7 @@ const SignUp = () => {
       method: 'GET',
     })
       .then(response => response.json())
-      .then(result => (result === 'true' ? true : false))
+      .then(response => response.msg)
       .catch(error => console.log('error', error));
   };
 
@@ -104,9 +100,15 @@ const SignUp = () => {
     if (!error) return;
     setTimeout(() => {
       setError('');
-    }, 2000);
+    }, 5000);
   }, [error]);
 
+  useEffect(() => {
+    if (newID) {
+      console.log(newID, newPW, '뉴');
+      signUp(newID, newPW);
+    }
+  }, [newID]);
   return (
     <Container component='main' maxWidth='xs'>
       <Box
