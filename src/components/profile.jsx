@@ -3,7 +3,6 @@ import React from 'react';
 
 const Profile = ({ user }) => {
   const { nickName, info, userPicture } = { ...user[0] };
-  console.log(nickName, info);
   return (
     <section className='Profile'>
       <div className='profile__img'>
@@ -11,7 +10,6 @@ const Profile = ({ user }) => {
       </div>
       <div className='profile__content'>
         <p className='profile__name'>{nickName}</p>
-        {/* <p className='profile__myplace'>{data.group_concat(locationName)}</p> */}
         <p className='profile__introduce'>{info}</p>
       </div>
     </section>
