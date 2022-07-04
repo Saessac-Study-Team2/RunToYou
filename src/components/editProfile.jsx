@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EditProfile = ({ addProfile }) => {
+const EditProfile = ({ addProfile, isOpen, setIsOpen }) => {
   const handleSubmit = event => {
     event.preventDefault();
     console.log(
@@ -8,10 +8,11 @@ const EditProfile = ({ addProfile }) => {
       event.target[1].value,
       event.target[2].value
     );
-    const nickname = event.target[0].value;
+    const nickName = event.target[0].value;
     // const location = event.target[1].value;
     const info = event.target[2].value;
-    addProfile({ nickname, info });
+    addProfile({ nickName, info });
+    setIsOpen(!isOpen);
   };
 
   return (
