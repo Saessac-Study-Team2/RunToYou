@@ -11,12 +11,15 @@ import TagIcon from '@mui/icons-material/Tag';
 import { LoadingButton } from '@mui/lab';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { setLoginCookie } from '../library/cookie';
+
+const axios = require('axios');
 
 const Login = props => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [ID, setID] = useState(null);
-  const [PW, setPW] = useState(null);
+  const [ID, setID] = useState('');
+  const [PW, setPW] = useState('');
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -33,23 +36,24 @@ const Login = props => {
     }
   };
 
+  const onLoginSuccess = response => {
+    const { token } = response.data;
+    // console.log(response);
+    setLoginCookie(token);
+  };
+
   const login = (ID, PW) => {
-    const body = {
+    const data = {
       userid: ID,
       userpassword: PW,
     };
 
-    fetch('http://34.168.215.145/user/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    })
-      .then(response => response.text())
-      .then(result => console.log(result))
+    axios
+      .post('http://34.168.215.145/user/login', data)
+      .then(response => onLoginSuccess(response))
       .catch(error => console.log('error', error));
   };
+
   useEffect(() => {
     if (ID) login(ID, PW);
   }, [ID]);
