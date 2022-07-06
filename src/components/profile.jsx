@@ -1,17 +1,27 @@
-import React from 'react';
-import profile from '../static/profile.png';
+import React, { useState } from 'react';
+import EditProfile from './editProfile';
 
-const Profile = props => {
+const Profile = ({ list, setList, addProfile }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleEditBtnClick = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <section className='Profile'>
-      <div className='profile__img'>
-        <img src={profile} />
-      </div>
-      <div className='profile__content'>
-        <p className='profile__name'>user.name</p>
-        <p className='profile__myplace'>user.preferPlace</p>
-        <p className='profile__introduce'>user.introduce</p>
-      </div>
+      {list.map((e, i) => (
+        <p key={i}>{e}</p>
+      ))}
+      <button onClick={handleEditBtnClick}>editProfile</button>
+      {isOpen ? (
+        <EditProfile
+          addProfile={addProfile}
+          list={list}
+          setList={setList}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        />
+      ) : null}
     </section>
   );
 };
