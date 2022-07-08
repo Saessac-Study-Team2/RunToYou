@@ -120,7 +120,7 @@ const Login = ({ setIsUser }) => {
                 to='/signup'
                 style={{ textDecoration: 'none', color: 'black' }}
               >
-                계정없어? 가입해
+                계정이 없으신가요? 가입하기
               </Link>
             </Grid>
           </Grid>
