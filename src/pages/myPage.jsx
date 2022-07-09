@@ -4,8 +4,7 @@ import MyPost from '../components/myPost';
 import { getLoginCookie } from '../library/cookie';
 const axios = require('axios');
 
-const MyPage = ({ posts, setPosts }) => {
-  const [isLogin, setLogin] = useState(false);
+const MyPage = ({ isUser }) => {
   const [list, setList] = useState([]);
 
   const getProfile = () => {
@@ -14,8 +13,8 @@ const MyPage = ({ posts, setPosts }) => {
         headers: { Authorization: getLoginCookie() },
       })
       .then(res => {
-        setLogin(res.data.msg);
         if (res.data.msg) {
+          console.log(res.data.data);
           setList(Object.values(res.data.data));
         }
       })
@@ -42,7 +41,7 @@ const MyPage = ({ posts, setPosts }) => {
 
   return (
     <>
-      {isLogin ? (
+      {isUser ? (
         <>
           <Profile list={list} setList={setList} addProfile={addProfile} />
           <MyPost />

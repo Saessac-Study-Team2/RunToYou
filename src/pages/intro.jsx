@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './intro.css';
 
 const Intro = () => {
-  // const [showSignUp, setShowSignUp] = useState(false);
-  // const togglePopUp = () => {
-  // setShowSignUp(!showSignUp);
-  // };
   return (
     <div className='intro__bgImg'>
       <h1>Run To You</h1>
