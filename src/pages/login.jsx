@@ -12,10 +12,11 @@ import { LoadingButton } from '@mui/lab';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { setLoginCookie } from '../library/cookie';
+import { Tune } from '@mui/icons-material';
 
 const axios = require('axios');
 
-const Login = props => {
+const Login = ({ setIsUser }) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [ID, setID] = useState('');
@@ -51,6 +52,7 @@ const Login = props => {
     axios
       .post('http://34.168.215.145/user/login', data)
       .then(response => onLoginSuccess(response))
+      .then(setIsUser(true))
       .catch(error => console.log('error', error));
   };
 
@@ -118,7 +120,7 @@ const Login = props => {
                 to='/signup'
                 style={{ textDecoration: 'none', color: 'black' }}
               >
-                계정없어? 가입해
+                계정이 없으신가요? 가입하기
               </Link>
             </Grid>
           </Grid>

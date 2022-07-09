@@ -178,7 +178,7 @@ const SignUp = () => {
                 to='/login'
                 style={{ textDecoration: 'none', color: 'black' }}
               >
-                계정있어? 로그인해
+                이미 계정이 있으신가요? 로그인하기
               </Link>
             </Grid>
           </Grid>
