@@ -5,8 +5,10 @@ import { getLoginCookie } from '../library/cookie';
 const EditProfile = ({ addProfile, isOpen, setIsOpen }) => {
   const handleSubmit = event => {
     event.preventDefault();
-    const nickName = event.target[0].value;
-    const info = event.target[2].value;
+
+    const nickName = event.target[2].value;
+    const info = event.target[4].value;
+
     addProfile({ nickName, info });
     setIsOpen(!isOpen);
   };
@@ -25,7 +27,6 @@ const EditProfile = ({ addProfile, isOpen, setIsOpen }) => {
       }
     );
 
-    console.log(res.data);
   };
   const ref = useRef(null);
 
@@ -46,8 +47,9 @@ const EditProfile = ({ addProfile, isOpen, setIsOpen }) => {
         <div className='profile__content'>
           <label htmlFor='nickname'>Enter your nickname </label>
           <input type='text' name='nickname' id='nickname' required />
-          <label htmlFor='title'>Enter your favorite place </label>
-          <input type='text' name='title' id='title' required />
+          <label htmlFor='place'>Enter your favorite place </label>
+          <input type='text' name='place' id='place' required />
+
           <textarea
             id='story'
             name='story'

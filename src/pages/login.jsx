@@ -12,7 +12,7 @@ import { LoadingButton } from '@mui/lab';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { setLoginCookie } from '../library/cookie';
-import { Tune } from '@mui/icons-material';
+
 
 const axios = require('axios');
 
@@ -39,7 +39,7 @@ const Login = ({ setIsUser }) => {
 
   const onLoginSuccess = response => {
     const { token } = response.data;
-    // console.log(response);
+
     setLoginCookie(token);
   };
 
