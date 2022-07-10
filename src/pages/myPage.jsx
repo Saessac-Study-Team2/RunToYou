@@ -42,6 +42,7 @@ const MyPage = ({ isUser }) => {
   return (
     <>
       {isUser ? (
+
         <>
           <Profile list={list} setList={setList} addProfile={addProfile} />
           <MyPost />

@@ -14,6 +14,7 @@ import { getLoginCookie } from './library/cookie';
 
 const App = props => {
   const [isUser, setIsUser] = useState(Boolean(getLoginCookie()));
+
   return (
     <BrowserRouter>
       <div className='App'>
@@ -25,6 +26,7 @@ const App = props => {
               <Route
                 path='/signup'
                 element={isUser ? <Navigate to='/mainpage' /> : <SignUp />}
+
               ></Route>
               <Route
                 path='/login'
@@ -38,11 +40,13 @@ const App = props => {
               ></Route>
               <Route path='/mainpage' element={<MainPage />}></Route>
               <Route path='/recommended' element={<Recommended />}></Route>
+
               <Route
                 path='/mypage/*'
                 element={
                   !isUser ? (
                     <Navigate to='/login' />
+
                   ) : (
                     <MyPage isUser={isUser} setIsUser={setIsUser} />
                   )

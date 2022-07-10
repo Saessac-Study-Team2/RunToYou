@@ -20,6 +20,7 @@ const Posts = () => {
       recruit: true,
       createdAt: '15분전',
       updatedAt: '2022-02-24T16:17:47.000Z',
+
     },
     {
       id: 2,
@@ -31,6 +32,7 @@ const Posts = () => {
       like: 1,
       createdAt: '2시간전',
       updatedAt: '2022-02-25T16:17:47.000Z',
+
     },
     {
       id: 3,
@@ -45,6 +47,7 @@ const Posts = () => {
       like: 3,
       createdAt: '2022.07.05',
       updatedAt: '2022-02-26T16:17:47.000Z',
+
     },
   ];
 

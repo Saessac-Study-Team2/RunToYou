@@ -23,12 +23,14 @@ const IsValidPW = (password, confirmPassword) => {
 
 const SignUp = () => {
   const [error, setError] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const [newID, setNewID] = useState(null);
   const [newPW, setNewPW] = useState(null);
 
   const handleSubmit = async event => {
     setError([]);
+
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const id = data.get('id');
@@ -66,6 +68,7 @@ const SignUp = () => {
     if (error.length === 0) {
       setNewID(id);
       setNewPW(password);
+
     }
   };
 
@@ -98,6 +101,7 @@ const SignUp = () => {
       signUp(newID, newPW);
     }
   }, [newID]);
+
 
   return (
     <Container component='main' maxWidth='xs'>
@@ -152,6 +156,7 @@ const SignUp = () => {
               {el}
             </Alert>
           ))}
+
           <LoadingButton
             type='submit'
             fullWidth

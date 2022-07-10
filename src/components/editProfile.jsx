@@ -8,6 +8,7 @@ const EditProfile = ({ addProfile, isOpen, setIsOpen }) => {
 
     const nickName = event.target[2].value;
     const info = event.target[4].value;
+
     addProfile({ nickName, info });
     setIsOpen(!isOpen);
   };
@@ -25,6 +26,7 @@ const EditProfile = ({ addProfile, isOpen, setIsOpen }) => {
         },
       }
     );
+
   };
   const ref = useRef(null);
 
@@ -47,6 +49,7 @@ const EditProfile = ({ addProfile, isOpen, setIsOpen }) => {
           <input type='text' name='nickname' id='nickname' required />
           <label htmlFor='place'>Enter your favorite place </label>
           <input type='text' name='place' id='place' required />
+
           <textarea
             id='story'
             name='story'

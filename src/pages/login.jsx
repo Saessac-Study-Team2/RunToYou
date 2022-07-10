@@ -13,6 +13,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { setLoginCookie } from '../library/cookie';
 
+
 const axios = require('axios');
 
 const Login = ({ setIsUser }) => {
@@ -38,6 +39,7 @@ const Login = ({ setIsUser }) => {
 
   const onLoginSuccess = response => {
     const { token } = response.data;
+
     setLoginCookie(token);
   };
 
