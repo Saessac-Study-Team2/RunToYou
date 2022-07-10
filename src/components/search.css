@@ -1,0 +1,26 @@
+.search__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search__place {
+  height: 30px;
+  border: 1px solid;
+}
+
+.search__writer {
+  height: 30px;
+  border: 1px solid;
+}
+.search__recruit {
+  height: 30px;
+  border: 1px solid;
+}
+
+.search__btn {
+  height: 30px;
+  background-color: white;
+  width: 50px;
+  border: 1px solid;
+}
