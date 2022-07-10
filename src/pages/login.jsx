@@ -13,12 +13,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { setLoginCookie } from '../library/cookie';
 
-
 const axios = require('axios');
 
 const Login = ({ setIsUser }) => {
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [ID, setID] = useState('');
   const [PW, setPW] = useState('');
 
