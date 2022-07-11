@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ isUser }) => {
   return (
     <section className='navbar'>
       <Link to='/'>
@@ -14,10 +14,11 @@ const Navbar = () => {
       <Link to='/recommended'>
         <span>hotPlace</span>
       </Link>
-
-      <Link to='/mypage'>
-        <span>myPage</span>
-      </Link>
+      {isUser && (
+        <Link to='/mypage'>
+          <span>myPage</span>
+        </Link>
+      )}
     </section>
   );
 };
