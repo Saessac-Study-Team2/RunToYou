@@ -2,37 +2,49 @@ import { useEffect, useState } from 'react';
 
 function Weather() {
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY
-  const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [currentWeatherData, setCurrentWeatherData] = useState(null)
+  const [intervalWeatherData, setIntervalWeatherData] = useState(null)
   const [latitude, setLatitude] = useState(null)
   const [longitude, setLongitude] = useState(null)
-  const [weatherIcon, setWeatherIcon] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-  const [weatherIcons, setWeatherIcons] = useState(null)
-
+  // 위치 추적하기
   const getLocation = () => {
     navigator.geolocation.getCurrentPosition((data) => {
+      // 위치 추적 활성화 시, 사용자 위도/경도 받아오기
       setLatitude(data.coords.latitude)
       setLongitude(data.coords.longitude)
-    }, () => { console.log('err') })
+    }, () => {
+      // 위치 추적 비활성화 or 실패 시, 디폴트 위도/경도 받아오기 (여의도 한강공원)
+      setLatitude(37.526359155559)
+      setLongitude(126.93352258617)
+      console.log('err occurred OR location tracking blocked')
+    })
   }
 
-  const getData = () => {
+  // 현재 날씨 데이터 가져오기
+  const getCurrentWeatherData = () => {
     setLoading(true)
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric&lang=kr`)
       .then(res => res.json())
       .then(data => {
-        const weatherIcon = data.weather[0].icon;
-        const weatherIconAdress = `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
 
-        setData(data)
-        setWeatherIcon(weatherIconAdress)
+        const currentWeatherData = {
+          icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+          location: data.name,
+          weather: data.weather[0].description,
+          temp: data.main.temp,
+          hum: data.main.humidity
+        }
+
+        setCurrentWeatherData(currentWeatherData)
       })
       .then(() => setLoading(false))
       .catch(() => { console.log('err') })
   }
 
-  const getThreeHourIntervalData = () => {
+  // 3시간 단위 날씨 데이터 가져오기
+  const getIntervalWeatherData = () => {
     setLoading(true)
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&lang=kr&units=metric`)
       .then(res => res.json())
@@ -40,15 +52,15 @@ function Weather() {
 
         const idxLimitedData = data.list.filter((el, idx) => idx > 1 && idx < 7)
 
-        const weatherDatas = idxLimitedData.map((el) => (
+        const intervalWeatherData = idxLimitedData.map((el) => (
           {
-            temp: el.main.temp + '°C',
             icon: `http://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png`,
-            time: el.dt_txt.slice(11, 13) + '시'
+            temp: el.main.temp,
+            time: el.dt_txt
           }
         ))
 
-        setWeatherIcons(weatherDatas)
+        setIntervalWeatherData(intervalWeatherData)
       })
       .then(() => setLoading(false))
       .catch(() => { console.log('err') })
@@ -57,8 +69,8 @@ function Weather() {
   useEffect(() => {
     getLocation()
     if (latitude !== null) {
-      getData()
-      getThreeHourIntervalData()
+      getCurrentWeatherData()
+      getIntervalWeatherData()
     }
   }, [latitude])
 
@@ -67,20 +79,26 @@ function Weather() {
   return (
     <div>
       <div className="weatherNow">
-        <img src={weatherIcon} alt='weather_icon'></img>
+        <img src={currentWeatherData.icon} alt='weather_icon'></img>
         <div>
-          {/* <span>{"위치 : " + data.name + " / "}</span> */}
-          <span>{"날씨 : " + data.weather[0].description + " / "}</span>
-          <span>{"온도 : " + data.main.temp + "°C / "}</span>
-          <span>{"습도 : " + data.main.humidity + "%"}</span>
+          <span>
+            {
+              latitude === 37.526359155559 && longitude === 126.93352258617 ?
+                "위치 : " + currentWeatherData.location + " (위치 추적 비허용 상태)" + " / " :
+                "위치 : " + currentWeatherData.location + " / "
+            }
+          </span>
+          <span>{"날씨 : " + currentWeatherData.weather + " / "}</span>
+          <span>{"온도 : " + currentWeatherData.temp + "°C / "}</span>
+          <span>{"습도 : " + currentWeatherData.hum + "%"}</span>
         </div>
       </div>
       <div className="weatherThreeHourInterval">
-        {weatherIcons && weatherIcons.map((el, idx) =>
+        {intervalWeatherData && intervalWeatherData.map((el, idx) =>
           <span key={idx}>
             <img src={el.icon}></img>
-            <span>{el.temp}</span>
-            <span>{el.time}</span>
+            <span>{el.temp + '°C / '}</span>
+            <span>{el.time.slice(11, 13) + '시'}</span>
           </span>)}
       </div>
     </div>
