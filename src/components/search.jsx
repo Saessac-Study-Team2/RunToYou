@@ -1,14 +1,34 @@
-import React from "react";
 import "./search.css";
 
-const Search = () => {
+const Search = ({ posts, selected, setSelected }) => {
+  const locationNameList = ["강동구", "관악구", "마포구"];
+  console.log(selected);
+  const handleSelect = (e) => {
+    setSelected(e.target.value);
+  };
+  for (let i = 0; i < posts.length; i++) {
+    for (let key in posts[i]) {
+      if (key === "locationName") {
+        if (locationNameList.indexOf(posts[i][key]) === -1)
+          locationNameList.push(posts[i][key]);
+      }
+    }
+  }
   return (
     <form className="search__container">
-      <select className="search__place">
-        <option value={"장소검색"}>장소</option>
-        <option>경의선숲길</option>
-        <option>서울숲</option>
-        <option>한강공원</option>
+      <select
+        onChange={handleSelect}
+        value={selected}
+        className="search__place"
+      >
+        <option value={"장소검색"}>지역</option>
+        {locationNameList.map((el, idx) => {
+          return (
+            <option key={idx} value={el}>
+              {el}
+            </option>
+          );
+        })}
       </select>
       <input placeholder="작성자" className="search__writer"></input>
       <select className="search__recruit">
