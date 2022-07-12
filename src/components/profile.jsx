@@ -1,34 +1,50 @@
 import React, { useState } from 'react';
 import EditProfile from './editProfile';
 
-const Profile = ({ list, setList, addProfile }) => {
+const Profile = ({
+  userList,
+  setUserList,
+  addProfile,
+  getPlace,
+  addPlace,
+  places,
+  deletePlace,
+  deleteImg,
+  getProfile,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleEditBtnClick = () => {
     setIsOpen(!isOpen);
   };
-  const userId = list[0];
-  const profileImg = list[1];
-  const nickName = list[2];
-  const aboutMe = list[3];
-  const preferPlace = list[4];
 
+  const { favoritLocation, info, nickName, userID, userPicture } = userList;
   return (
     <section className='Profile'>
       <div>
-        <div>id : {userId}</div>
-        <img src={`http://34.168.215.145/${profileImg}`} />
-        <div>nickName : {nickName}</div>
-        <div>aboutMe : {aboutMe}</div>
-        <div>preferPlace : {preferPlace}</div>
+        <p>id : {userID}</p>
+        <img src={`http://34.168.215.145/${userPicture}`} alt='profile img' />
+        <p>nickName : {nickName}</p>
+        <p>aboutMe : {info}</p>
+        <p>
+          preferPlace :
+          {Array.isArray(favoritLocation) &&
+            favoritLocation.map(el => <span key={el[0]}>{el[1]}</span>)}
+        </p>
       </div>
       <button onClick={handleEditBtnClick}>editProfile</button>
       {isOpen ? (
         <EditProfile
+          deletePlace={deletePlace}
+          getProfile={getProfile}
+          places={places}
+          getPlace={getPlace}
+          addPlace={addPlace}
           addProfile={addProfile}
-          list={list}
-          setList={setList}
+          userList={userList}
+          setUserList={setUserList}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
+          deleteImg={deleteImg}
         />
       ) : null}
     </section>
