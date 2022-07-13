@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
 
 import Intro from './pages/intro';
 import MainPage from './pages/mainPage';
@@ -11,13 +12,15 @@ import Login from './pages/login';
 import './App.css';
 import { deleteCookie, getLoginCookie } from './library/cookie';
 
-const App = props => {
+
+const App = (props) => {
   const [isUser, setIsUser] = useState(Boolean(getLoginCookie()));
 
   return (
     <BrowserRouter>
-      <div className='App'>
+      <div className="App">
         <main>
+
           <Routes>
             <Route path='/' element={<Intro isUser={isUser} />}></Route>
 
@@ -50,6 +53,7 @@ const App = props => {
               }
             ></Route>
           </Routes>
+
         </main>
       </div>
     </BrowserRouter>

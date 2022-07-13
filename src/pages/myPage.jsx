@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Profile from '../components/profile';
 import Header from '../header';
@@ -8,18 +9,20 @@ const MyPage = ({ isUser, setIsUser }) => {
   const [userList, setUserList] = useState([]);
   const [places, setPlaces] = useState([]);
 
+
   const getProfile = () => {
     return axios
-      .get('http://34.168.215.145/user/', {
+      .get("http://34.168.215.145/user/", {
         headers: { Authorization: getLoginCookie() },
       })
-      .then(res => {
+      .then((res) => {
         if (res.data.msg) {
           setUserList(res.data.data);
         }
       })
-      .catch(error => console.log('error', error));
+      .catch((error) => console.log("error", error));
   };
+
 
   const getPlace = () => {
     let config = {
@@ -73,6 +76,7 @@ const MyPage = ({ isUser, setIsUser }) => {
       .catch(error => console.log('error', error));
   };
   const addProfile = ({ nickname, info }) => {
+
     const data = {
       nickname,
       info,
@@ -82,7 +86,7 @@ const MyPage = ({ isUser, setIsUser }) => {
         headers: { Authorization: getLoginCookie() },
       })
       .then(getProfile())
-      .catch(error => console.log('error', error));
+      .catch((error) => console.log("error", error));
   };
 
   useEffect(() => {
@@ -92,6 +96,7 @@ const MyPage = ({ isUser, setIsUser }) => {
 
   return (
     <>
+
       <Header isUser={isUser} setIsUser={setIsUser} />
       <Profile
         deletePlace={deletePlace}
@@ -104,6 +109,7 @@ const MyPage = ({ isUser, setIsUser }) => {
         addPlace={addPlace}
         deleteImg={deleteImg}
       />
+
     </>
   );
 };

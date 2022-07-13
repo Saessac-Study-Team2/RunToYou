@@ -1,22 +1,74 @@
-import React from "react";
 import "./search.css";
 
-const Search = () => {
+const Search = ({
+  posts,
+  selected,
+  setSelected,
+  recruit,
+  setRecruit,
+  writer,
+  setWriter,
+}) => {
+  const locationNameList = ["강동구", "관악구", "마포구"];
+  const recruitList = ["모집중", "모집완료"];
+  const handleSelect = (e) => {
+    setSelected(e.target.value);
+  };
+  const handleRecruit = (e) => {
+    setRecruit(e.target.value);
+  };
+  const handleWriter = (e) => {
+    setWriter(e.target.value);
+    console.log(writer);
+  };
+  for (let i = 0; i < posts.length; i++) {
+    for (let key in posts[i]) {
+      if (key === "locationName") {
+        if (locationNameList.indexOf(posts[i][key]) === -1)
+          locationNameList.push(posts[i][key]);
+      }
+    }
+  }
   return (
-    <form className="search__container">
-      <select className="search__place">
-        <option value={"장소검색"}>장소</option>
-        <option>경의선숲길</option>
-        <option>서울숲</option>
-        <option>한강공원</option>
+    <section className="search__container">
+      <select
+        onChange={handleSelect}
+        value={selected}
+        className="search__place"
+      >
+        <option value={"지역검색"}>--지역--</option>
+        {locationNameList.map((el, idx) => {
+          return (
+            <option key={idx} value={el}>
+              {el}
+            </option>
+          );
+        })}
       </select>
-      <input placeholder="작성자" className="search__writer"></input>
-      <select className="search__recruit">
-        <option value="">모집중</option>
-        <option value="">모집완료</option>
+      <select
+        onChange={handleRecruit}
+        value={recruit}
+        className="search__recruit"
+      >
+        <option value={"모집상태"}>--모집상태--</option>
+        {recruitList.map((el, idx) => {
+          return (
+            <option
+              key={idx}
+              value={el === "모집중" ? "recruiting" : "recruited"}
+            >
+              {el}
+            </option>
+          );
+        })}
       </select>
-      <button className="search__btn">검색</button>
-    </form>
+      <input
+        value={writer}
+        onChange={handleWriter}
+        placeholder="작성자"
+        className="search__writer"
+      ></input>
+    </section>
   );
 };
 
