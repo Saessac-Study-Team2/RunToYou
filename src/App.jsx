@@ -1,26 +1,23 @@
-import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-
-import Intro from './pages/intro';
-import MainPage from './pages/mainPage';
-import MyPage from './pages/myPage';
-import Recommended from './pages/recommended';
-import SignUp from './pages/signUp';
-import Login from './pages/login';
+import Intro from './pages/intro/intro';
+import SignUp from './pages/signup/signUp';
+import Login from './pages/login/login';
+import MainPage from './pages/mainpage/mainPage';
+import Recommended from './pages/recommended/recommended';
+import MyPage from './pages/mypage/myPage';
 
 import './App.css';
 import { deleteCookie, getLoginCookie } from './library/cookie';
 
-
-const App = (props) => {
+const App = props => {
   const [isUser, setIsUser] = useState(Boolean(getLoginCookie()));
 
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className='App'>
         <main>
-
           <Routes>
             <Route path='/' element={<Intro isUser={isUser} />}></Route>
 
@@ -39,8 +36,14 @@ const App = (props) => {
                 )
               }
             ></Route>
-            <Route path='/mainpage' element={<MainPage />}></Route>
-            <Route path='/recommended' element={<Recommended />}></Route>
+            <Route
+              path='/mainpage'
+              element={<MainPage isUser={isUser} setIsUser={setIsUser} />}
+            ></Route>
+            <Route
+              path='/recommended'
+              element={<Recommended isUser={isUser} setIsUser={setIsUser} />}
+            ></Route>
 
             <Route
               path='/mypage/*'
@@ -53,7 +56,6 @@ const App = (props) => {
               }
             ></Route>
           </Routes>
-
         </main>
       </div>
     </BrowserRouter>

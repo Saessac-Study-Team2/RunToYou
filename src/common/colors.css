@@ -1,0 +1,19 @@
+/* 기본 컬러 */
+@value RtyBlack: black;
+@value RtyWhite: white;
+@value RtyRed: red;
+
+/* 로고 추출 컬러 */
+@value RtyOrange: #ff914d;
+@value RtyPurple: #8B3A8C;
+@value RtyBlue: #2a7abf;
+
+/* 팔레트 추출 컬러 */
+@value RtyBrown: #B5876D;
+@value RtyIvory: #FFF7F1;
+@value RtyGrey: #DFE0DF;
+
+/* 박스 쉐도우 */
+@value RtyBox-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+
+/* 그라데이션 */
