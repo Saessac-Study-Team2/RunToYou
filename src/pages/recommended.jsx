@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HotPlace from '../components/hotPlace';
 import './recommended.css';
+import data from '../static/resource/dummyData';
+
+
 
 const Recommended = () => {
-  let [hotPlaceList, sethotPlaceList] = useState('더미데이터');
-  let [date, setDate] = useState('날짜')
   let [likeBtn, setLikeBtn] = useState(0);
   let [modal, setModal] = useState(false);
 
@@ -17,14 +18,28 @@ const Recommended = () => {
     <div className='recommended'>
       <div className='black-nav'>
         <h4 style={{color : 'grey', fontSize : '16px'}}>hotPlace</h4>
-      </div>
-      <Routes>
-        <Route path='hotPlace' element={<HotPlace />}></Route>
-      </Routes>
-      <div></div>
+      </div>    
+      {data.map((el,idx) => {
+        return <RecommendedBox data = {el} key={idx}/>})}
     </div>
   );
 };
+
+function RecommendedBox (props){
+  return (
+  <div className='container'>
+  <div className='container_left'>
+    <button className='container_left_like'>좋아요</button>
+    <div className='container_left_title'>{props.data.title}</div>
+    <div className='container_left_location'>{props.data.location}</div>
+    <div className='container_left_content'>{props.data.content}</div>
+  </div>
+  <div className='container_right'>
+    <img src={props.data.picture} className='picture'></img>
+  </div>
+  </div>
+  )
+}
 
 function Modal(){
   return (
