@@ -16,3 +16,15 @@
     background: #eee;
     text-align: left;
   }
+
+  .container {
+      border: 1px solid red;
+      display: flex;
+      flex-direction: row;
+  }
+  
+  .picture {
+      height: 300px;
+      /* background-image: none; */
+      background-size: cover;
+  }

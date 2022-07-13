@@ -13,12 +13,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { setLoginCookie } from '../library/cookie';
 
-
 const axios = require('axios');
 
 const Login = ({ setIsUser }) => {
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [ID, setID] = useState('');
   const [PW, setPW] = useState('');
 
@@ -109,7 +108,7 @@ const Login = ({ setIsUser }) => {
             fullWidth
             variant='contained'
             color='secondary'
-            loading={loading}
+            // loading={loading}
             sx={{ mt: 3, mb: 2 }}
           >
             로그인

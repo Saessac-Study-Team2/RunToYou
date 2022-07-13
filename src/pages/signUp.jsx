@@ -23,7 +23,6 @@ const IsValidPW = (password, confirmPassword) => {
 
 const SignUp = () => {
   const [error, setError] = useState([]);
-
   const [loading, setLoading] = useState(false);
   const [newID, setNewID] = useState(null);
   const [newPW, setNewPW] = useState(null);
@@ -68,7 +67,6 @@ const SignUp = () => {
     if (error.length === 0) {
       setNewID(id);
       setNewPW(password);
-
     }
   };
 
@@ -101,7 +99,6 @@ const SignUp = () => {
       signUp(newID, newPW);
     }
   }, [newID]);
-
 
   return (
     <Container component='main' maxWidth='xs'>
