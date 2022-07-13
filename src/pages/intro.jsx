@@ -4,23 +4,28 @@ import { Link } from 'react-router-dom';
 
 import './intro.css';
 
-const Intro = () => {
-
+const Intro = ({ isUser }) => {
   return (
-    <div className='intro__bgImg'>
+    <section className='intro__bgImg'>
       <h1>Run To You</h1>
-      <Link to='/login'>
-        <button>Log in</button>
-      </Link>
-
-      <Link to='/signup'>
-        <button className='signUP__btn'>Sign up</button>
-      </Link>
-
-      <Link to='/mainpage'>
-        <button>Guest</button>
-      </Link>
-    </div>
+      {isUser ? (
+        <Link to='/mainpage'>
+          <button>Main Page</button>
+        </Link>
+      ) : (
+        <>
+          <Link to='/login'>
+            <button>Log in</button>
+          </Link>
+          <Link to='/signup'>
+            <button className='signUP__btn'>Sign up</button>
+          </Link>
+          <Link to='/mainpage'>
+            <button>Guest</button>
+          </Link>
+        </>
+      )}
+    </section>
   );
 };
 

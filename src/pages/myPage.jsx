@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Profile from '../components/profile';
-import MyPost from '../components/myPost';
+import Header from '../header';
 import { getLoginCookie } from '../library/cookie';
 const axios = require('axios');
 
-const MyPage = ({ isUser }) => {
-  const [list, setList] = useState([]);
+const MyPage = ({ isUser, setIsUser }) => {
+  const [userList, setUserList] = useState([]);
+  const [places, setPlaces] = useState([]);
 
   const getProfile = () => {
     return axios
@@ -14,19 +15,68 @@ const MyPage = ({ isUser }) => {
       })
       .then(res => {
         if (res.data.msg) {
-          console.log(res.data.data);
-          setList(Object.values(res.data.data));
+          setUserList(res.data.data);
         }
       })
       .catch(error => console.log('error', error));
   };
 
-  const addProfile = ({ nickName, info }) => {
+  const getPlace = () => {
+    let config = {
+      method: 'get',
+      url: 'http://34.168.215.145/location/list',
+      headers: {},
+    };
+
+    axios(config)
+      .then(res => setPlaces(res.data))
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const addPlace = locationid => {
     const data = {
-      nickname: nickName,
+      locationid,
+    };
+    axios
+      .post('http://34.168.215.145/favoritlocation/insert', data, {
+        headers: { Authorization: getLoginCookie() },
+      })
+      .then(getProfile())
+      .catch(error => console.log('error', error));
+  };
+
+  const deletePlace = locationid => {
+    axios
+      .delete(`http://34.168.215.145/favoritlocation?lid=${locationid}`, {
+        headers: { Authorization: getLoginCookie() },
+      })
+      .then(getProfile())
+      .catch(error => console.log('error', error));
+  };
+
+  const deleteImg = () => {
+    return axios
+      .put(
+        'http://34.168.215.145/user/picture',
+        {},
+        {
+          headers: {
+            authorization: getLoginCookie(),
+          },
+        }
+      )
+      .then(getProfile())
+      .then(console.log('delete IMG'))
+
+      .catch(error => console.log('error', error));
+  };
+  const addProfile = ({ nickname, info }) => {
+    const data = {
+      nickname,
       info,
     };
-    console.log(data);
     axios
       .put(`http://34.168.215.145/user`, data, {
         headers: { Authorization: getLoginCookie() },
@@ -37,19 +87,23 @@ const MyPage = ({ isUser }) => {
 
   useEffect(() => {
     getProfile();
+    getPlace();
   }, []);
 
   return (
     <>
-      {isUser ? (
-
-        <>
-          <Profile list={list} setList={setList} addProfile={addProfile} />
-          <MyPost />
-        </>
-      ) : (
-        <p>로그인을 해주세요.</p>
-      )}
+      <Header isUser={isUser} setIsUser={setIsUser} />
+      <Profile
+        deletePlace={deletePlace}
+        userList={userList}
+        setUserList={setUserList}
+        places={places}
+        getPlace={getPlace}
+        addProfile={addProfile}
+        getProfile={getProfile}
+        addPlace={addPlace}
+        deleteImg={deleteImg}
+      />
     </>
   );
 };
