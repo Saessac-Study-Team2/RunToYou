@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from './navbar';
+import Navbar from './navbar/navbar';
 import { Link, useNavigate } from 'react-router-dom';
-import { deleteCookie } from './library/cookie';
+import { deleteCookie } from '../../library/cookie';
 
 const Header = ({ isUser, setIsUser }) => {
   const navigate = useNavigate();

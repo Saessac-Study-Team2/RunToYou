@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import EditProfile from './editProfile';
+import EditProfile from '../../../components/editProfile/editProfile';
 
 const Profile = ({
   userList,

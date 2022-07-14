@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useRef } from 'react';
-import { getLoginCookie } from '../library/cookie';
+import { getLoginCookie } from '../../library/cookie';
 import imageCompression from 'browser-image-compression';
 const EditProfile = ({
   userList,
