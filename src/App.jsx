@@ -40,7 +40,7 @@ const App = (props) => {
               }
             ></Route>
             <Route path='/mainpage' element={<MainPage />}></Route>
-            <Route path='/recommended' element={<Recommended />}></Route>
+            <Route path='/recommended' element={<Recommended isUser={isUser} setIsUser={setIsUser}/>}></Route>
 
             <Route
               path='/mypage/*'
