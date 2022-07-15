@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HotPlace from '../components/hotPlace';
 import './recommended.css';
 import data from '../static/resource/dummyData';
+import Header from '../header';
 
 
 
-const Recommended = () => {
+
+const Recommended = ({isUser,setIsUser}) => {
   let [likeBtn, setLikeBtn] = useState(0);
   let [modal, setModal] = useState(false);
 
@@ -15,13 +16,17 @@ const Recommended = () => {
   }
 
   return (
-    <div className='recommended'>
-      <div className='black-nav'>
-        <h4 style={{color : 'grey', fontSize : '16px'}}>hotPlace</h4>
-      </div>    
-      {data.map((el,idx) => {
-        return <RecommendedBox data = {el} key={idx}/>})}
+    <div>
+      <Header isUser={isUser} setIsUser={setIsUser}/>
+      <div className='recommended'>
+        <div className='black-nav'>
+          <h4 style={{color : 'grey', fontSize : '16px'}}>hotPlace</h4>
+        </div>    
+        {data.map((el,idx) => {
+          return <RecommendedBox data = {el} key={idx}/>})}
+      </div>
     </div>
+    
   );
 };
 
