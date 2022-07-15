@@ -1,7 +1,7 @@
 .intro__bgImg {
   height: 100vh;
   width: 100vw;
-  background-image: url('../static/intro.png');
+  background-image: url('../../../public/images/introBg.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
