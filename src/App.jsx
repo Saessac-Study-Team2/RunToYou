@@ -36,6 +36,7 @@ const App = props => {
                 )
               }
             ></Route>
+
             <Route
               path='/mainpage'
               element={<MainPage isUser={isUser} setIsUser={setIsUser} />}
@@ -44,6 +45,7 @@ const App = props => {
               path='/recommended'
               element={<Recommended isUser={isUser} setIsUser={setIsUser} />}
             ></Route>
+
 
             <Route
               path='/mypage/*'

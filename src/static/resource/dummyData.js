@@ -1,3 +1,4 @@
+
 const data = [
   {
     id: '1',
@@ -65,5 +66,6 @@ const data = [
     picture: 'images/청담나들목.png',
   },
 ];
+
 
 export default data;
