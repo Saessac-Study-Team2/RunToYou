@@ -23,6 +23,7 @@ const App = props => {
       <div className='App'>
         <main>
           <Routes>
+
             <>
               <Route path='/' element={<Intro />}></Route>
 
@@ -43,6 +44,7 @@ const App = props => {
                 element={!isLogin ? <Navigate to='/login' /> : <MyPage />}
               ></Route>
             </>
+
           </Routes>
         </main>
       </div>
