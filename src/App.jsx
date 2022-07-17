@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { isUserState } from './library/atom';
@@ -8,6 +10,7 @@ import Login from './pages/login/login';
 import MainPage from './pages/mainpage/mainPage';
 import Recommended from './pages/recommended/recommended';
 import MyPage from './pages/mypage/myPage';
+import PostPage from "./pages/mainpage/postPage";
 
 import './App.css';
 import { getLoginCookie } from './library/cookie';
@@ -18,11 +21,13 @@ const App = props => {
     setIsLogin(Boolean(getLoginCookie()));
   });
 
+
   return (
     <BrowserRouter>
-      <div className='App'>
+      <div className="App">
         <main>
           <Routes>
+
 
             <>
               <Route path='/' element={<Intro />}></Route>
@@ -43,6 +48,7 @@ const App = props => {
                 path='/mypage/*'
                 element={!isLogin ? <Navigate to='/login' /> : <MyPage />}
               ></Route>
+               <Route path="/post/:id" element={<PostPage />}></Route>
             </>
 
           </Routes>

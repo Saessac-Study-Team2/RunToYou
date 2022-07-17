@@ -1,6 +1,6 @@
 import Post from "./post";
 
-const Posts = ({ posts, selected, recruit, writer }) => {
+const Posts = ({ posts, selected, recruit, writer, openModal, setPosts }) => {
   let filteredPosts = posts;
   for (let i = 0; i < posts.length; i++) {
     for (let key in posts[i]) {
@@ -24,7 +24,7 @@ const Posts = ({ posts, selected, recruit, writer }) => {
   return (
     <ul>
       {filteredPosts.map((post, idx) => (
-        <Post key={idx} post={post} />
+        <Post setPosts={setPosts} key={idx} post={post} />
       ))}
     </ul>
   );

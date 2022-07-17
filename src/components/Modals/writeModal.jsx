@@ -1,37 +1,51 @@
 import React, { useState } from "react";
+import { getLoginCookie } from "../../library/cookie";
 import "./writeModal.css";
 const axios = require("axios");
 
 const WriteModal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close, header } = props;
+  const { open, close, header, locationList, setPosts } = props;
   // const handleClickWriteBtn = () => {
-  //   axios
-  //     .PUT("http://34.168.215.145/topic/insert", {
-  //       topictitle: "Fred",
-  //       topiccontents: "Flintstone",
-  //       users_uid,
-  //       location_lid,
-  //       type,
-  //     })
-  //     .then(function (response) {
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
-
   const [topicTitle, setTopicTitle] = useState("");
-  const [locationLid, setLocationLid] = useState("지역");
+  const [locationLid, setLocationLid] = useState(0);
   const [topicContent, setTopicContent] = useState("");
-  const handleWriteSubmit = (e) => {};
+
+  const handleRquestSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "http://34.168.215.145/topic/insert",
+        {
+          topictitle: topicTitle,
+          topiccontents: topicContent,
+          location_lid: locationLid,
+          type: "friend",
+        },
+        { headers: { Authorization: getLoginCookie() } }
+      )
+      .then(function (response) {
+        axios
+          .get("http://34.168.215.145/topic/list")
+          .then((res) => {
+            setPosts(res.data);
+            close();
+            setTopicTitle("");
+            setLocationLid(0);
+            setTopicContent("");
+          })
+          .catch((error) => console.log("error", error));
+        console.log("well done!");
+      })
+      .catch(function (error) {
+        console.log("전송 실패");
+      });
+  };
+
   const handleTopicTitle = (e) => {
-    console.log(e.target.value);
     setTopicTitle(e.target.value);
   };
   const handleTopicContent = (e) => {
-    console.log(e.target.value);
     setTopicContent(e.target.value);
   };
   const handleLocationLid = (e) => {
@@ -50,7 +64,7 @@ const WriteModal = (props) => {
             </button>
           </header>
           <main>
-            <form onSubmit={handleWriteSubmit}>
+            <form>
               <div>
                 <span>제목</span>
                 <input
@@ -64,8 +78,9 @@ const WriteModal = (props) => {
                 <span>지역</span>
                 <select onChange={handleLocationLid} value={locationLid}>
                   <option>지역을 선택해주세요</option>
-                  <option value={"중랑구"}>중랑구</option>
-                  <option value={"은평구"}>은평구</option>
+                  {locationList.map((x, idx) => {
+                    return <option value={x.lid}>{x.locationName}</option>;
+                  })}
                 </select>
               </div>
               <div>
@@ -78,7 +93,7 @@ const WriteModal = (props) => {
                   onChange={handleTopicContent}
                 ></textarea>
               </div>
-              <button onClick={handleWriteSubmit}>전송</button>
+              <button onClick={handleRquestSubmit}>전송</button>
             </form>
           </main>
           <footer>
