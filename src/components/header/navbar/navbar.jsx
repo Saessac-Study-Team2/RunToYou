@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { isUserState } from '../../../library/atom';
 
 const Navbar = ({ isUser }) => {
+  const [isLogin, setIsLogin] = useRecoilState(isUserState);
   return (
     <section className='navbar'>
-      {!isUser && (
+      {!isLogin && (
         <Link to='/'>
           <span>Intro</span>
         </Link>
@@ -16,7 +19,7 @@ const Navbar = ({ isUser }) => {
       <Link to='/recommended'>
         <span>hotPlace</span>
       </Link>
-      {isUser && (
+      {isLogin && (
         <Link to='/mypage'>
           <span>myPage</span>
         </Link>
