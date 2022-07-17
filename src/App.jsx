@@ -1,62 +1,56 @@
-import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import Intro from "./pages/intro/intro";
-import SignUp from "./pages/signup/signUp";
-import Login from "./pages/login/login";
-import MainPage from "./pages/mainpage/mainPage";
-import Recommended from "./pages/recommended/recommended";
-import MyPage from "./pages/mypage/myPage";
+
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { isUserState } from './library/atom';
+import { useRecoilState } from 'recoil';
+import Intro from './pages/intro/intro';
+import SignUp from './pages/signup/signUp';
+import Login from './pages/login/login';
+import MainPage from './pages/mainpage/mainPage';
+import Recommended from './pages/recommended/recommended';
+import MyPage from './pages/mypage/myPage';
 import PostPage from "./pages/mainpage/postPage";
 
-import "./App.css";
-import { deleteCookie, getLoginCookie } from "./library/cookie";
+import './App.css';
+import { getLoginCookie } from './library/cookie';
+const App = props => {
+  const [isLogin, setIsLogin] = useRecoilState(isUserState);
+  console.log();
+  useEffect(() => {
+    setIsLogin(Boolean(getLoginCookie()));
+  });
 
-const App = (props) => {
-  const [isUser, setIsUser] = useState(Boolean(getLoginCookie()));
 
   return (
     <BrowserRouter>
       <div className="App">
         <main>
           <Routes>
-            <Route path="/" element={<Intro isUser={isUser} />}></Route>
 
-            <Route
-              path="/signup"
-              element={isUser ? <Navigate to="/mainpage" /> : <SignUp />}
-            ></Route>
 
-            <Route
-              path="/login"
-              element={
-                isUser ? (
-                  <Navigate to="/mainpage" />
-                ) : (
-                  <Login isUser={isUser} setIsUser={setIsUser} />
-                )
-              }
-            ></Route>
-            <Route
-              path="/mainpage"
-              element={<MainPage isUser={isUser} setIsUser={setIsUser} />}
-            ></Route>
-            <Route
-              path="/recommended"
-              element={<Recommended isUser={isUser} setIsUser={setIsUser} />}
-            ></Route>
+            <>
+              <Route path='/' element={<Intro />}></Route>
 
-            <Route
-              path="/mypage/*"
-              element={
-                !isUser ? (
-                  <Navigate to="/login" />
-                ) : (
-                  <MyPage isUser={isUser} setIsUser={setIsUser} />
-                )
-              }
-            ></Route>
-            <Route path="/post/:id" element={<PostPage />}></Route>
+              <Route
+                path='/signup'
+                element={isLogin ? <Navigate to='/mainpage' /> : <SignUp />}
+              ></Route>
+
+              <Route
+                path='/login'
+                element={isLogin ? <Navigate to='/mainpage' /> : <Login />}
+              ></Route>
+              <Route path='/mainpage' element={<MainPage />}></Route>
+              <Route path='/recommended' element={<Recommended />}></Route>
+
+              <Route
+                path='/mypage/*'
+                element={!isLogin ? <Navigate to='/login' /> : <MyPage />}
+              ></Route>
+               <Route path="/post/:id" element={<PostPage />}></Route>
+            </>
+
           </Routes>
         </main>
       </div>

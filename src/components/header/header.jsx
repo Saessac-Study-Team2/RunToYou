@@ -1,20 +1,23 @@
 import React from 'react';
 import Navbar from './navbar/navbar';
 import { Link, useNavigate } from 'react-router-dom';
-import { deleteCookie } from '../../library/cookie';
+import { deleteCookie, getLoginCookie } from '../../library/cookie';
+import { isUserState } from '../../library/atom';
+import { useRecoilState } from 'recoil';
 
-const Header = ({ isUser, setIsUser }) => {
+const Header = () => {
   const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useRecoilState(isUserState);
 
   const logOut = async () => {
     deleteCookie();
-    setIsUser(false);
+    setIsLogin(Boolean(getLoginCookie()));
     navigate('/');
   };
   return (
     <section>
-      <Navbar isUser={isUser} />
-      {isUser ? (
+      <Navbar />
+      {isLogin ? (
         <button onClick={logOut}>LogOut</button>
       ) : (
         <>
