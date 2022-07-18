@@ -1,11 +1,18 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { isUserState } from '../../library/atom';
 import { useRecoilState } from 'recoil';
-
+import {
+  isUserState,
+  UserAvataState,
+  userState,
+  userPlaceState,
+  userIDState,
+  nicknameState,
+  aboutMeState,
+} from '../../library/atom';
 import { getLoginCookie, setLoginCookie } from '../../library/cookie';
 import Footer from '../../components/footer/footer';
-import { login } from '../../library/axios';
+import { login, getProfile } from '../../library/axios';
 
 const Login = ({ setIsUser }) => {
   const [error, setError] = useState('');
@@ -14,7 +21,15 @@ const Login = ({ setIsUser }) => {
   const [PW, setPW] = useState('');
   const idRef = useRef();
   const passwordRef = useRef();
+
+  // recoil
   const [isLogin, setIsLogin] = useRecoilState(isUserState);
+  const [avata, setAvata] = useRecoilState(UserAvataState);
+  const [user, setUser] = useRecoilState(userState);
+  const [userPlace, setUserPlace] = useRecoilState(userPlaceState);
+  const [userID, setUserID] = useRecoilState(userIDState);
+  const [nickname, setNickname] = useRecoilState(nicknameState);
+  const [aboutMe, setAboutMe] = useRecoilState(aboutMeState);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -30,8 +45,8 @@ const Login = ({ setIsUser }) => {
     }
   };
 
-  const onLogin = (ID, PW) => {
-    login(ID, PW)
+  const onLogin = async (ID, PW) => {
+    await login(ID, PW)
       .then(res => {
         if (res.msg) {
           setLoginCookie(res.token);
@@ -40,12 +55,30 @@ const Login = ({ setIsUser }) => {
           setError('아이디와 비밀번호를 확인 해 주세요');
         }
       })
-      .then()
       .catch(err => console.log(err));
+
+    await getProfile()
+      .then(res => {
+        setUser(res);
+        console.log(res);
+        setUserPlace(res.favoritLocation);
+        setAboutMe(res.info);
+        setNickname(res.nickName);
+        setUserID(res.userID);
+        setAvata(res.userPicture);
+      })
+      .then(() => {
+        console.log('user recoil', user);
+      })
+      .catch(error => {
+        console.log('getUserInfo error', error);
+      });
   };
 
   useEffect(() => {
-    if (ID) onLogin(ID, PW);
+    if (ID) {
+      onLogin(ID, PW);
+    }
   }, [ID]);
 
   return (

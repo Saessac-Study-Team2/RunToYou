@@ -1,16 +1,14 @@
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
+import { atom } from 'recoil';
 
 export const userState = atom({
   key: 'userState',
   default: {},
 });
 
+export const UserAvataState = atom({
+  key: 'userAvataState',
+  default: null,
+});
 export const userPlaceState = atom({
   key: 'userPlaceState',
   default: [],
