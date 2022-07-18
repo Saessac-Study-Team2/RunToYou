@@ -1,4 +1,6 @@
 import "./search.css";
+import { useRecoilState } from "recoil";
+import { postsState } from "../../../library/atom";
 
 const Search = ({
   posts,
