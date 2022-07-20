@@ -1,36 +1,36 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import { isUserState } from '../../library/atom';
-
+import styles from './intro.module.css';
 import { Link } from 'react-router-dom';
 import Footer from '../../components/footer/footer';
 
-import './intro.css';
-
-const Intro = ({ isUser }) => {
+const Intro = () => {
   const [isLogin, setIsLogin] = useRecoilState(isUserState);
 
   return (
-    <section className='intro__bgImg'>
-      <h1>Run To You</h1>
-      {isLogin ? (
-        <Link to='/mainpage'>
-          <button>Main Page</button>
-        </Link>
-      ) : (
-        <>
-          <Link to='/login'>
-            <button>Log in</button>
-          </Link>
-          <Link to='/signup'>
-            <button className='signUP__btn'>Sign up</button>
-          </Link>
+    <section className={styles.bgImg}>
+      <div className={styles.container}>
+        <img className={styles.logo} src='/img/logo1.png' />
+        {isLogin ? (
           <Link to='/mainpage'>
-            <button>Guest</button>
+            <button className={styles.button}>Main Page</button>
           </Link>
-        </>
-      )}
-      <Footer />
+        ) : (
+          <>
+            <Link to='/login'>
+              <button className={styles.button}>Log in</button>
+            </Link>
+            <Link to='/signup'>
+              <button className={styles.button}>Sign up</button>
+            </Link>
+            <Link to='/mainpage'>
+              <button className={styles.button}>Guest</button>
+            </Link>
+          </>
+        )}
+        {/* <Footer /> */}
+      </div>
     </section>
   );
 };

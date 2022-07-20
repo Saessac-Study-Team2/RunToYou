@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signup, checkID } from '../../library/axios';
 import Footer from '../../components/footer/footer';
+import styles from './signUp.module.css';
+import { style } from '@mui/system';
 
 const IsValidID = id => {
   const ID_REGEX = new RegExp('^[a-z0-9_-]{5,20}$');
@@ -82,62 +84,57 @@ const SignUp = () => {
 
   useEffect(() => {}, [error]);
   return (
-    <section>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100vh',
-        }}
-      >
-        <img src='images/logo1.png' />
-        <h1>회원가입</h1>
-        <div>
-          <div>
-            <input
-              placeholder='ID'
-              name='id'
-              ref={IDRef}
-              required
-              label='id'
-              autoFocus
-              autoComplete='off'
-            />
-            <input
-              placeholder='password'
-              name='password'
-              ref={PWRef}
-              required
-              label='password'
-              type='password'
-            />
-            <input
-              placeholder='confirm PW'
-              name='confirmPW'
-              ref={confirmPWRef}
-              required
-              label='password'
-              type='password'
-            />
-          </div>
-          {error ? error.map(el => <div>{el}</div>) : null}
-
-          <button type='submit' onClick={handleSubmit}>
-            회원 가입
-          </button>
-          <div>
-            <Link
-              to='/login'
-              style={{ textDecoration: 'none', color: 'black' }}
-            >
-              이미 계정이 있으신가요? 로그인하기
-            </Link>
-          </div>
+    <section className={styles.sectionSignUp}>
+      <div className={styles.container}>
+        <img className={styles.logo} src='/favicon.ico' />
+        <h1 className={styles.title}>회원가입</h1>
+        <div className={styles.inputContainer}>
+          {error
+            ? error.map(el => <div className={styles.error}>{el}</div>)
+            : null}
+          <input
+            className={styles.formInput}
+            placeholder='ID'
+            name='id'
+            ref={IDRef}
+            required
+            label='id'
+            autoFocus
+            autoComplete='off'
+          />
+          <input
+            className={styles.formInput}
+            placeholder='password'
+            name='password'
+            ref={PWRef}
+            required
+            label='password'
+            type='password'
+          />
+          <input
+            className={styles.formInput}
+            placeholder='confirm PW'
+            name='confirmPW'
+            ref={confirmPWRef}
+            required
+            label='password'
+            type='password'
+          />
         </div>
+
+        <button className={styles.button} type='submit' onClick={handleSubmit}>
+          회원 가입
+        </button>
+        <div className={styles.link}>
+          <Link to='/login'>
+            <p> 계정이 있으신가요? 로그인하기</p>
+          </Link>
+          <Link to='/mainpage'>
+            <p>Guest로 둘러보기</p>
+          </Link>
+        </div>
+        <Footer className={style.footer} />
       </div>
-      <Footer />
     </section>
   );
 };

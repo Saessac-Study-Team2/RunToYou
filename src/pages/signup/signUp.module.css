@@ -1,0 +1,87 @@
+@value RtyBrown,RtyBlack,RtyIvory,RtyRed,dimBlack, RtyPurple, RtyOrange, dimWhite, RtyWhite, RtyGrey from '../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../common/size.css';
+
+.sectionSignUp {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../../../public/img/6.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+}
+.inputContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  align-items: center;
+  text-align: center;
+}
+.container {
+  width: 40%;
+  background-color: dimBlack;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.title {
+  font-size: 48px;
+}
+
+.formInput,
+.button {
+  width: 65%;
+  margin: 10px 0px;
+  height: 40px;
+  font-size: fontSmall;
+  color: RtyBlack;
+  background-color: dimWhite;
+  border: RtyWhite solid 1px;
+}
+.button {
+  border: RtyPurple solid 1px;
+  background-color: RtyPurple;
+  color: RtyWhite;
+  border-radius: 12px;
+}
+
+.button:hover {
+  color: RtyWhite;
+  background-color: RtyOrange;
+  border: RtyOrange solid 2px;
+}
+.error {
+  background-color: dimBlack;
+  width: 100%;
+  font-size: 20px;
+  color: RtyRed;
+}
+.link {
+  width: 65%;
+  text-align: center;
+}
+a {
+  color: RtyBlack;
+  text-decoration: none;
+}
+p {
+  border-radius: 12px;
+  font-size: fontSmall;
+  color: RtyWhite;
+  background-color: dimBlack;
+  margin-bottom: 8px;
+}
+p:hover {
+  font-size: 28px;
+  color: RtyBlack;
+  background-color: dimWhite;
+}

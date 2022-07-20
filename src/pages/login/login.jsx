@@ -10,6 +10,7 @@ import {
   nicknameState,
   aboutMeState,
 } from '../../library/atom';
+import styles from '../signup/signUp.module.css';
 import { getLoginCookie, setLoginCookie } from '../../library/cookie';
 import Footer from '../../components/footer/footer';
 import { login, getProfile } from '../../library/axios';
@@ -67,9 +68,6 @@ const Login = ({ setIsUser }) => {
         setUserID(res.userID);
         setAvata(res.userPicture);
       })
-      .then(() => {
-        console.log('user recoil', user);
-      })
       .catch(error => {
         console.log('getUserInfo error', error);
       });
@@ -82,54 +80,62 @@ const Login = ({ setIsUser }) => {
   }, [ID]);
 
   return (
-    <section>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100vh',
-        }}
-      >
-        <img src='images/logo1.png' />
-        <h1>로그인</h1>
-        <div>
-          <div container spacing={2}>
-            <input
-              onChange={() => {
-                setError(null);
-              }}
-              placeholder='id'
-              name='id'
-              ref={idRef}
-              required
-              label='id'
-              autoFocus
-              autoComplete='off'
-            />
-            <input
-              onChange={() => {
-                setError(null);
-              }}
-              placeholder='password'
-              name='password'
-              ref={passwordRef}
-              required
-              label='password'
-              type='password'
-            />
-          </div>
-          {error ? <div>{error}</div> : null}
-          <button type='submit' onClick={handleSubmit}>
-            로그인
-          </button>
-          <div container justifyContent='flex-end'>
-            <Link to='/signup'>계정이 없으신가요? 가입하기</Link>
-          </div>
+    <section className={styles.sectionSignUp}>
+      <div className={styles.container}>
+        <img className={styles.logo} src='/favicon.ico' />
+        <h1 className={styles.title}>로그인</h1>
+        <div className={styles.inputContainer}>
+          {error
+            ? error.map(el => <div className={styles.error}>{el}</div>)
+            : null}
+
+          <input
+            className={styles.formInput}
+            onChange={() => {
+              setError(null);
+            }}
+            placeholder='id'
+            name='id'
+            ref={idRef}
+            required
+            label='id'
+            autoFocus
+            autoComplete='off'
+            onKeyUp={e => {
+              if (e.key === 'Enter') handleSubmit();
+            }}
+          />
+          <input
+            className={styles.formInput}
+            onChange={() => {
+              setError(null);
+            }}
+            placeholder='password'
+            name='password'
+            ref={passwordRef}
+            required
+            label='password'
+            type='password'
+            onKeyUp={e => {
+              if (e.key === 'Enter') handleSubmit();
+            }}
+          />
         </div>
+
+        {/* {error ? <div>{error}</div> : null} */}
+        <button className={styles.button} type='submit' onClick={handleSubmit}>
+          로그인
+        </button>
+        <div className={styles.link}>
+          <Link to='/signup'>
+            <p>계정이 없으신가요? 가입하기</p>
+          </Link>
+          <Link to='/mainpage'>
+            <p>Guest로 둘러보기</p>
+          </Link>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </section>
   );
 };

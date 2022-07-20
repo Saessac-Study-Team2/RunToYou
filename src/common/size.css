@@ -1,0 +1,15 @@
+/* fontSize */
+@value fontLarge: 48px;
+@value fontMedium:36px;
+@value fontSmall: 24px;
+
+/* logoSize */
+
+@value logoLageWidth : 120px;
+@value logoWidth: 200px;
+
+/* inputSize */
+@value inputHeight:36px;
+
+/* buttonSize */
+@value buttonHeight :36px;
