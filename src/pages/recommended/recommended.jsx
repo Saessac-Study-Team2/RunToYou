@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 // import HotPlace from '../components/hotPlace';
 import './recommended.css';
 import data from '../../static/resource/dummyData';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-
+import Map from '../recommended/map';
+import MapContainer from './mapContainer';
 const Recommended = ({ isUser, setIsUser }) => {
   let [likeBtn, setLikeBtn] = useState(0);
   let [modal, setModal] = useState(false);
@@ -14,9 +15,19 @@ const Recommended = ({ isUser, setIsUser }) => {
     setLikeBtn(likeBtn + 1);
   }
 
+
+
+
+
+  
+  
+  
+
+
   return (
     <section>
       <Header isUser={isUser} setIsUser={setIsUser} />
+      
       <div className='recommended'>
         <div className='black-nav'>
           <h4 style={{ color: 'grey', fontSize: '16px' }}>hotPlace</h4>
@@ -31,6 +42,7 @@ const Recommended = ({ isUser, setIsUser }) => {
 };
 
 function RecommendedBox(props) {
+  
   return (
     <div className='container'>
       <div className='container_left'>
@@ -38,6 +50,10 @@ function RecommendedBox(props) {
         <div className='container_left_title'>{props.data.title}</div>
         <div className='container_left_location'>{props.data.location}</div>
         <div className='container_left_content'>{props.data.content}</div>
+        
+        <MapContainer data={props}/>
+  
+
       </div>
       <div className='container_right'>
         <img src={props.data.picture} className='picture'></img>
