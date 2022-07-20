@@ -1,7 +1,22 @@
 import React, { useState, useRef } from 'react';
 import { getPlace, addPlace, deletePlace } from '../../../library/axios';
+import { useRecoilState } from 'recoil';
 
-const PreferPlace = ({ places, userPlace, setUserplace }) => {
+import {
+  userPlaceState,
+  userIDState,
+  nicknameState,
+  aboutMeState,
+  UserAvataState,
+} from '../../../library/atom';
+
+const PreferPlace = ({ places }) => {
+  const [avata, setAvata] = useRecoilState(UserAvataState);
+  const [userPlace, setUserPlace] = useRecoilState(userPlaceState);
+  const [userID, setUserID] = useRecoilState(userIDState);
+  const [nickname, setNickname] = useRecoilState(nicknameState);
+  const [aboutMe, setAboutMe] = useRecoilState(aboutMeState);
+
   const [modal, setModal] = useState(false);
   const placeRef = useRef();
 
@@ -22,13 +37,15 @@ const PreferPlace = ({ places, userPlace, setUserplace }) => {
       return;
     }
   };
+
   const handleDeleteLocation = e => {
     deletePlace(e.target.value).then(
-      setUserplace(
-        userPlace.filter(el => {
-          return el[0] !== e.target.value;
-        })
-      )
+      console.log(userPlace)
+      // setUserPlace(prev => {
+      //   prev.filter(el => {
+      //     return el[0] !== e.target.value;
+      //   });
+      // })
     );
   };
 
@@ -45,7 +62,7 @@ const PreferPlace = ({ places, userPlace, setUserplace }) => {
 
     if (!placeNumArr.includes(true)) {
       addPlace(newPlaceArr[0]).then(
-        setUserplace(prev => [...prev, newPlaceArr])
+        setUserPlace(prev => [...prev, newPlaceArr])
       );
     } else {
       return;
@@ -66,7 +83,7 @@ const PreferPlace = ({ places, userPlace, setUserplace }) => {
           setModal(!modal);
         }}
       >
-        선호 장소 추가 하기
+        {!modal ? ' 선호 장소 수정 하기' : '선호 장소 수정 완료'}
       </button>
       {modal && (
         <>

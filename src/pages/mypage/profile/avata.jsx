@@ -30,17 +30,41 @@ const Avata = ({ avata, setAvata }) => {
   };
   const onAddImg = async compressedFile => {
     await addImg(compressedFile);
-    await getProfile();
+    await getProfile()
+      .then(res => {
+        if (res !== undefined) {
+          console.log(res);
+          setAvata(res.userPicture);
+        }
+      })
+      .catch(error => {
+        console.log('getUserInfo error', error);
+      });
   };
 
   const handleImageDelete = async () => {
     await deleteImg();
-    await getProfile();
+    await getProfile()
+      .then(res => {
+        if (res !== undefined) {
+          console.log(res);
+          setAvata(res.userPicture);
+        }
+      })
+      .catch(error => {
+        console.log('getUserInfo error', error);
+      });
   };
   return (
     <section>
       <img src={`http://34.168.215.145/${avata}`} alt='profile img' />
-      <button onClick={setModal}>이미지 변경 하기</button>
+      <button
+        onClick={e => {
+          setModal(!modal);
+        }}
+      >
+        {!modal ? '이미지 변경 하기' : '이미지 변경 완료'}
+      </button>
       {modal && (
         <>
           <input
