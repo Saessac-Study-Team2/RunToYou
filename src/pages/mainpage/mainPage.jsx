@@ -50,21 +50,6 @@ const MainPage = ({ isUser, setIsUser }) => {
   const closeModal = () => {
     setModalOpen(false);
   };
-
-  //userId 가져오기
-  const getUserInfo = () => {
-    getProfile()
-      .then((res) => {
-        setUserId(res.userID);
-      })
-      .then(() => {
-        console.log("id받기 완료");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  getUserInfo();
   return (
     <section>
       <Header isUser={isUser} setIsUser={setIsUser} />
