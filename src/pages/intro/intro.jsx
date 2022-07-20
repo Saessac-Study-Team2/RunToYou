@@ -12,24 +12,26 @@ const Intro = () => {
     <section className={styles.bgImg}>
       <div className={styles.container}>
         <img className={styles.logo} src='/img/logo1.png' />
-        {isLogin ? (
-          <Link to='/mainpage'>
-            <button className={styles.button}>Main Page</button>
-          </Link>
-        ) : (
-          <>
-            <Link to='/login'>
-              <button className={styles.button}>Log in</button>
-            </Link>
-            <Link to='/signup'>
-              <button className={styles.button}>Sign up</button>
-            </Link>
+        <div className={styles.buttonContainer}>
+          {isLogin ? (
             <Link to='/mainpage'>
-              <button className={styles.button}>Guest</button>
+              <button className={styles.button}>Main Page</button>
             </Link>
-          </>
-        )}
-        {/* <Footer /> */}
+          ) : (
+            <>
+              <Link to='/login'>
+                <button className={styles.button}>Log in</button>
+              </Link>
+              <Link to='/signup'>
+                <button className={styles.button}>Sign up</button>
+              </Link>
+              <Link to='/mainpage'>
+                <button className={styles.button}>Guest</button>
+              </Link>
+            </>
+          )}
+          {/* <Footer /> */}
+        </div>
       </div>
     </section>
   );

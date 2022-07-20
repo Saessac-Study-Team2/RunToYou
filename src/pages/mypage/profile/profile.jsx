@@ -51,11 +51,7 @@ const Profile = () => {
         setNickname={setNickname}
       />
       {/* Prefer Place */}
-      <PreferPlace
-        places={places}
-        userPlace={userPlace}
-        setPlaces={setPlaces}
-      />
+      <PreferPlace places={places} />
       {/* 비밀번호 변경 */}
       <UpdatePW />
       {/* 계정 삭제 */}

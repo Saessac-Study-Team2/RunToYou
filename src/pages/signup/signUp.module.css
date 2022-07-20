@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  background-position: center;
   justify-content: center;
 }
 
@@ -24,13 +25,13 @@
   text-align: center;
 }
 .container {
-  width: 40%;
+  width: 50%;
+  height: 100vh;
   background-color: dimBlack;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
@@ -39,7 +40,7 @@
 
 .formInput,
 .button {
-  width: 65%;
+  width: 60%;
   margin: 10px 0px;
   height: 40px;
   font-size: fontSmall;
@@ -66,7 +67,7 @@
   color: RtyRed;
 }
 .link {
-  width: 65%;
+  width: 60%;
   text-align: center;
 }
 a {

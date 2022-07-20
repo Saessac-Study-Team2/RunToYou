@@ -119,6 +119,11 @@ const SignUp = () => {
             required
             label='password'
             type='password'
+            onKeyUp={e => {
+              if (e.key === 'Enter') {
+                handleSubmit(e);
+              }
+            }}
           />
         </div>
 

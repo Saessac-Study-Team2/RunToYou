@@ -9,6 +9,7 @@ const UpdatePW = props => {
   const [modal, setModal] = useState(false);
 
   const handleSubmitNewPW = () => {
+    setModal(!modal);
     const curPW = curPWRef.current.value;
     const newPW = newPWRef.current.value;
     const confirmNewPW = confirmNewPWRef.current.value;

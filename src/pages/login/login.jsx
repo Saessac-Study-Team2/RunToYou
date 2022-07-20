@@ -16,7 +16,7 @@ import Footer from '../../components/footer/footer';
 import { login, getProfile } from '../../library/axios';
 
 const Login = ({ setIsUser }) => {
-  const [error, setError] = useState('');
+  const [error, setError] = useState([]);
   // const [loading, setLoading] = useState(false);
   const [ID, setID] = useState('');
   const [PW, setPW] = useState('');
@@ -38,7 +38,7 @@ const Login = ({ setIsUser }) => {
     const password = passwordRef.current.value;
 
     if (!id || !password) {
-      setError('아이디와 비밀번호를 입력해주세요.');
+      setError('아이디와 비밀번호를 모두 입력해주세요');
       return;
     } else {
       setID(id);
@@ -60,13 +60,15 @@ const Login = ({ setIsUser }) => {
 
     await getProfile()
       .then(res => {
-        setUser(res);
-        console.log(res);
-        setUserPlace(res.favoritLocation);
-        setAboutMe(res.info);
-        setNickname(res.nickName);
-        setUserID(res.userID);
-        setAvata(res.userPicture);
+        if (res !== undefined) {
+          console.log(res);
+          setUser(res);
+          setAboutMe(res.info);
+          setUserPlace(res.favoritLocation);
+          setNickname(res.nickName);
+          setUserID(res.userID);
+          setAvata(res.userPicture);
+        }
       })
       .catch(error => {
         console.log('getUserInfo error', error);
@@ -85,10 +87,7 @@ const Login = ({ setIsUser }) => {
         <img className={styles.logo} src='/favicon.ico' />
         <h1 className={styles.title}>로그인</h1>
         <div className={styles.inputContainer}>
-          {error
-            ? error.map(el => <div className={styles.error}>{el}</div>)
-            : null}
-
+          {error ? <div className={styles.error}>{error}</div> : null}
           <input
             className={styles.formInput}
             onChange={() => {
@@ -102,7 +101,9 @@ const Login = ({ setIsUser }) => {
             autoFocus
             autoComplete='off'
             onKeyUp={e => {
-              if (e.key === 'Enter') handleSubmit();
+              if (e.key === 'Enter') {
+                handleSubmit(e);
+              }
             }}
           />
           <input
@@ -117,7 +118,9 @@ const Login = ({ setIsUser }) => {
             label='password'
             type='password'
             onKeyUp={e => {
-              if (e.key === 'Enter') handleSubmit();
+              if (e.key === 'Enter') {
+                handleSubmit(e);
+              }
             }}
           />
         </div>
