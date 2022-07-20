@@ -1,4 +1,6 @@
+import { useRecoilState } from "recoil";
 import Post from "./post";
+import { userIDState } from "../../../library/atom";
 
 const Posts = ({
   posts,
@@ -8,8 +10,10 @@ const Posts = ({
   openModal,
   setPosts,
   locationList,
-  userId,
+  myPosts,
 }) => {
+  const [userId, setUserId] = useRecoilState(userIDState);
+  console.log("userId:", userId);
   let filteredPosts = posts;
   for (let i = 0; i < posts.length; i++) {
     for (let key in posts[i]) {
@@ -26,6 +30,11 @@ const Posts = ({
       if (key === "userID" && writer !== "") {
         filteredPosts = filteredPosts.filter((x) => {
           return x[key].indexOf(writer) !== -1;
+        });
+      }
+      if (key === "userID" && myPosts !== false) {
+        filteredPosts = filteredPosts.filter((x) => {
+          return x[key] === userId;
         });
       }
     }
