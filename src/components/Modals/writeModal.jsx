@@ -1,45 +1,74 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getPosts } from "../../library/axios";
 import { getLoginCookie } from "../../library/cookie";
+import { useParams, useNavigate } from "react-router";
 import "./writeModal.css";
 const axios = require("axios");
 
-const WriteModal = (props) => {
+const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close, header, locationList, setPosts } = props;
-  // const handleClickWriteBtn = () => {
   const [topicTitle, setTopicTitle] = useState("");
   const [locationLid, setLocationLid] = useState(0);
   const [topicContent, setTopicContent] = useState("");
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (header === "글수정") {
+      setLocationLid(post[0].lid);
+      setTopicContent(post[0].topicContents);
+      setTopicTitle(post[0].topicTitle);
+    }
+  }, []);
+
+  // 게시글 작성 요청
   const handleRquestSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post(
-        "http://34.168.215.145/topic/insert",
-        {
-          topictitle: topicTitle,
-          topiccontents: topicContent,
-          location_lid: locationLid,
-          type: "friend",
-        },
-        { headers: { Authorization: getLoginCookie() } }
-      )
-      .then(function (response) {
-        axios
-          .get("http://34.168.215.145/topic/list")
-          .then((res) => {
-            setPosts(res.data);
-            close();
-            setTopicTitle("");
-            setLocationLid(0);
-            setTopicContent("");
-          })
-          .catch((error) => console.log("error", error));
-        console.log("well done!");
-      })
-      .catch(function (error) {
-        console.log("전송 실패");
-      });
+    if (header === "글쓰기") {
+      axios
+        .post(
+          "http://34.168.215.145/topic/insert",
+          {
+            topictitle: topicTitle,
+            topiccontents: topicContent,
+            location_lid: locationLid,
+            type: "friend",
+          },
+          { headers: { Authorization: getLoginCookie() } }
+        )
+        .then(function (response) {
+          getPosts()
+            .then((data) => {
+              setPosts(data);
+              close();
+              setTopicTitle("");
+              setLocationLid(0);
+              setTopicContent("");
+            })
+            .catch((error) => console.log("error", error));
+          console.log("well done!");
+        })
+        .catch(function (error) {
+          console.log("전송 실패");
+        });
+    }
+    if (header === "글수정") {
+      axios
+        .put(
+          `http://34.168.215.145/topic/${post[0].tid}`,
+          {
+            topictitle: topicTitle,
+            topiccontents: topicContent,
+          },
+          { headers: { Authorization: getLoginCookie() } }
+        )
+        .then(() => {
+          close();
+          navigate(`/mainpage`);
+        })
+        .catch((err) => {
+          console.log("글수정 에러");
+        });
+    }
   };
 
   const handleTopicTitle = (e) => {

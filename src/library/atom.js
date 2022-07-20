@@ -1,35 +1,44 @@
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
+
+import { atom } from 'recoil';
+
 
 export const userState = atom({
-  key: 'userState',
+  key: "userState",
   default: {},
 });
 
+export const UserAvataState = atom({
+  key: 'userAvataState',
+  default: null,
+});
 export const userPlaceState = atom({
-  key: 'userPlaceState',
+  key: "userPlaceState",
   default: [],
 });
 
 export const userIDState = atom({
-  key: 'userIDState',
+  key: "userIDState",
   default: null,
 });
 export const nicknameState = atom({
-  key: 'nicknameState',
+  key: "nicknameState",
   default: null,
 });
 export const aboutMeState = atom({
-  key: 'aboutMeState',
+  key: "aboutMeState",
   default: null,
 });
 
 export const isUserState = atom({
-  key: 'isUserState',
+  key: "isUserState",
   default: null,
+});
+
+export const postsState = atom({
+  key: "PostsState",
+  default: [],
+});
+export const locationListState = atom({
+  key: "LocationListState",
+  default: [],
 });

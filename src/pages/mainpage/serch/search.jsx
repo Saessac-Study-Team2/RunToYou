@@ -1,4 +1,6 @@
 import "./search.css";
+import { useRecoilState } from "recoil";
+import { postsState } from "../../../library/atom";
 
 const Search = ({
   posts,
@@ -8,6 +10,8 @@ const Search = ({
   setRecruit,
   writer,
   setWriter,
+  myPosts,
+  setMyPosts,
 }) => {
   const locationNameList = ["강동구", "관악구", "마포구"];
   const recruitList = ["모집중", "모집완료"];
@@ -20,6 +24,9 @@ const Search = ({
   const handleWriter = (e) => {
     setWriter(e.target.value);
     console.log(writer);
+  };
+  const handleMyPosts = () => {
+    setMyPosts(!myPosts);
   };
   for (let i = 0; i < posts.length; i++) {
     for (let key in posts[i]) {
@@ -68,6 +75,9 @@ const Search = ({
         placeholder="작성자"
         className="search__writer"
       ></input>
+      <button onClick={handleMyPosts} type="button">
+        {myPosts === true ? "전체보기" : "내글보기"}
+      </button>
     </section>
   );
 };

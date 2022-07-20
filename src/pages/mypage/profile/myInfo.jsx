@@ -9,6 +9,7 @@ const MyInfo = () => {
   const aboutMeRef = useRef();
   const handleSubmitNameInfo = event => {
     event.preventDefault();
+    setModal(!modal);
     const nickname = nicknameRef.current.value || nickname;
     const info = aboutMeRef.current.value || aboutMe;
 
