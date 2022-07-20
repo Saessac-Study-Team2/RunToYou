@@ -67,7 +67,7 @@ const Post = ({ post, setPosts, locationList, userId }) => {
             },
           }}
         >
-          <button className={styles.post__comment_downBtn}>Button</button>
+          <button className={styles.post__comment_downBtn}>상세보기</button>
         </Link>
       </div>
     </li>

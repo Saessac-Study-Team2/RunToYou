@@ -24,6 +24,7 @@ const MainPage = ({ isUser, setIsUser }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [locationList, setLocationList] = useRecoilState(locationListState);
   const [userId, setUserId] = useRecoilState(userIDState);
+  const [myPosts, setMyPosts] = useState(false);
 
   //장소 리스트 가져오기
   useEffect(() => {
@@ -51,7 +52,19 @@ const MainPage = ({ isUser, setIsUser }) => {
   };
 
   //userId 가져오기
-
+  const getUserInfo = () => {
+    getProfile()
+      .then((res) => {
+        setUserId(res.userID);
+      })
+      .then(() => {
+        console.log("id받기 완료");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  getUserInfo();
   return (
     <section>
       <Header isUser={isUser} setIsUser={setIsUser} />
@@ -65,6 +78,8 @@ const MainPage = ({ isUser, setIsUser }) => {
         setRecruit={setRecruit}
         writer={writer}
         setWriter={setWriter}
+        myPosts={myPosts}
+        setMyPosts={setMyPosts}
       />
       <WriteModal
         locationList={locationList}
@@ -82,6 +97,8 @@ const MainPage = ({ isUser, setIsUser }) => {
         setPosts={setPosts}
         locationList={locationList}
         userId={userId}
+        myPosts={myPosts}
+        setMyPosts={setMyPosts}
       />
       <Footer />
     </section>
