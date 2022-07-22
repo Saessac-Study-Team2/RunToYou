@@ -17,26 +17,26 @@ import UpdatePW from './updatePW';
 import DeleteAccount from './deleteAccount';
 
 const Profile = () => {
-  const [places, setPlaces] = useState([]);
+  // const [places, setPlaces] = useState([]);
 
   // recoil
   const [avata, setAvata] = useRecoilState(UserAvataState);
-  const [userPlace, setUserPlace] = useRecoilState(userPlaceState);
+  // const [userPlace, setUserPlace] = useRecoilState(userPlaceState);
   const [userID, setUserID] = useRecoilState(userIDState);
   const [nickname, setNickname] = useRecoilState(nicknameState);
   const [aboutMe, setAboutMe] = useRecoilState(aboutMeState);
 
-  const getPlaceList = () => {
-    getPlace() //
-      .then(res => setPlaces(res))
-      .catch(error => {
-        console.log('getPlaceList error', error);
-      });
-  };
+  // const getPlaceList = () => {
+  //   getPlace() //
+  //     .then(res => setPlaces(res))
+  //     .catch(error => {
+  //       console.log('getPlaceList error', error);
+  //     });
+  // };
 
-  useEffect(() => {
-    getPlaceList();
-  }, []);
+  // useEffect(() => {
+  //   getPlaceList();
+  // }, []);
 
   return (
     <section className='Profile'>
@@ -51,7 +51,7 @@ const Profile = () => {
         setNickname={setNickname}
       />
       {/* Prefer Place */}
-      <PreferPlace places={places} />
+      <PreferPlace />
       {/* 비밀번호 변경 */}
       <UpdatePW />
       {/* 계정 삭제 */}

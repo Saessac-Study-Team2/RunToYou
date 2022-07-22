@@ -3,7 +3,6 @@ import { useRecoilState } from 'recoil';
 import { isUserState } from '../../library/atom';
 import styles from './intro.module.css';
 import { Link } from 'react-router-dom';
-import Footer from '../../components/footer/footer';
 
 const Intro = () => {
   const [isLogin, setIsLogin] = useRecoilState(isUserState);

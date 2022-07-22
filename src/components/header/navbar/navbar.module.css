@@ -1,0 +1,14 @@
+@value RtyBrown,RtyBlack,RtyIvory,RtyRed,dimBlack, RtyPurple, RtyOrange, dimWhite, RtyWhite, RtyGrey from '../../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
+
+.navbar {
+  width: 100%;
+  display: flex;
+}
+
+.navbar a {
+  white-space: nowrap;
+  height: 100%;
+  background-color: brown;
+  padding: 8px;
+}

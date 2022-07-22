@@ -22,3 +22,8 @@ textarea {
   margin: 0; /* 2 */
   border: 0;
 }
+
+button,
+a {
+  cursor: pointer;
+}

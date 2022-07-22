@@ -2,60 +2,53 @@ import React, { useState, useRef } from 'react';
 import { getPlace, addPlace, deletePlace } from '../../../library/axios';
 import { useRecoilState } from 'recoil';
 
-import {
-  userPlaceState,
-  userIDState,
-  nicknameState,
-  aboutMeState,
-  UserAvataState,
-} from '../../../library/atom';
+import { userPlaceState, locationListState } from '../../../library/atom';
 
-const PreferPlace = ({ places }) => {
-  const [avata, setAvata] = useRecoilState(UserAvataState);
+const PreferPlace = () => {
+  // const [avata, setAvata] = useRecoilState(UserAvataState);
   const [userPlace, setUserPlace] = useRecoilState(userPlaceState);
-  const [userID, setUserID] = useRecoilState(userIDState);
-  const [nickname, setNickname] = useRecoilState(nicknameState);
-  const [aboutMe, setAboutMe] = useRecoilState(aboutMeState);
+  // const [userID, setUserID] = useRecoilState(userIDState);
+  // const [nickname, setNickname] = useRecoilState(nicknameState);
+  // const [aboutMe, setAboutMe] = useRecoilState(aboutMeState);
+  const [locationList, setLocationList] = useRecoilState(locationListState);
 
   const [modal, setModal] = useState(false);
   const placeRef = useRef();
 
-  const handleSubmitPlace = async event => {
+  // const handleSubmitPlace = async event => {
+  //   event.preventDefault();
+
+  //   const newPlace = placeRef.current.value;
+  //   const newPlaceArr = newPlace.split(',');
+  //   const placeNumArr = userPlace.map(
+  //     el => Number(el[0]) === Number(newPlace[0])
+  //   );
+
+  //   if (!placeNumArr.includes(true)) {
+  //     addPlace(newPlaceArr);
+  //   } else {
+  //     return;
+  //   }
+  // };
+
+  const handleDeleteLocation = event => {
     event.preventDefault();
+    console.log(event.target.value); //number
+    const arr = [...userPlace];
+    const deletedPlaces = arr.filter(el => {
+      return Number(el[0]) !== event.target.value;
+    });
 
-    const newPlace = placeRef.current.value;
-    console.log(newPlace);
-    const newPlaceArr = newPlace.split(',');
-    console.log(newPlaceArr);
-    const placeNumArr = userPlace.map(
-      el => Number(el[0]) === Number(newPlace[0])
-    );
-
-    if (!placeNumArr.includes(true)) {
-      addPlace(newPlaceArr);
-    } else {
-      return;
-    }
-  };
-
-  const handleDeleteLocation = e => {
-    deletePlace(e.target.value).then(
-      console.log(userPlace)
-      // setUserPlace(prev => {
-      //   prev.filter(el => {
-      //     return el[0] !== e.target.value;
-      //   });
-      // })
-    );
+    deletePlace(event.target.value)
+      .then(console.log(userPlace))
+      .then(setUserPlace(deletedPlaces));
   };
 
   const handleAddLocation = async event => {
     event.preventDefault();
 
     const newPlace = placeRef.current.value;
-    console.log(newPlace);
     const newPlaceArr = newPlace.split(',');
-    console.log(newPlaceArr);
     const placeNumArr = userPlace.map(
       el => Number(el[0]) === Number(newPlaceArr[0])
     );
@@ -103,7 +96,7 @@ const PreferPlace = ({ places }) => {
             <option key='000' value={null}>
               선택 시 추가됩니다.
             </option>
-            {places.map(place => (
+            {locationList.map(place => (
               <option key={place.lid} value={[place.lid, place.locationName]}>
                 {place.locationName}
               </option>

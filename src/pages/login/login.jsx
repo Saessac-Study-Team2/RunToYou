@@ -9,11 +9,12 @@ import {
   userIDState,
   nicknameState,
   aboutMeState,
+  locationListState,
 } from '../../library/atom';
 import styles from '../signup/signUp.module.css';
 import { getLoginCookie, setLoginCookie } from '../../library/cookie';
 import Footer from '../../components/footer/footer';
-import { login, getProfile } from '../../library/axios';
+import { login, getProfile, getPlace } from '../../library/axios';
 
 const Login = ({ setIsUser }) => {
   const [error, setError] = useState([]);
@@ -31,6 +32,7 @@ const Login = ({ setIsUser }) => {
   const [userID, setUserID] = useRecoilState(userIDState);
   const [nickname, setNickname] = useRecoilState(nicknameState);
   const [aboutMe, setAboutMe] = useRecoilState(aboutMeState);
+  const [locationList, setLocationList] = useRecoilState(locationListState);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -72,6 +74,11 @@ const Login = ({ setIsUser }) => {
       })
       .catch(error => {
         console.log('getUserInfo error', error);
+      });
+    await getPlace()
+      .then(res => setLocationList(res))
+      .catch(error => {
+        console.log('getPlaceList error', error);
       });
   };
 

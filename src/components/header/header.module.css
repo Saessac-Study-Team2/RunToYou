@@ -1,0 +1,34 @@
+@value RtyBrown,RtyBlack,RtyIvory,RtyRed,dimBlack, RtyPurple, RtyOrange, dimWhite, RtyWhite, RtyGrey from '../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../common/size.css';
+
+.header {
+  width: 100vw;
+  height: 52px;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+.logo {
+  height: 56px;
+}
+.avata {
+  height: 38px;
+  padding-left: 24px;
+}
+.btnContainer {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+}
+button {
+  width: 6rem;
+  height: 80%;
+}
+a {
+  display: inline-block;
+  width: 100%;
+  font-size: 1.4rem;
+  white-space: nowrap;
+}
