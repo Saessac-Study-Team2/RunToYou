@@ -1,0 +1,45 @@
+@value RtyPurple,RtyBlack,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
+.section {
+  justify-content: center;
+  display: flex;
+}
+.places {
+  /* width: 60%; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.info {
+  color: RtyBlack;
+  background-color: transparent;
+  white-space: nowrap;
+}
+
+.editPlaces {
+  display: flex;
+  list-style: none;
+}
+.editPlace {
+  line-height: 2rem;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background-color: RtyOrange;
+  margin: 4px;
+}
+
+.select {
+  width: 5remp;
+  /* height: 100%; */
+  background-color: dimWhite;
+  padding: 5px 10px 5px 10px;
+  border-radius: 4px;
+  /* outline: #fff 1px; */
+}
+
+.select option {
+  background: dimBlack;
+  color: #fff;
+  padding: 3px 0;
+}

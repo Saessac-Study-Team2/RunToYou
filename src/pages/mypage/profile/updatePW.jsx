@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { IsValidPW } from '../../signup/signUp';
 import { updatePW } from '../../../library/axios';
+import styles from './updatePW.module.css';
 const UpdatePW = props => {
   const curPWRef = useRef();
   const newPWRef = useRef();
@@ -9,7 +10,6 @@ const UpdatePW = props => {
   const [modal, setModal] = useState(false);
 
   const handleSubmitNewPW = () => {
-    // setModal(!modal);
     const curPW = curPWRef.current.value;
     const newPW = newPWRef.current.value;
     const confirmNewPW = confirmNewPWRef.current.value;
@@ -36,7 +36,10 @@ const UpdatePW = props => {
       updatePW(curPW, newPW)
         .then(res => {
           console.log(res);
-          if (res !== 'failed') alert('비밀번호가 변경되었습니다.');
+          if (res !== 'failed') {
+            alert('비밀번호가 변경되었습니다.');
+            setModal(!modal);
+          }
         })
         .then(() => {
           curPWRef.current.value = '';
@@ -49,47 +52,67 @@ const UpdatePW = props => {
 
   return (
     <section>
-      <button
-        type='submit'
-        onClick={() => {
-          setModal(!modal);
-        }}
-      >
-        비밀번호 변경하기
-      </button>
+      {!modal && (
+        <button
+          className={styles.modalBtn}
+          type='submit'
+          onClick={() => {
+            setModal(!modal);
+          }}
+        >
+          비밀번호 변경하기
+        </button>
+      )}
       {modal && (
-        <section>
-          <input
-            onChange={() => {
-              setError([]);
-            }}
-            ref={curPWRef}
-            type='password'
-            name='curPW'
-            placeholder='현재 비밀 번호'
-          />
-          <input
-            ref={newPWRef}
-            onChange={() => {
-              setError([]);
-            }}
-            type='password'
-            name='newPW'
-            placeholder='변경할 비밀 번호'
-          />
-          <input
-            onChange={() => {
-              setError([]);
-            }}
-            ref={confirmNewPWRef}
-            type='password'
-            name='confirmNewPW'
-            placeholder='비밀 번호 확인'
-          />
-          {error.length !== 0 &&
-            error.map((el, index) => <p key={index}>{el}</p>)}
-          <button onClick={handleSubmitNewPW}>변경</button>
-        </section>
+        <div className={styles.modal}>
+          <div>
+            <label htmlFor='curPW'>현재 비밀 번호</label>
+            <input
+              onChange={() => {
+                setError([]);
+              }}
+              ref={curPWRef}
+              type='password'
+              name='curPW'
+            />
+            {/* <div> */}
+            <label htmlFor='newPW'>변경할 비밀 번호</label>
+            <input
+              ref={newPWRef}
+              onChange={() => {
+                setError([]);
+              }}
+              type='password'
+              name='newPW'
+            />
+            <label htmlFor='confirmNewPW'>비밀 번호 확인</label>
+            <input
+              onChange={() => {
+                setError([]);
+              }}
+              ref={confirmNewPWRef}
+              type='password'
+              name='confirmNewPW'
+            />
+          </div>
+          <div>
+            {error.length !== 0 &&
+              error.map((el, index) => <p key={index}>{el}</p>)}
+          </div>
+          <div>
+            <button className={styles.sandBtn} onClick={handleSubmitNewPW}>
+              변경
+            </button>
+            <button
+              className={styles.cancleBtn}
+              onClick={() => {
+                setModal(!modal);
+              }}
+            >
+              변경 취소
+            </button>
+          </div>
+        </div>
       )}
     </section>
   );

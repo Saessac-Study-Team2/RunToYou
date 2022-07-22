@@ -1,0 +1,30 @@
+@value RtyPurple,RtyBlack,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
+
+.editModal {
+  border: solid 1px dodgerblue;
+}
+.modalBtn,
+.changeInfoBtn {
+  background-color: dimWhite;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid RtyWhite;
+  margin: 0.5rem;
+}
+
+.info {
+  background-color: transparent;
+  color: RtyBlack;
+}
+
+.editInfolable {
+  color: RtyPurple;
+}
+.editInfoInput {
+  margin-left: 0.5rem;
+  height: 2rem;
+  background-color: transparent;
+  border-bottom: 1px solid RtyBlack;
+}

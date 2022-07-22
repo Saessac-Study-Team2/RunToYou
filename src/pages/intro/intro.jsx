@@ -10,7 +10,7 @@ const Intro = () => {
   return (
     <section className={styles.bgImg}>
       <div className={styles.container}>
-        <img className={styles.logo} src='/img/logo1.png' />
+        <img className={styles.logo} src='/img/logo1.png' alt='logo_img' />
         <div className={styles.buttonContainer}>
           {isLogin ? (
             <Link to='/mainpage'>

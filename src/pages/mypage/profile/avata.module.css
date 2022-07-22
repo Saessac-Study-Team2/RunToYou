@@ -1,0 +1,29 @@
+@value RtyPurple,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
+
+.avata {
+  margin-top: 2rem;
+}
+
+.avataImg {
+  width: 11rem;
+  height: 11rem;
+  object-fit: cover;
+  border-radius: 5.5rem;
+  border: 0.4rem solid dimWhite;
+}
+
+.imgInput {
+  display: none;
+}
+
+.modalBtn,
+.dltImgBtn,
+.changeImgBtn {
+  background-color: dimWhite;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid RtyWhite;
+  margin: 0.5rem;
+}

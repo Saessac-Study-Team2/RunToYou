@@ -1,0 +1,28 @@
+@value RtyPurple,RtyBlack,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
+
+.modalBtn {
+  background-color: dimWhite;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid RtyWhite;
+  margin: 0.5rem;
+}
+.dltAccount {
+  width: 100vw;
+  height: 100vh;
+  background-color: dimgray;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+.dltAccountModal {
+  width: 45rem;
+  height: 45rem;
+  position: absolute;
+  background-color: RtyWhite;
+  top: 7rem;
+  left: 39rem;
+}

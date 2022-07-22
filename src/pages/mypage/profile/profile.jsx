@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { getPlace } from '../../../library/axios';
+import React from 'react';
 import { useRecoilState } from 'recoil';
+import styles from './profile.module.css';
 
 import {
-  userPlaceState,
   userIDState,
   nicknameState,
   aboutMeState,
@@ -17,8 +16,6 @@ import UpdatePW from './updatePW';
 import DeleteAccount from './deleteAccount';
 
 const Profile = () => {
-  // const [places, setPlaces] = useState([]);
-
   // recoil
   const [avata, setAvata] = useRecoilState(UserAvataState);
   // const [userPlace, setUserPlace] = useRecoilState(userPlaceState);
@@ -26,23 +23,17 @@ const Profile = () => {
   const [nickname, setNickname] = useRecoilState(nicknameState);
   const [aboutMe, setAboutMe] = useRecoilState(aboutMeState);
 
-  // const getPlaceList = () => {
-  //   getPlace() //
-  //     .then(res => setPlaces(res))
-  //     .catch(error => {
-  //       console.log('getPlaceList error', error);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   getPlaceList();
-  // }, []);
-
   return (
-    <section className='Profile'>
-      <p>id : {userID}</p>
+    <section className={styles.profile}>
+      <div className={styles.decsWrap}>
+        <span className={styles.decs1}>{userID}</span>{' '}
+        <span className={styles.decs2}>[{nickname}]</span>{' '}
+        <span className={styles.decs3}>님 Profile</span>
+      </div>
+
       {/* Avata */}
       <Avata avata={avata} setAvata={setAvata} />
+
       {/* User Info */}
       <MyInfo
         aboutMe={aboutMe}

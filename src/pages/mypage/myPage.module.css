@@ -1,2 +1,7 @@
 @value RtyPurple,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../common/colors.css';
 @value fontLarge,fontMedium,fontSmall from '../../common/size.css';
+
+.mypage {
+  background-color: dimBlack;
+  height: 100vh;
+}
