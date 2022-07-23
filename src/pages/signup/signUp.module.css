@@ -71,19 +71,19 @@
   text-align: center;
 }
 .link > a {
+  text-decoration: none;
   white-space: nowrap;
   color: RtyBlack;
-  text-decoration: none;
 }
-p {
+.notice {
   border-radius: 12px;
-  font-size: fontSmall;
+  font-size: 1rem;
   color: RtyWhite;
   background-color: dimBlack;
   margin-bottom: 8px;
 }
-p:hover {
-  font-size: 28px;
+.notice:hover {
+  font-size: 1.2rem;
   color: RtyBlack;
   background-color: dimWhite;
 }

@@ -22,15 +22,19 @@ const DeleteAccount = props => {
       {modal ? (
         <div className={styles.dltAccount}>
           <section className={styles.dltAccountModal}>
-            <p>정말 떠나시는 건가요? 한 번 더 생각해 주시겠어요?</p>
-            <p>
-              RunToYou 에서 작성한 모든 글과 개인 정보가 삭제됩니다. 삭제된
-              정보는 다시 복구 할 수 없습니다.
+            <p className={styles.messasge1}>
+              정말 떠나시는 건가요? 한 번 더 생각해 주시겠어요?
             </p>
-            <p>더욱 발전하는 RunToYou가 되겠습니다</p>
-            <p>
-              풍랑은 가고 너울이 온다. 반드시 우리 다시 만나자. 권비영 풍화 중
+            <p className={styles.messasge2}>
+              RunToYou 에서 작성한 모든 글과 개인 정보가 삭제됩니다.
             </p>
+            <p className={styles.messasge2}>
+              삭제 된 정보는 다시 복구 할 수 없습니다.
+            </p>
+            <p className={styles.messasge3}>
+              더욱 발전하는 RunToYou가 되겠습니다
+            </p>
+
             <button className={styles.modalBtn} onClick={handleDltAccount}>
               떠나기
             </button>

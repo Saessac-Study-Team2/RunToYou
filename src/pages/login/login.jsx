@@ -138,13 +138,13 @@ const Login = ({ setIsUser }) => {
         </button>
         <div className={styles.link}>
           <Link to='/signup'>
-            <p>계정이 없으신가요? 가입하기</p>
+            <p className={styles.notice}>계정이 없으신가요? 가입하기</p>
           </Link>
           <Link to='/mainpage'>
-            <p>Guest로 둘러보기</p>
+            <p className={styles.notice}>Guest로 둘러보기</p>
           </Link>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </section>
   );

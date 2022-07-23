@@ -1,12 +1,18 @@
-@value RtyPurple,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
+@value RtyBrown, RtyPurple,RtyIvory,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
 @value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
 
 .profile {
-  padding: 4rem 20rem;
+  border-radius: 1rem;
+  background-color: RtyIvory;
+  width: 100%;
+  margin-top: 2rem;
   text-align: center;
+  height: 100%;
+  border: RtyBrown solid 0.2rem;
 }
 
 .decsWrap {
+  margin-top: 0.5rem;
   color: black;
   background-color: transparent;
 }
@@ -14,10 +20,11 @@
   font-size: 3rem;
 }
 .decs2 {
+  color: RtyPurple;
   font-size: 1.5rem;
   font-weight: 500;
 }
 .decs3 {
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
