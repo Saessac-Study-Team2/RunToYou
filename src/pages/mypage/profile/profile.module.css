@@ -1,0 +1,23 @@
+@value RtyPurple,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
+
+.profile {
+  padding: 4rem 20rem;
+  text-align: center;
+}
+
+.decsWrap {
+  color: black;
+  background-color: transparent;
+}
+.decs1 {
+  font-size: 3rem;
+}
+.decs2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.decs3 {
+  font-weight: 500;
+  font-size: 2rem;
+}

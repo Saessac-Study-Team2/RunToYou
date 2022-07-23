@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signup, checkID } from '../../library/axios';
 import Footer from '../../components/footer/footer';
 import styles from './signUp.module.css';
-import { style } from '@mui/system';
 
 const IsValidID = id => {
   const ID_REGEX = new RegExp('^[a-z0-9_-]{5,20}$');
@@ -138,7 +137,7 @@ const SignUp = () => {
             <p>Guest로 둘러보기</p>
           </Link>
         </div>
-        <Footer className={style.footer} />
+        <Footer className={styles.footer} />
       </div>
     </section>
   );

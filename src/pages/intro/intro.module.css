@@ -9,6 +9,7 @@
   background-size: cover;
   display: flex;
   justify-content: center;
+  background-position: center;
 }
 
 .container {
@@ -30,13 +31,15 @@
   margin: 20px 0;
   align-items: center;
   text-align: center;
+  padding: 6px 12px;
 }
-a {
+.buttonContainera > a {
+  white-space: nowrap;
   width: 60%;
 }
 .button {
+  margin: 10px 0;
   width: 100%;
-  margin-bottom: 20px;
   height: 40px;
   font-size: fontSmall;
   color: RtyWhite;

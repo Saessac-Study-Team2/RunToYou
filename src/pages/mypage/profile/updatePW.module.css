@@ -1,0 +1,29 @@
+@value RtyPurple,RtyBlack,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
+
+.modalBtn,
+.cancleBtn,
+.sandBtn {
+  background-color: dimWhite;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid RtyWhite;
+  margin: 0.5rem;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+}
+.modal label {
+  white-space: nowrap;
+  line-height: 2rem;
+}
+.modal input {
+  margin: 0 0.5rem;
+  background-color: dimWhite;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+}

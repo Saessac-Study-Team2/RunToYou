@@ -1,30 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
 import { isUserState } from '../../../library/atom';
+import { useRecoilState } from 'recoil';
+import styles from './navbar.module.css';
 
-const Navbar = ({ isUser }) => {
+const Navbar = () => {
   const [isLogin, setIsLogin] = useRecoilState(isUserState);
   return (
-    <section className='navbar'>
+    <nav className={styles.navbar}>
       {!isLogin && (
-        <Link to='/'>
+        <Link className={styles.navLink} to='/'>
           <span>Intro</span>
         </Link>
       )}
-      <Link to='/mainpage'>
+      <Link className={styles.navLink} to='/mainpage'>
         <span>Main Page</span>
       </Link>
 
-      <Link to='/recommended'>
+      <Link className={styles.navLink} to='/recommended'>
         <span>hotPlace</span>
       </Link>
       {isLogin && (
-        <Link to='/mypage'>
+        <Link className={styles.navLink} to='/mypage'>
           <span>myPage</span>
         </Link>
       )}
-    </section>
+    </nav>
   );
 };
 

@@ -70,7 +70,8 @@
   width: 60%;
   text-align: center;
 }
-a {
+.link > a {
+  white-space: nowrap;
   color: RtyBlack;
   text-decoration: none;
 }
