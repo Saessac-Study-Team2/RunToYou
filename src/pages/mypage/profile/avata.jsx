@@ -2,9 +2,11 @@ import React, { useRef, useState } from 'react';
 import imageCompression from 'browser-image-compression';
 import { addImg, deleteImg, getProfile } from '../../../library/axios';
 import styles from './avata.module.css';
+import ConfirmAlert from '../../../components/Modals/confirmAlert';
 const Avata = ({ avata, setAvata }) => {
   const profileImgRef = useRef();
-  // const [modal, setModal] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(false);
+
   const onButtonClick = event => {
     event.preventDefault();
     profileImgRef.current.click();
@@ -46,6 +48,17 @@ const Avata = ({ avata, setAvata }) => {
       });
   };
 
+  const confirmDlt = res => {
+    if (res) {
+      onDltImg();
+      handleImageDelete();
+    } else {
+      onDltImg();
+    }
+  };
+  const onDltImg = () => {
+    setConfirmModal(!confirmModal);
+  };
   const handleImageDelete = async () => {
     await deleteImg();
     await getProfile()
@@ -61,6 +74,13 @@ const Avata = ({ avata, setAvata }) => {
   };
   return (
     <section className={styles.avata}>
+      {confirmModal && (
+        <ConfirmAlert
+          message={'삭제하시겠습니까'}
+          onComfirm={confirmDlt}
+          target={'프로필사진'}
+        />
+      )}
       <div className={styles.avataWrapper}>
         <div className={styles.avataCentered}>
           <img
@@ -84,7 +104,7 @@ const Avata = ({ avata, setAvata }) => {
       <button className={styles.modalBtn} onClick={onButtonClick}>
         이미지 변경
       </button>
-      <button className={styles.dltImgBtn} onClick={handleImageDelete}>
+      <button className={styles.dltImgBtn} onClick={onDltImg}>
         이미지 삭제
       </button>
     </section>

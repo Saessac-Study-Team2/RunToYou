@@ -9,8 +9,9 @@ const MyPage = () => {
   return (
     <section className={styles.mypage}>
       <Header />
-      <Profile />
-      <Footer />
+      <div className={styles.main}>
+        <Profile />
+      </div>
     </section>
   );
 };

@@ -1,8 +1,10 @@
-@value RtyPurple,RtyBlack,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
+@value RtyBrown, RtyPurple,RtyBlack,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
 @value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
 
 .editModal {
-  border: solid 1px dodgerblue;
+  border-top: solid 0.15rem RtyBrown;
+  border-bottom: solid 0.15rem RtyBrown;
+  background-color: RtyGrey;
 }
 .modalBtn,
 .changeInfoBtn {

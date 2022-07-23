@@ -1,32 +1,43 @@
-@value RtyBrown,RtyBlack,RtyIvory,RtyRed,dimBlack, RtyPurple, RtyOrange, dimWhite, RtyWhite, RtyGrey from '../../common/colors.css';
+@value Rtygrey, RtyBrown,RtyBlack,RtyIvory,RtyRed,dimBlack, RtyPurple, RtyOrange, dimWhite, RtyWhite, RtyGrey from '../../common/colors.css';
 @value fontLarge,fontMedium,fontSmall from '../../common/size.css';
 
 .header {
   width: 100vw;
   height: 52px;
-  background-color: aquamarine;
+  background-color: RtyIvory;
   display: flex;
   justify-content: space-between;
   padding: 0 24px;
+  position: fixed;
+  border-bottom: RtyBrown 0.5rem solid;
 }
 .logo {
   height: 56px;
 }
+.nickname {
+  white-space: nowrap;
+}
 .avata {
-  height: 38px;
-  padding-left: 24px;
+  height: 100%;
+  margin-right: 1rem;
 }
 .btnContainer {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   text-align: center;
   align-items: center;
 }
-button {
-  width: 6rem;
-  height: 80%;
+.button {
+  white-space: nowrap;
+  background-color: Rtygrey;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: 0.2rem solid RtyWhite;
+  padding: 0.5rem;
 }
-a {
+
+.btnContainer a {
   display: inline-block;
   width: 100%;
   font-size: 1.4rem;

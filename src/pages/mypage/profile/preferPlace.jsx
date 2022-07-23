@@ -18,8 +18,7 @@ const PreferPlace = () => {
       return Number(el[0]) !== event.target.value;
     });
 
-    deletePlace(event.target.value)
-      .then(console.log(userPlace))
+    deletePlace(event.target.value) //
       .then(setUserPlace(deletedPlaces));
   };
 
@@ -27,15 +26,16 @@ const PreferPlace = () => {
     event.preventDefault();
     setModal(!modal);
     const newPlace = placeRef.current.value;
+    const currentsts = placeRef.current.text;
     const newPlaceArr = newPlace.split(',');
     const placeNumArr = userPlace.map(
       el => Number(el[0]) === Number(newPlaceArr[0])
     );
+    console.log(currentsts);
     if (newPlaceArr[0] === '선택 시 추가') return;
     if (!placeNumArr.includes(true)) {
-      addPlace(newPlaceArr[0]).then(
-        setUserPlace(prev => [...prev, newPlaceArr])
-      );
+      addPlace(newPlaceArr[0]) //
+        .then(setUserPlace(prev => [...prev, newPlaceArr]));
     } else {
       return;
     }
