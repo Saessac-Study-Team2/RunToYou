@@ -1,9 +1,10 @@
 /*container*/
 .weather_container {
-  width: 500px;
-  border: 1px solid black;
+  width: 605px;
   margin: 10px;
-  padding: 10px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 25px;
 }
 
 .weather_now_wrapper {
