@@ -11,7 +11,7 @@
 }
 
 .comment_image_container img {
-  border-radius: 50px;
+  border-radius: 50%;
   width: 42px;
   height: 42px;
   object-fit: cover;
@@ -28,7 +28,7 @@
 .comment_author {
   margin-right: 8px;
   font-size: 17px;
-  color: rgb(255, 112, 23);
+  color: #ff6100;
 }
 
 .created_at {
