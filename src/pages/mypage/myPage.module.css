@@ -3,7 +3,7 @@
 
 .mypage {
   width: 100vw;
-  background-color: dimBlack;
+  /* background-color: dimBlack; */
   height: 100vh;
   display: flex;
   font-display: column;
@@ -15,7 +15,6 @@
   width: 36rem;
   display: flex;
   flex-direction: column;
-  margin-top: 52px;
   margin: auto;
   position: relative;
   height: 80vh;

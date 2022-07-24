@@ -6,11 +6,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .navLink {
   white-space: nowrap;
-  height: 100%;
   padding: 8px;
   text-decoration: none;
   color: RtyBlack;

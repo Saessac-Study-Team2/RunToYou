@@ -1,11 +1,12 @@
-@value RtyPurple,RtyBlack,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
+@value RtyBrown,RtyPurple,RtyBlack,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
 @value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
 
 .modalBtn,
 .cancleBtn,
 .sandBtn {
-  background-color: dimWhite;
+  background-color: RtyBrown;
   width: 10rem;
+  color: RtyWhite;
   height: 2rem;
   border-radius: 0.5rem;
   border: 1px solid RtyWhite;

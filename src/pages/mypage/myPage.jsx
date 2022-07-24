@@ -9,9 +9,9 @@ const MyPage = () => {
   return (
     <section className={styles.mypage}>
       <Header />
-      <div className={styles.main}>
-        <Profile />
-      </div>
+      {/* <div className={styles.main}> */}
+      <Profile />
+      {/* </div> */}
     </section>
   );
 };

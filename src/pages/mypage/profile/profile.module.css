@@ -2,15 +2,18 @@
 @value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
 
 .profile {
+  margin: auto;
+
   border-radius: 1rem;
   background-color: RtyIvory;
-  width: 100%;
-  margin-top: 2rem;
+  width: 36rem;
+  height: 80vh;
   text-align: center;
-  height: 100%;
-  border: RtyBrown solid 0.2rem;
+  overflow-y: scroll;
+  /* border: RtyBrown solid 0.2rem; */
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-
 .decsWrap {
   margin-top: 0.5rem;
   color: black;
