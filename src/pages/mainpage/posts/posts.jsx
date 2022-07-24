@@ -30,7 +30,6 @@ const Posts = ({
   const [writer, setWriter] = useState("");
   const [myPosts, setMyPosts] = useState(false);
   const [posts, setPosts] = useRecoilState(postsState);
-
   const [renderPosts, setRenderPosts] = useState(posts);
 
   console.log("recruit??", recruit);
