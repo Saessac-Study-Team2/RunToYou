@@ -5,12 +5,10 @@ import styles from "./post.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { getLoginCookie } from "../../../library/cookie";
 import { getPosts, getProfile } from "../../../library/axios";
-import { useInView } from "react-intersection-observer";
 const axios = require("axios");
 
 // MainPage에 posts state에서 데이터를 받아서 게시글 하나를 만드는 컴포넌트
 const Post = ({ post, setPosts, locationList, userId }) => {
-  console.log("생성일", post.created_at);
   const createdAt = post.created_at.slice(0, 9);
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
