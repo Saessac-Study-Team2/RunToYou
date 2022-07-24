@@ -57,7 +57,6 @@ const MainPage = ({ isUser, setIsUser }) => {
       <div className={styles.mainPage}>
         <Header isUser={isUser} setIsUser={setIsUser} />
         <div className={styles.main}>
-          <h1>MainPage</h1>
           {isLogin && <button onClick={openModal}>글쓰기</button>}
           <WriteModal
             locationList={locationList}

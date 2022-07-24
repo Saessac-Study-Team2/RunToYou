@@ -12,7 +12,6 @@
 
 .comment_image_container img {
   border-radius: 50px;
-  width: 40px;
   width: 42px;
   height: 42px;
   object-fit: cover;
