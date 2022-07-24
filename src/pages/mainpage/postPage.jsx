@@ -6,6 +6,7 @@ import WriteModal from "../../components/Modals/writeModal";
 import { useRecoilState } from "recoil";
 import { postsState, locationListState, userIDState } from "../../library/atom";
 import Comments from "../../components/comments/comments";
+import Header from "../../components/header/header";
 const axios = require("axios");
 
 const PostPage = () => {
@@ -72,6 +73,7 @@ const PostPage = () => {
   };
   return (
     <div>
+      <Header />
       {!loading ? (
         <>
           <h1>제목:{post[0].topicTitle}</h1>
