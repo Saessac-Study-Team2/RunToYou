@@ -56,25 +56,23 @@ const MainPage = ({ isUser, setIsUser }) => {
     <>
       <div className={styles.mainPage}>
         <Header isUser={isUser} setIsUser={setIsUser} />
-        <main className={styles.main}>
-          <section>
-            <h1>MainPage</h1>
-            {isLogin && <button onClick={openModal}>글쓰기</button>}
-            <WriteModal
-              locationList={locationList}
-              open={modalOpen}
-              close={closeModal}
-              header="글쓰기"
-              setPosts={setPosts}
-            ></WriteModal>
-            <Weather />
-            <Posts
-              posts={posts}
-              setPosts={setPosts}
-              locationList={locationList}
-            />
-          </section>
-        </main>
+        <div className={styles.main}>
+          <h1>MainPage</h1>
+          {isLogin && <button onClick={openModal}>글쓰기</button>}
+          <WriteModal
+            locationList={locationList}
+            open={modalOpen}
+            close={closeModal}
+            header="글쓰기"
+            setPosts={setPosts}
+          ></WriteModal>
+          <Weather />
+          <Posts
+            posts={posts}
+            setPosts={setPosts}
+            locationList={locationList}
+          />
+        </div>
         {/* <Footer /> */}
       </div>
     </>
