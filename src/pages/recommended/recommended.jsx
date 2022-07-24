@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 
-import './recommended.css';
+
 import data from '../../static/resource/dummyData';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
@@ -10,6 +10,7 @@ import Footer from '../../components/footer/footer';
 // import Map from '../recommended/map';
 import MapContainer from './mapContainer';
 import styled from 'styled-components';
+import styles from './recommended.module.css';
 const ModalContainer = styled.div`
 width: 100px;
 height: 100px;
@@ -20,10 +21,11 @@ background: tomato;
 const Recommended = ({ isUser, setIsUser }) => {
 
   return (
-    <section>
+    <div className={styles.all}>
       <Header isUser={isUser} setIsUser={setIsUser} />
       
-      <div className='recommended'>
+      
+      <section className={styles.recommended}>
         <div className='black-nav'>
           {/* <button onClick={() => 
             {data.map((el, idx) => {
@@ -36,9 +38,10 @@ const Recommended = ({ isUser, setIsUser }) => {
         {data.map((el, idx) => {
           return <RecommendedBox data={el} key={idx} />;
         })}
-      </div>
+      </section>
+      
       <Footer />
-    </section>
+    </div>
   );
 };
 
@@ -67,13 +70,11 @@ function RecommendedBox(props) {
       </div>
       <div>
         <button onClick={() => {setModal(!modal)}}>지도보기</button>
-        
-
       </div>
         {modal === true ? <Modal data={props.data}/> : null}
         {/* {modal === true ? '안녕디지몬' : null} */}
-      <div className='container_right'>
-        <img src={props.data.picture} className='picture'></img>
+      <div className={styles.container_right}>
+        <img src={props.data.picture} className={styles.picture}></img>
       </div>
     </div>
   );
