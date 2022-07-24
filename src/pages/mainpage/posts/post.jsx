@@ -55,18 +55,18 @@ const Post = ({ post, setPosts, locationList, userId }) => {
         <span className={styles.post__userName}>{post.userID}</span>
         <div className={styles.post__createAt}>{createdAt}</div>
       </div>
-      <div className={styles.post__info__col4}></div>
-
-      <Link
-        to={{
-          pathname: `/post/${post.tid}`,
-          state: {
-            id: post.tid,
-          },
-        }}
-      >
-        <button className={styles.postPageBtn}>더보기▼</button>
-      </Link>
+      <div className={styles.post__info__col4}>
+        <Link
+          to={{
+            pathname: `/post/${post.tid}`,
+            state: {
+              id: post.tid,
+            },
+          }}
+        >
+          <button className={styles.postPageBtn}>더보기</button>
+        </Link>
+      </div>
     </li>
   );
 };
