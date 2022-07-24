@@ -6,6 +6,7 @@ import './recommended.css';
 import data from '../../static/resource/dummyData';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+
 // import Map from '../recommended/map';
 import MapContainer from './mapContainer';
 import styled from 'styled-components';
@@ -17,7 +18,7 @@ background: tomato;
 
 
 const Recommended = ({ isUser, setIsUser }) => {
-  
+
   return (
     <section>
       <Header isUser={isUser} setIsUser={setIsUser} />
@@ -42,6 +43,7 @@ const Recommended = ({ isUser, setIsUser }) => {
 };
 
 function RecommendedBox(props) {
+
   let [likeBtn, setLikeBtn] = useState(0);
   
   
@@ -49,6 +51,7 @@ function RecommendedBox(props) {
     setLikeBtn(likeBtn + 1);
   }
   let [modal, setModal] = useState(false);
+
   return (
     <div className='container'>
       <div className='container_left'>
@@ -58,12 +61,14 @@ function RecommendedBox(props) {
         </button>
         <div className='container_left_title'>{props.data.title}</div>
         <div className='container_left_location'>{props.data.location}</div>
+
         <div className='container_left_content'>{props.data.content}</div>        
         {/* <MapContainer data={props}/> */}
       </div>
       <div>
         <button onClick={() => {setModal(!modal)}}>지도보기</button>
         
+
       </div>
         {modal === true ? <Modal data={props.data}/> : null}
         {/* {modal === true ? '안녕디지몬' : null} */}

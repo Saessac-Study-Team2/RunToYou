@@ -1,6 +1,4 @@
-
-import { atom } from 'recoil';
-
+import { atom } from "recoil";
 
 export const userState = atom({
   key: "userState",
@@ -8,7 +6,7 @@ export const userState = atom({
 });
 
 export const UserAvataState = atom({
-  key: 'userAvataState',
+  key: "userAvataState",
   default: null,
 });
 export const userPlaceState = atom({
@@ -41,4 +39,12 @@ export const postsState = atom({
 export const locationListState = atom({
   key: "LocationListState",
   default: [],
+
 });
+export const postsLengthState = atom({
+  key: "postsLengthState",
+  default: 0,
+});
+
+
+
