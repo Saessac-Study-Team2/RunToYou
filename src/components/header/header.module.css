@@ -7,9 +7,11 @@
   background-color: RtyIvory;
   display: flex;
   justify-content: space-around;
-  padding: 0.8rem;
+  padding: 0.1rem;
   position: fixed;
-  border-bottom: RtyBrown 0.3rem solid;
+  /* border-bottom: RtyBrown 0.2rem solid; */
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px,
+    rgba(0, 0, 0, 0.3) 0px 6px 8px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .avata {
@@ -18,6 +20,8 @@
   height: 42px;
   object-fit: cover;
   border-radius: 5.5rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px,
+    rgba(0, 0, 0, 0.3) 0px 6px 8px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 .logo {
   margin-left: 1rem;
@@ -35,16 +39,18 @@
   align-items: center;
 }
 .button {
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px,
-    rgba(0, 0, 0, 0.3) 0px 6px 8px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   color: RtyWhite;
   white-space: nowrap;
   background-color: RtyBrown;
   width: 5rem;
   border-radius: 0.5rem;
-  /* border: 0.2rem solid RtyWhite; */
   padding: 0.5rem;
   margin-right: 1rem;
+  font-size: 1rem;
+}
+
+.button:hover {
+  background-color: RtyOrange;
 }
 
 .btnContainer a {

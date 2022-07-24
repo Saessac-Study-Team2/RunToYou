@@ -32,7 +32,7 @@ const PreferPlace = () => {
       el => Number(el[0]) === Number(newPlaceArr[0])
     );
     console.log(currentsts);
-    if (newPlaceArr[0] === '선택 시 추가') return;
+    if (newPlaceArr[0] === '추가') return;
     if (!placeNumArr.includes(true)) {
       addPlace(newPlaceArr[0]) //
         .then(setUserPlace(prev => [...prev, newPlaceArr]));
@@ -44,39 +44,46 @@ const PreferPlace = () => {
     <section className={styles.section}>
       <p className={styles.info}>선호 지역 : </p>
       <div className={styles.places}>
-        <div>
-          {Array.isArray(userPlace) && userPlace.length !== 0 && (
-            <ul className={styles.editPlaces}>
-              {userPlace.map(el => (
-                <li
-                  className={styles.editPlace}
-                  key={el[0]}
-                  value={el[0]}
+        {Array.isArray(userPlace) && userPlace.length !== 0 && (
+          <ul className={styles.editPlaces}>
+            {userPlace.map(el => (
+              <li
+                className={styles.editPlace}
+                key={el[0]}
+                value={el[0]}
+                onClick={handleDeleteLocation}
+              >
+                <span
+                  className={styles.placeName}
                   onClick={handleDeleteLocation}
                 >
-                  {`${el[1]} X`}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <select
-          className={styles.select}
-          // size={8}
-          ref={placeRef}
-          name='place'
-          onChange={handleAddLocation}
-        >
-          <option key='000' value={null}>
-            선택 시 추가
-          </option>
-          {locationList.map(place => (
-            <option key={place.lid} value={[place.lid, place.locationName]}>
-              {place.locationName}
-            </option>
-          ))}
-        </select>
+                  {el[1]}
+                </span>
+                <span className={styles.xmark} onClick={handleDeleteLocation}>
+                  X
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
+      <select
+        className={styles.select}
+        // size={8}
+        ref={placeRef}
+        name='place'
+        onChange={handleAddLocation}
+      >
+        <option key='000' value={null}>
+          추가
+        </option>
+        {locationList.map(place => (
+          <option key={place.lid} value={[place.lid, place.locationName]}>
+            {place.locationName}
+          </option>
+        ))}
+      </select>
+      {/* </div> */}
     </section>
   );
 };

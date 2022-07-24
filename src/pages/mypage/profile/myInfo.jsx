@@ -23,44 +23,64 @@ const MyInfo = () => {
 
   return (
     <>
-      <section>
-        <p className={styles.info}>Nickname : {nickname}</p>
-        {aboutMe ? (
-          <p className={styles.info}>About Me : {aboutMe}</p>
-        ) : (
-          <p className={styles.info}>
-            aboutMe : 간단한 자기소개를 작성할 수 있습니다.
-          </p>
-        )}
-        {!modal && (
-          <button
-            className={styles.modalBtn}
-            onClick={() => {
-              setModal(!modal);
-            }}
-          >
-            닉네임, 자기소개 수정
-          </button>
-        )}
-      </section>
-      {modal && (
-        <div className={styles.editModal}>
-          <div>
-            <label className={styles.editInfolable}>Nickname</label>
-            <input
-              className={styles.editInfoInput}
-              ref={nicknameRef}
-              type='text'
-              name='nickname'
-            />
+      {!modal && (
+        <section className={styles.infoWrap}>
+          <div className={styles.infoOnly}>
+            <p className={styles.info}>Nickname : {nickname}</p>
+            {aboutMe ? (
+              <>
+                <p className={styles.info}>About Me : </p>
+                <p>{aboutMe}</p>
+              </>
+            ) : (
+              <p className={styles.info}>
+                aboutMe : 간단한 자기소개를 작성할 수 있습니다.
+              </p>
+            )}
           </div>
-          <div>
-            <label className={styles.editInfolable}>About Me</label>
-            <textarea
-              className={styles.editInfoInput}
-              ref={aboutMeRef}
-              name='aboutMe'
-            ></textarea>
+          {!modal && (
+            <button
+              className={styles.modalBtn}
+              onClick={() => {
+                setModal(!modal);
+              }}
+            >
+              닉네임, 자기소개 수정
+            </button>
+          )}
+        </section>
+      )}
+      {modal && (
+        <div className={styles.infoWrap}>
+          <div className={styles.infoOnly}>
+            <div>
+              <label className={styles.editInfolable}>Nickname</label>
+              <input
+                className={styles.editInfoInput}
+                ref={nicknameRef}
+                type='text'
+                name='nickname'
+                autoFocus
+                onKeyUp={e => {
+                  if (e.key === 'Enter') {
+                    handleSubmitNameInfo();
+                  }
+                }}
+              />
+            </div>
+            <div>
+              <label className={styles.editInfolable}>About Me</label>
+              <textarea
+                className={styles.editInfoInput}
+                ref={aboutMeRef}
+                name='aboutMe'
+                onKeyUp={e => {
+                  if (e.key === 'Enter') {
+                    handleSubmitNameInfo();
+                  }
+                }}
+              />
+            </div>
           </div>
           <button
             className={styles.changeInfoBtn}

@@ -5,6 +5,11 @@
   border-top: solid 0.15rem RtyBrown;
   border-bottom: solid 0.15rem RtyBrown;
   background-color: RtyGrey;
+  display: flex;
+  align-items: start;
+  position: relative;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 .modalBtn,
 .changeInfoBtn {
@@ -13,16 +18,41 @@
   color: RtyWhite;
   height: 2rem;
   border-radius: 0.5rem;
-  border: 1px solid RtyWhite;
-  margin: 0.5rem;
+  position: absolute;
+  right: 2rem;
 }
 
+.modalBtn:hover {
+  background-color: RtyOrange;
+}
+.changeInfoBtn:hover {
+  background-color: RtyOrange;
+}
+.infoWrap {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: start;
+  position: relative;
+  margin-left: 2rem;
+}
+
+.infoOnly {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
 .info {
+  overflow: hidden;
+  word-wrap: break-word;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
   background-color: transparent;
   color: RtyBlack;
 }
 
 .editInfolable {
+  font-size: 1.3rem;
   color: RtyPurple;
 }
 .editInfoInput {

@@ -11,6 +11,8 @@ const Container = styled.div`
 `;
 
 const Wraper = styled.div`
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px,
+    rgba(0, 0, 0, 0.3) 0px 6px 8px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -23,21 +25,32 @@ const Wraper = styled.div`
   background: white;
   padding: 20px;
   border-radius: 10px;
-
+  width: 25rem;
+  height: 20rem;
+  img {
+    width: 4rem;
+    margin-bottom: 1rem;
+  }
   .msg {
     color: #111;
     font-size: 16px;
+    margin-bottom: 1rem;
   }
   .target {
     color: black;
     font-size: 24px;
+    margin-bottom: 1rem;
   }
   button {
+    width: 3rem;
+
     color: white;
     padding: 10px;
     margin-left: 4px;
     border: none;
+    border-radius: 1rem;
     cursor: pointer;
+    border-radius: 1rem;
   }
   .btns {
     display: flex;
@@ -55,8 +68,9 @@ const ConfirmAlert = ({ message, onComfirm, target }) => {
   return (
     <Container onClick={() => onComfirm(false)}>
       <Wraper onClick={e => e.stopPropagation()}>
-        <h3 className='msg'>{message}</h3>
         <h1 className='target'>{target}</h1>
+        <h3 className='msg'>{message}</h3>
+        <img src='/favicon.ico' alt='favicon' />
         <div className='btns'>
           <button className='true' onClick={() => onComfirm(true)}>
             Yes

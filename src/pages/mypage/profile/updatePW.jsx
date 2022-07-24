@@ -14,9 +14,6 @@ const UpdatePW = props => {
     const newPW = newPWRef.current.value;
     const confirmNewPW = confirmNewPWRef.current.value;
     let countErr = 0;
-    console.log(curPW);
-    console.log(newPW);
-    console.log(confirmNewPW);
     if (!curPW || !newPW || !confirmNewPW) {
       setError(prev => [...prev, '모두 입력해주세요']);
       countErr++;
@@ -64,53 +61,68 @@ const UpdatePW = props => {
         </button>
       )}
       {modal && (
-        <div className={styles.modal}>
-          <div>
-            <label htmlFor='curPW'>현재 비밀 번호</label>
-            <input
-              onChange={() => {
-                setError([]);
-              }}
-              ref={curPWRef}
-              type='password'
-              name='curPW'
-            />
-            {/* <div> */}
-            <label htmlFor='newPW'>변경할 비밀 번호</label>
-            <input
-              ref={newPWRef}
-              onChange={() => {
-                setError([]);
-              }}
-              type='password'
-              name='newPW'
-            />
-            <label htmlFor='confirmNewPW'>비밀 번호 확인</label>
-            <input
-              onChange={() => {
-                setError([]);
-              }}
-              ref={confirmNewPWRef}
-              type='password'
-              name='confirmNewPW'
-            />
-          </div>
-          <div>
-            {error.length !== 0 &&
-              error.map((el, index) => <p key={index}>{el}</p>)}
-          </div>
-          <div>
-            <button className={styles.sandBtn} onClick={handleSubmitNewPW}>
-              변경
-            </button>
-            <button
-              className={styles.cancleBtn}
-              onClick={() => {
-                setModal(!modal);
-              }}
-            >
-              변경 취소
-            </button>
+        <div className={styles.modalWraper}>
+          <div className={styles.modal}>
+            <p className={styles.info}>비밀 번호 변경</p>
+            <p className={styles.info2}>모두 입력 해 주세요</p>
+            <div className={styles.inputContainer}>
+              <div className={styles.inputWraper}>
+                <label htmlFor='curPW'>현재 비밀 번호</label>
+                <input
+                  onChange={() => {
+                    setError([]);
+                  }}
+                  ref={curPWRef}
+                  type='password'
+                  name='curPW'
+                />
+              </div>
+              <div className={styles.inputWraper}>
+                <label htmlFor='newPW'>변경할 비밀 번호</label>
+                <input
+                  ref={newPWRef}
+                  onChange={() => {
+                    setError([]);
+                  }}
+                  type='password'
+                  name='newPW'
+                />
+              </div>
+              <div className={styles.inputWraper}>
+                <label htmlFor='confirmNewPW'>비밀 번호 확인</label>
+                <input
+                  onChange={() => {
+                    setError([]);
+                  }}
+                  ref={confirmNewPWRef}
+                  type='password'
+                  name='confirmNewPW'
+                />
+              </div>
+            </div>
+            <div>
+              {error.length !== 0 &&
+                error.map((el, index) => (
+                  <p className={styles.error} key={index}>
+                    {el}
+                  </p>
+                ))}
+            </div>
+            <img className={styles.favicon} src='/favicon.ico' alt='favicon' />
+            <div>
+              <button className={styles.sandBtn} onClick={handleSubmitNewPW}>
+                변경
+              </button>
+              <button
+                className={styles.cancleBtn}
+                onClick={() => {
+                  setError([]);
+                  setModal(!modal);
+                }}
+              >
+                변경 취소
+              </button>
+            </div>
           </div>
         </div>
       )}

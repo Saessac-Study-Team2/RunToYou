@@ -8,7 +8,10 @@
   border-radius: 0.5rem;
   margin: 0.5rem;
   color: RtyWhite;
-  margin-top: 3rem;
+}
+
+.modalBtn:hover {
+  background-color: RtyOrange;
 }
 .dltAccount {
   border-radius: 0.5rem;
