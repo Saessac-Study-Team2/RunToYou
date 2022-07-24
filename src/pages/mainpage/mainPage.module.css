@@ -1,3 +1,7 @@
+.main {
+  margin-top: 2rem;
+}
+
 .mainPage {
   background-color: #f4f5f7;
   width: 100vw;
@@ -6,4 +10,11 @@
   font-display: column;
   justify-content: center;
   overflow-x: hidden;
+}
+
+.mainContents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
 }

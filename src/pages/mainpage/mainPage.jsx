@@ -66,12 +66,14 @@ const MainPage = ({ isUser, setIsUser }) => {
             header="글쓰기"
             setPosts={setPosts}
           ></WriteModal>
-          <Weather />
-          <Posts
-            posts={posts}
-            setPosts={setPosts}
-            locationList={locationList}
-          />
+          <div className={styles.mainContents}>
+            <Weather />
+            <Posts
+              posts={posts}
+              setPosts={setPosts}
+              locationList={locationList}
+            />
+          </div>
         </div>
         {/* <Footer /> */}
       </div>
