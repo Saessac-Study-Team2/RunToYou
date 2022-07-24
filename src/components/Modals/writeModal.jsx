@@ -10,13 +10,16 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
   const [topicTitle, setTopicTitle] = useState("");
   const [locationLid, setLocationLid] = useState(0);
   const [topicContent, setTopicContent] = useState("");
+  const [recruiting, setRecruting] = useState("recruiting");
   const navigate = useNavigate();
+  const recruitList = ["모집중", "모집완료"];
 
   useEffect(() => {
     if (header === "글수정") {
       setLocationLid(post[0].lid);
       setTopicContent(post[0].topicContents);
       setTopicTitle(post[0].topicTitle);
+      setRecruting(post[0].recruit);
     }
   }, []);
 
@@ -58,6 +61,7 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
           {
             topictitle: topicTitle,
             topiccontents: topicContent,
+            recruit: recruiting,
           },
           { headers: { Authorization: getLoginCookie() } }
         )
@@ -79,7 +83,9 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
   };
   const handleLocationLid = (e) => {
     setLocationLid(e.target.value);
-    console.log(locationLid);
+  };
+  const handleRecruit = (e) => {
+    setRecruting(e.target.value);
   };
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
@@ -108,10 +114,32 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
                 <select onChange={handleLocationLid} value={locationLid}>
                   <option>지역을 선택해주세요</option>
                   {locationList.map((x, idx) => {
-                    return <option value={x.lid}>{x.locationName}</option>;
+                    return (
+                      <option key={idx} value={x.lid}>
+                        {x.locationName}
+                      </option>
+                    );
                   })}
                 </select>
               </div>
+              {header === "글수정" ? (
+                <div>
+                  <span>모집상태</span>
+                  <select onChange={handleRecruit} value={recruiting}>
+                    {recruitList.map((el, idx) => {
+                      return (
+                        <option
+                          key={idx}
+                          value={el === "모집중" ? "recruiting" : "recruited"}
+                        >
+                          {el}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              ) : null}
+
               <div>
                 <span>내용</span>
                 <textarea

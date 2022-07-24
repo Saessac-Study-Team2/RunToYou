@@ -24,6 +24,7 @@ const PostEdit = ({ locationList }) => {
       {!loading ? (
         <>
           <input value={post[0].topicTitle}></input>
+          <input value={post[0].recruit}></input>
           <textarea value={post[0].topicContents}></textarea>
           {/* <select onChange={handleLocationLid} value={locationLid}>
             <option>지역을 선택해주세요</option>
