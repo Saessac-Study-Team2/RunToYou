@@ -7,7 +7,7 @@
   height: 300px;
   background-color: white;
   border-radius: 25px;
-  margin: 40px;
+  margin: 30px;
   padding: 25px;
 }
 
@@ -46,12 +46,16 @@
 .post__content {
   background-color: white;
   color: black;
-  width: 430px;
-  height: 100px;
+  width: 100px;
+  height: 20px;
   border-radius: 20px;
-  padding: 15px;
+  padding: 20px;
   font-size: 20px;
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
 }
 .post__place {
   background-color: #b5876d;
@@ -64,6 +68,7 @@
   text-justify: center;
   border-radius: 15px;
   margin-bottom: 20px;
+  color: white;
 }
 
 .post__info__col4 {
@@ -84,6 +89,7 @@
   text-justify: center;
   border-radius: 15px;
   margin-bottom: 20px;
+  color: white;
 }
 .post__createAt {
   font-size: 15px;
