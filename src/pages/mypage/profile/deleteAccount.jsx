@@ -34,16 +34,18 @@ const DeleteAccount = props => {
             <p className={styles.messasge3}>
               더욱 발전하는 RunToYou가 되겠습니다
             </p>
-
-            <button className={styles.modalBtn} onClick={handleDltAccount}>
-              떠나기
-            </button>
-            <button
-              className={styles.modalBtn}
-              onClick={() => setModal(!modal)}
-            >
-              머무르기
-            </button>
+            <img className={styles.favicon} src='/favicon.ico' alt='favicon' />
+            <div>
+              <button className={styles.modalBtn} onClick={handleDltAccount}>
+                떠나기
+              </button>
+              <button
+                className={styles.modalBtn}
+                onClick={() => setModal(!modal)}
+              >
+                머무르기
+              </button>
+            </div>
           </section>
         </div>
       ) : (

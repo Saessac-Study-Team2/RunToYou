@@ -49,6 +49,7 @@
   background-color: transparent;
   border: RtyWhite solid 2px;
   border-radius: 12px;
+  box-shadow: none;
 }
 
 .button:hover {
