@@ -11,27 +11,27 @@ const Intro = () => {
   return (
     <section className={styles.bgImg}>
       <div className={styles.container}>
-        <img className={styles.logo} src='/img/logo1.png' />
+        <img className={styles.logo} src='/img/logo1.png' alt='logo_img' />
         <div className={styles.buttonContainer}>
           {isLogin ? (
-            <Link to='/mainpage'>
+            <Link className={styles.link} to='/mainpage'>
               <button className={styles.button}>Main Page</button>
             </Link>
           ) : (
             <>
-              <Link to='/login'>
+              <Link className={styles.link} to='/login'>
                 <button className={styles.button}>Log in</button>
               </Link>
-              <Link to='/signup'>
+              <Link className={styles.link} to='/signup'>
                 <button className={styles.button}>Sign up</button>
               </Link>
-              <Link to='/mainpage'>
+              <Link className={styles.link} to='/mainpage'>
                 <button className={styles.button}>Guest</button>
               </Link>
             </>
           )}
-          {/* <Footer /> */}
         </div>
+        <Footer />
       </div>
     </section>
   );

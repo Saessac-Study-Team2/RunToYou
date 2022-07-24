@@ -1,0 +1,47 @@
+@value RtyBrown,dimBlack,RtyIvory,RtyPurple,RtyBlack,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
+
+.modalBtn {
+  background-color: RtyBrown;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  color: RtyWhite;
+  margin-top: 5rem;
+}
+.dltAccount {
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+.dltAccountModal {
+  padding: 2rem;
+  background-color: RtyWhite;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 500px;
+  height: 300px;
+  border-radius: 0.5rem;
+}
+
+.messasge1 {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.messasge2 {
+  font-size: 1rem;
+}
+
+.messasge3 {
+  margin: 2rem 0 3rem 0;
+  font-size: 1.5rem;
+}

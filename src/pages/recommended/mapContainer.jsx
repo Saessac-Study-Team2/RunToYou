@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Map, MapMarker } from "react-kakao-maps-sdk";
+
 const MapContainer = (props) => {
   const [state, setState] = useState({
     // 지도의 초기 위치
@@ -16,7 +17,9 @@ const MapContainer = (props) => {
       if (status === window.kakao.maps.services.Status.OK) {
         const newSearch = data[0]
         setState({
+
           center: { lat: newSearch.y, lng: newSearch.x }
+
         })
       }
     };
@@ -27,8 +30,12 @@ const MapContainer = (props) => {
     SetSearchAddress(e.target.value)
   }
 console.log(props.data.data);
+
+
   return (
     <>
+    {console.log(props.data.data)}
+
       <Map
         center={props.data.data.point[0]}
         isPanto={state.isPanto}

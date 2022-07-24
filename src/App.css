@@ -3,12 +3,8 @@
   font-size: 16px;
   margin: 0;
   padding: 0;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 button,
@@ -21,4 +17,10 @@ textarea {
   line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
   border: 0;
+}
+
+button,
+a,
+select {
+  cursor: pointer;
 }

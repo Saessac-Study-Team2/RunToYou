@@ -39,8 +39,12 @@ export const postsState = atom({
 export const locationListState = atom({
   key: "LocationListState",
   default: [],
+
 });
 export const postsLengthState = atom({
   key: "postsLengthState",
   default: 0,
 });
+
+
+

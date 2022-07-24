@@ -8,10 +8,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  background-position: center;
 }
 
 .container {
+  position: relative;
   width: 50%;
   height: 100vh;
   background-color: dimBlack;
@@ -30,13 +34,15 @@
   margin: 20px 0;
   align-items: center;
   text-align: center;
+  padding: 6px 12px;
 }
-a {
+.link {
+  white-space: nowrap;
   width: 60%;
 }
 .button {
+  margin: 10px 0;
   width: 100%;
-  margin-bottom: 20px;
   height: 40px;
   font-size: fontSmall;
   color: RtyWhite;
