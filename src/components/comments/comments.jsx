@@ -39,32 +39,36 @@ const Comments = ({ id }) => {
   };
 
   return (
-    <div className={styles.comments}>
-      <div className={styles.comments_counter}>{`댓글 ${comments.length}`}</div>
-      <CommentForm topicId={id} getComments={getComments} />
-      {isLogin ? (
-        <div className={styles.comments_container}>
-          {comments.length !== 0 &&
-            comments
-              .slice(offset, offset + limit)
-              .map((e) => (
-                <Comment
-                  key={e.tcid}
-                  tcid={e.tcid}
-                  createdAt={e.created_at}
-                  nickname={e.nickname}
-                  userID={e.userID}
-                  userPicture={e.userPicture}
-                  topicComment={e.topicComent}
-                  getComments={getComments}
-                />
-              ))}
-        </div>
-      ) : (
-        <div className={styles.comments_container}>
-          로그인 후 댓글 열람 가능합니다
-        </div>
-      )}
+    <div className={styles.comments_container}>
+      <div className={styles.comments_area}>
+        <div
+          className={styles.comments_counter}
+        >{`댓글 ${comments.length}`}</div>
+        <CommentForm topicId={id} getComments={getComments} />
+        {isLogin ? (
+          <div className={styles.comments_list}>
+            {comments.length !== 0 &&
+              comments
+                .slice(offset, offset + limit)
+                .map((e) => (
+                  <Comment
+                    key={e.tcid}
+                    tcid={e.tcid}
+                    createdAt={e.created_at}
+                    nickname={e.nickname}
+                    userID={e.userID}
+                    userPicture={e.userPicture}
+                    topicComment={e.topicComent}
+                    getComments={getComments}
+                  />
+                ))}
+          </div>
+        ) : (
+          <div className={styles.comments_container}>
+            로그인 후 댓글 열람 가능합니다
+          </div>
+        )}
+      </div>
       <Pagination
         total={commentsLength}
         limit={limit}

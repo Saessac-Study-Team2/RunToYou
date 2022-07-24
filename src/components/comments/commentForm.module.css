@@ -13,14 +13,14 @@
 .comment_form_button {
   font-size: 16px;
   padding: 8px 16px;
-  background: rgb(255, 145, 77);
+  background: #ff914d;
   border-radius: 8px;
   color: white;
 }
 
 .comment_form_button:hover:enabled {
   cursor: pointer;
-  background: rgb(255, 112, 23);
+  background: #ff6100;
 }
 
 .comment_form_button:disabled {
