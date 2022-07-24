@@ -1,19 +1,22 @@
+/* @value RtyBrown,RtyBlack,RtyIvory,RtyRed,dimBlack, RtyPurple, RtyOrange, dimWhite, RtyWhite, RtyGrey from '../../common/colors.css'; 
+@value fontLarge,fontMedium,fontSmall from '../../common/size.css'; */
+
 .comment {
-    display: flex;
-    margin-bottom: 28px;
+  display: flex;
+  margin-bottom: 28px;
 }
 
 .comment_image_container {
-    margin-right: 12px;
+  margin-right: 12px;
 }
 
 .comment_image_container img {
-    border-radius: 50px;
-    width: 40px;
+  border-radius: 50px;
+  width: 40px;
 }
 
 .comment_right_part {
-    width: 100%;
+  width: 100%;
 }
 
 /* .comment_content {
@@ -21,17 +24,17 @@
 } */
 
 .comment_author {
-    margin-right: 8px;
-    font-size: 17px;
-    color: rgb(59, 130, 246);
+  margin-right: 8px;
+  font-size: 17px;
+  color: rgb(255, 112, 23);
 }
 
 .created_at {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .comment_text {
-    font-size: 17px;
+  font-size: 17px;
 }
 
 /* .comment_actions {
@@ -42,10 +45,10 @@
 } */
 
 .comment_action {
-    margin-right: 8px;
-    font-size: 5px;
+  margin-right: 8px;
+  font-size: 5px;
 }
 
 .comment_action:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
