@@ -1,0 +1,11 @@
+.posts_Main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.posts__ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

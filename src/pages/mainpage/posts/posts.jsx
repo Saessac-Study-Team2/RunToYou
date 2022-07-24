@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../../../components/Pagination/Pagination";
 import Search from "../serch/search";
 import { render } from "@testing-library/react";
-
+import styles from "./posts.module.css";
 const Posts = ({
   // offset,
   // limit,
@@ -32,9 +32,7 @@ const Posts = ({
   const [posts, setPosts] = useRecoilState(postsState);
   const [renderPosts, setRenderPosts] = useState(posts);
 
-  console.log("recruit??", recruit);
   let filteredPosts = posts;
-
   for (let i = 0; i < posts.length; i++) {
     for (let key in posts[i]) {
       if (key === "recruit" && recruit !== "모집상태") {
@@ -61,7 +59,6 @@ const Posts = ({
     }
   }
   setPostsLength(filteredPosts.length);
-
   useEffect(() => {
     setPostsLength(filteredPosts.length);
     setPage(1);
@@ -75,43 +72,41 @@ const Posts = ({
       setPage(1);
     }
   }, [selected, writer, recruit, myPosts]);
-
-  console.log("토탈?", filteredPosts);
-  console.log("postLength??", postsLength);
-
   filteredPosts = filteredPosts.slice(offset, offset + limit);
   return (
     <>
-      <Search
-        selected={selected}
-        setPosts={setPosts}
-        setSelected={setSelected}
-        posts={posts}
-        recruit={recruit}
-        setRecruit={setRecruit}
-        writer={writer}
-        setWriter={setWriter}
-        myPosts={myPosts}
-        setMyPosts={setMyPosts}
-        userId={userId}
-      />
-      <ul>
-        {filteredPosts.map((post, idx) => (
-          <Post
-            locationList={locationList}
-            setPosts={setPosts}
-            key={idx}
-            userId={userId}
-            post={post}
-          />
-        ))}
-      </ul>
-      <Pagination
-        total={postsLength}
-        limit={limit}
-        page={page}
-        setPage={setPage}
-      ></Pagination>
+      <div className={styles.posts_Main}>
+        <Search
+          selected={selected}
+          setPosts={setPosts}
+          setSelected={setSelected}
+          posts={posts}
+          recruit={recruit}
+          setRecruit={setRecruit}
+          writer={writer}
+          setWriter={setWriter}
+          myPosts={myPosts}
+          setMyPosts={setMyPosts}
+          userId={userId}
+        />
+        <ul className={styles.posts__ul}>
+          {filteredPosts.map((post, idx) => (
+            <Post
+              locationList={locationList}
+              setPosts={setPosts}
+              key={idx}
+              userId={userId}
+              post={post}
+            />
+          ))}
+        </ul>
+        <Pagination
+          total={postsLength}
+          limit={limit}
+          page={page}
+          setPage={setPage}
+        ></Pagination>
+      </div>
     </>
   );
 };

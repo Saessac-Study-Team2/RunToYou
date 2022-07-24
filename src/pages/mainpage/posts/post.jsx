@@ -9,7 +9,7 @@ const axios = require("axios");
 
 // MainPage에 posts state에서 데이터를 받아서 게시글 하나를 만드는 컴포넌트
 const Post = ({ post, setPosts, locationList, userId }) => {
-  const createdAt = post.created_at.slice(0, 9);
+  const createdAt = post.created_at.slice(0, 10);
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     setModalOpen(true);
