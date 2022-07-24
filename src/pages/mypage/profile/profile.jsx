@@ -41,12 +41,11 @@ const Profile = () => {
         nickname={nickname}
         setNickname={setNickname}
       />
-      {/* Prefer Place */}
       <PreferPlace />
-      {/* 비밀번호 변경 */}
-      <UpdatePW />
-      {/* 계정 삭제 */}
-      <DeleteAccount />
+      <div className={styles.btns}>
+        <UpdatePW />
+        <DeleteAccount />
+      </div>
     </section>
   );
 };
