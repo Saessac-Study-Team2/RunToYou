@@ -89,6 +89,7 @@ const Posts = ({
           setMyPosts={setMyPosts}
           userId={userId}
         />
+
         <ul className={styles.posts__ul}>
           {filteredPosts.map((post, idx) => (
             <Post
