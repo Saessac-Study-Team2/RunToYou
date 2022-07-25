@@ -27,7 +27,7 @@ const Recommended = ({ isUser, setIsUser }) => {
         })}
       </section>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
