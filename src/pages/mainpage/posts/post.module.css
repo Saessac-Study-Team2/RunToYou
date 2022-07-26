@@ -29,7 +29,7 @@
 }
 
 .post__title {
-  color: rgba(0, 0, 0, 0.6);
+  color: black;
   font-size: 20px;
   text-align: center;
 }
@@ -58,13 +58,13 @@
 
 .post__content {
   background-color: white;
-  color: black;
+  color: rgba(0, 0, 0, 0.6);
   width: 100px;
   height: 35px;
   border-radius: 20px;
   padding: 10px;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -107,7 +107,8 @@
 }
 
 .post__createAt {
-  font-size: 15px;
+  font-size: 13px;
+  opacity: 0.6;
 }
 
 .post__userImage {
@@ -115,4 +116,7 @@
   height: 42px;
   background-color: teal;
   border-radius: 50%;
+}
+.post__userName {
+  margin-right: 10px;
 }
