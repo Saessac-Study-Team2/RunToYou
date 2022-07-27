@@ -1,10 +1,9 @@
-import { useRecoilState, useResetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import Post from "./post";
 import {
   userIDState,
   postsLengthState,
   postsState,
-  isUserState,
 } from "../../../library/atom";
 import { useEffect, useState } from "react";
 import Pagination from "../../../components/Pagination/Pagination";
@@ -12,15 +11,7 @@ import Search from "../serch/search";
 import { render } from "@testing-library/react";
 import styles from "./posts.module.css";
 
-const Posts = ({
-  // offset,
-  // limit,
-  // recruit,
-  // writer,
-  locationList,
-  // myPosts,
-  setFilteredPosts,
-}) => {
+const Posts = ({ locationList }) => {
   const [userId, setUserId] = useRecoilState(userIDState);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
