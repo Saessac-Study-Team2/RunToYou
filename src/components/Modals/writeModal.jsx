@@ -13,6 +13,10 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
   const [recruiting, setRecruting] = useState("recruiting");
   const navigate = useNavigate();
   const recruitList = ["모집중", "모집완료"];
+  const [titleValidation, setTitleValidation] = useState(true);
+  const [contentValidation, setContentValidation] = useState(true);
+  const [locationValidation, setLocationValidation] = useState(true);
+  const [validationMessage, setValidationMessage] = useState("");
 
   useEffect(() => {
     if (header === "글수정") {
@@ -23,9 +27,46 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
     }
   }, []);
 
+  // const handleValidationMessage = () => {
+  //   if (titleValidation === false) {
+  //     setValidationMessage("제목을 입력해주세요");
+  //   }
+  //   if (titleValidation === true && locationValidation === false) {
+  //     setValidationMessage("지역을 선택해주세요");
+  //   }
+  //   if (
+  //     titleValidation === true &&
+  //     locationValidation === true &&
+  //     contentValidation === false
+  //   ) {
+  //     setValidationMessage("내용을 입력해주세요");
+  //   }
+  // };
+
   // 게시글 작성 요청
   const handleRquestSubmit = (e) => {
     e.preventDefault();
+    if (topicTitle.length === 0) {
+      setTitleValidation(false);
+      setValidationMessage("제목을 입력해주세요");
+      console.log(validationMessage);
+      return;
+    }
+    if (
+      topicTitle.length !== 0 &&
+      locationLid !== 0 &&
+      topicContent.length === 0
+    ) {
+      setContentValidation(false);
+      setValidationMessage("내용을 입력해주세요");
+      return;
+    }
+    if (topicTitle.length !== 0 && locationLid === 0) {
+      setLocationValidation(false);
+      setValidationMessage("지역을 선택해주세요");
+      return;
+    }
+
     if (header === "글쓰기") {
       axios
         .post(
@@ -41,7 +82,7 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
         .then(function (response) {
           getPosts()
             .then((data) => {
-              setPosts(data);
+              setPosts(data.reverse());
               close();
               setTopicTitle("");
               setLocationLid(0);
@@ -101,12 +142,18 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
           <main>
             <form>
               <div>
+                <span>{validationMessage}</span>
+              </div>
+
+              <div>
                 <span>제목</span>
                 <input
                   type="text"
                   value={topicTitle}
                   onChange={handleTopicTitle}
                   placeholder="제목을 입력해주세요"
+                  maxlength="25"
+                  required
                 ></input>
               </div>
               <div>
@@ -139,7 +186,6 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
                   </select>
                 </div>
               ) : null}
-
               <div>
                 <span>내용</span>
                 <textarea
@@ -148,6 +194,8 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
                   className="writeModal__content"
                   value={topicContent}
                   onChange={handleTopicContent}
+                  maxlength="150"
+                  required
                 ></textarea>
               </div>
               <button onClick={handleRquestSubmit}>전송</button>
