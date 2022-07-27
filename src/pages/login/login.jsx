@@ -144,7 +144,7 @@ const Login = ({ setIsUser }) => {
             <p className={styles.notice}>Guest로 둘러보기</p>
           </Link>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </section>
   );
