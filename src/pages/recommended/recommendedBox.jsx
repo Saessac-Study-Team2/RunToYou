@@ -22,11 +22,11 @@ function RecommendedBox(props) {
           {props.data.content}
         </div>
         {/* <MapContainer data={props}/> */}
-        <div className={styles.like_Btn}>
+        {/* <div className={styles.like_Btn}>
           <button className={styles.container_left_like}>
             <span onClick={like}>좋아요👍🏻</span> {likeBtn}
           </button>
-        </div>
+        </div> */}
       </div>
       <div>
         <div className={styles.container_right}>
