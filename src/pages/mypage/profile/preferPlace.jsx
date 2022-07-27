@@ -26,12 +26,10 @@ const PreferPlace = () => {
     event.preventDefault();
     setModal(!modal);
     const newPlace = placeRef.current.value;
-    const currentsts = placeRef.current.text;
     const newPlaceArr = newPlace.split(',');
     const placeNumArr = userPlace.map(
       el => Number(el[0]) === Number(newPlaceArr[0])
     );
-    console.log(currentsts);
     if (newPlaceArr[0] === '추가') return;
     if (!placeNumArr.includes(true)) {
       addPlace(newPlaceArr[0]) //
