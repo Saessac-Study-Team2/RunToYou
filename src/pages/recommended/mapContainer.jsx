@@ -39,7 +39,8 @@ console.log(props.data.data);
       <Map
         center={props.data.data.point[0]}
         isPanto={state.isPanto}
-        style={{ width: "500px", height: "500px" }}
+        style={{ width: "500px", height: "500px", position: "fixed",
+                top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
       >
         {props.data.data.point.map((e, i) => (
         <MapMarker position={e}>
@@ -48,10 +49,10 @@ console.log(props.data.data);
         )
         )}
       </Map>
-      <div>
+      {/* <div>
         <input onChange={handleSearchAddress}></input>
         <button onClick={SearchMap}>클릭</button>
-      </div>
+      </div> */}
     </>
   )
 }
