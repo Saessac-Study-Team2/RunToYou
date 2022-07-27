@@ -4,18 +4,20 @@ import {
   userIDState,
   postsLengthState,
   postsState,
+  isUserState,
 } from "../../../library/atom";
 import { useEffect, useState } from "react";
 import Pagination from "../../../components/Pagination/Pagination";
 import Search from "../serch/search";
+
 import { render } from "@testing-library/react";
 import styles from "./posts.module.css";
+
 const Posts = ({
   // offset,
   // limit,
   // recruit,
   // writer,
-  openModal,
   locationList,
   // myPosts,
   setFilteredPosts,
@@ -33,6 +35,7 @@ const Posts = ({
   const [renderPosts, setRenderPosts] = useState(posts);
 
   let filteredPosts = posts;
+
   for (let i = 0; i < posts.length; i++) {
     for (let key in posts[i]) {
       if (key === "recruit" && recruit !== "모집상태") {
@@ -73,6 +76,7 @@ const Posts = ({
     }
   }, [selected, writer, recruit, myPosts]);
   filteredPosts = filteredPosts.slice(offset, offset + limit);
+
   return (
     <>
       <div className={styles.posts_Main}>
@@ -88,6 +92,7 @@ const Posts = ({
           myPosts={myPosts}
           setMyPosts={setMyPosts}
           userId={userId}
+          locationList={locationList}
         />
 
         <ul className={styles.posts__ul}>
@@ -101,6 +106,7 @@ const Posts = ({
             />
           ))}
         </ul>
+
         <Pagination
           total={postsLength}
           limit={limit}
