@@ -43,7 +43,6 @@ const MainPage = ({ isUser, setIsUser }) => {
   return (
     <>
       <div className={styles.mainPage}>
-        <Header isUser={isUser} setIsUser={setIsUser} />
         <div className={styles.main}>
           <div className={styles.mainContents}>
             <Weather />
@@ -55,6 +54,7 @@ const MainPage = ({ isUser, setIsUser }) => {
           </div>
         </div>
         {/* <Footer /> */}
+        <Header isUser={isUser} setIsUser={setIsUser} />
       </div>
     </>
   );
