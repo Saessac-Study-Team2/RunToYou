@@ -19,9 +19,17 @@ const DeleteAccount = props => {
 
   return (
     <>
-      {modal ? (
-        <div className={styles.dltAccount}>
-          <section className={styles.dltAccountModal}>
+      {modal && (
+        <div
+          className={styles.dltAccount}
+          onClick={() => {
+            setModal(!modal);
+          }}
+        >
+          <section
+            className={styles.dltAccountModal}
+            onClick={e => e.stopPropagation()}
+          >
             <p className={styles.messasge1}>
               정말 떠나시는 건가요? 한 번 더 생각해 주시겠어요?
             </p>
@@ -48,18 +56,18 @@ const DeleteAccount = props => {
             </div>
           </section>
         </div>
-      ) : (
-        <div>
-          <button
-            className={styles.modalBtn}
-            onClick={() => {
-              setModal(!modal);
-            }}
-          >
-            회원 탈퇴
-          </button>
-        </div>
       )}
+
+      <div>
+        <button
+          className={styles.modalBtn}
+          onClick={() => {
+            setModal(!modal);
+          }}
+        >
+          회원 탈퇴
+        </button>
+      </div>
     </>
   );
 };
