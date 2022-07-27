@@ -1,8 +1,87 @@
 .container {
   display: flex;
+  margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+   
+    
+  align-items: center;
+  
+  width: 36rem;
+  border-radius: 1rem;
+  background-color: #FFF7F1;
+  box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
 }
 
 .picture {
-  width: 100px;
-  height: 100px;
+  width: 14rem;
+  height: 14rem;
+  border-radius: 200px;
+  
+}
+
+.container_left {
+  padding: 20px;
+  margin: 10px;
+}
+
+.container_left_like {
+  color: white;
+  white-space: nowrap;
+  background-color: #B5876D;
+  width: 5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  font-size: 0.7rem;
+  box-shadow: rgb(0 0 0 / 40%) 0px 2px 2px, rgb(0 0 0 / 30%) 0px 6px 8px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+  
+
+}
+
+.container_left_title {
+  color: #ff914d;
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+.container_left_location {
+
+}
+
+.container_left_content {
+
+}
+
+.container_right {
+  padding: 20px;
+  margin: 10px;
+}
+
+.api {
+  padding: 20px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.api_btn {
+  color: white;
+  white-space: nowrap;
+  background-color: #B5876D;
+  width: 5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  font-size: 1rem;
+  box-shadow: rgb(0 0 0 / 40%) 0px 2px 2px, rgb(0 0 0 / 30%) 0px 6px 8px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
+  
+}
+
+.like_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

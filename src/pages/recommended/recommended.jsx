@@ -20,7 +20,7 @@ const Recommended = ({ isUser, setIsUser }) => {
             })}
           
           } style={{ color: 'grey', fontSize: '16px' }}>hotPlace</button> */}
-          <button style={{ color: "grey", fontSize: "16px" }}>hotPlace</button>
+          <button className={styles.hotplace} >HotPlace</button>
         </div>
         {data.map((el, idx) => {
           return <RecommendedBox data={el} key={idx} />;
