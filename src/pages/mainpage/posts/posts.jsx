@@ -9,7 +9,6 @@ import {
 import { useEffect, useState } from "react";
 import Pagination from "../../../components/Pagination/Pagination";
 import Search from "../serch/search";
-
 import { render } from "@testing-library/react";
 import styles from "./posts.module.css";
 
@@ -33,7 +32,6 @@ const Posts = ({
   const [myPosts, setMyPosts] = useState(false);
   const [posts, setPosts] = useRecoilState(postsState);
   const [renderPosts, setRenderPosts] = useState(posts);
-
   let filteredPosts = posts;
 
   for (let i = 0; i < posts.length; i++) {
@@ -61,7 +59,7 @@ const Posts = ({
       }
     }
   }
-  setPostsLength(filteredPosts.length);
+  // setPostsLength(filteredPosts.length);
   useEffect(() => {
     setPostsLength(filteredPosts.length);
     setPage(1);
