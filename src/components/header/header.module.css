@@ -1,0 +1,61 @@
+@value Rtygrey, RtyBrown,RtyBlack,RtyIvory,RtyRed,dimBlack, RtyPurple, RtyOrange, dimWhite, RtyWhite, RtyGrey from '../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../common/size.css';
+
+.header {
+  width: 100vw;
+  height: 52px;
+  background-color: RtyIvory;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.1rem;
+  position: fixed;
+  /* border-bottom: RtyBrown 0.2rem solid; */
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px,
+    rgba(0, 0, 0, 0.3) 0px 6px 8px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.avata {
+  margin: 4px 8px 0 8px;
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 5.5rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px,
+    rgba(0, 0, 0, 0.3) 0px 6px 8px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.logo {
+  margin-left: 1rem;
+  height: 56px;
+}
+.nickname {
+  margin: 0 8px;
+  white-space: nowrap;
+}
+
+.btnContainer {
+  display: flex;
+  /* width: 100%; */
+  text-align: center;
+  align-items: center;
+}
+.button {
+  color: RtyWhite;
+  white-space: nowrap;
+  background-color: RtyBrown;
+  width: 5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  font-size: 1rem;
+}
+
+.button:hover {
+  background-color: RtyOrange;
+}
+
+.btnContainer a {
+  display: inline-block;
+  width: 100%;
+  font-size: 1.4rem;
+  white-space: nowrap;
+}

@@ -1,0 +1,122 @@
+.post__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 600px;
+  height: 200px;
+  background-color: white;
+  border-radius: 1rem;
+  margin: 10px;
+  padding: 15px;
+  box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px,
+    rgb(0 0 0 / 20%) 0px -3px 0px inset;
+}
+
+.post__info__col1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.postPageBtn {
+  font-size: 15px;
+  background-color: white;
+  width: 550px;
+  height: 30px;
+  box-shadow: none;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.post__title {
+  color: black;
+  font-size: 20px;
+  text-align: center;
+}
+
+.post__userImage {
+  margin-right: 13px;
+  height: 20px;
+  width: 10px;
+}
+
+.post__info__col2 {
+  flex-basis: 17.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post__info__col3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.post__content {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.6);
+  width: 100px;
+  height: 35px;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  text-align: center;
+}
+
+.post__place {
+  background-color: #b5876d;
+  line-height: 30px;
+  width: 65px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 15px;
+  color: white;
+  margin-left: 2px;
+}
+
+.post__info__col4 {
+  flex-basis: 17.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.post__recruit {
+  background-color: #b5876d;
+  line-height: 30px;
+  width: 65px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 15px;
+  color: white;
+  margin-right: 2px;
+}
+
+.post__createAt {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.post__userImage {
+  width: 42px;
+  height: 42px;
+  background-color: teal;
+  border-radius: 50%;
+}
+.post__userName {
+  margin-right: 10px;
+}

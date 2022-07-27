@@ -1,0 +1,99 @@
+.writeBtn {
+  background-color: #ff914d;
+  width: 70px;
+  height: 30px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+}
+.myPosts {
+  background-color: #ff914d;
+  width: 70px;
+  height: 30px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+}
+
+.search__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container__col1 {
+  display: flex;
+  width: 155px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container__col2 {
+  display: flex;
+  margin-top: 20px;
+}
+
+.selectBox {
+  position: relative;
+  width: 115px;
+  height: 35px;
+  border-radius: 4px;
+  border: 1px solid #ff914d;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5px;
+}
+.selectBox .select {
+  width: inherit;
+  height: inherit;
+  background: transparent;
+  border: 0 none;
+  outline: 0 none;
+  padding: 0 5px;
+  position: relative;
+  z-index: 3;
+}
+.selectBox .select option {
+  background: #ff914d;
+  color: #fff;
+  padding: 3px 0;
+  font-size: 16px;
+}
+.selectBox .icoArrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 35px;
+  height: inherit;
+  border-left: 1px solid #ff914d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectBox .icoArrow img {
+  width: 50%;
+  transition: 0.3s;
+}
+
+.selectBox .select:focus + .icoArrow img {
+  transform: rotate(180deg);
+}
+.writer {
+  border: 1px solid #ff914d;
+  text-align: center;
+  width: 130px;
+}
+.writer:focus {
+  outline: none;
+}
+
+.select1:focus,
+.select2:focus,
+.writer:focus {
+  outline: 2px solid skyblue;
+}

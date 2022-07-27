@@ -1,0 +1,59 @@
+@value RtyPurple,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../common/size.css';
+
+.bgImg {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../../../public/img/6.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+  height: 100vh;
+  background-color: dimBlack;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  width: 100%;
+}
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  align-items: center;
+  text-align: center;
+  padding: 6px 12px;
+}
+.link {
+  white-space: nowrap;
+  width: 60%;
+}
+.button {
+  margin: 10px 0;
+  width: 100%;
+  height: 40px;
+  font-size: fontSmall;
+  color: RtyWhite;
+  background-color: transparent;
+  border: RtyWhite solid 2px;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.button:hover {
+  color: RtyWhite;
+  background-color: dimWhite;
+  border: RtyOrange solid 2px;
+}

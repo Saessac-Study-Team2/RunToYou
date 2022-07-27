@@ -1,0 +1,21 @@
+@value RtyPurple,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../common/size.css';
+
+.mypage {
+  width: 100vw;
+  /* background-color: dimBlack; */
+  height: 100vh;
+  display: flex;
+  font-display: column;
+  justify-content: center;
+}
+
+.main {
+  align-items: center;
+  width: 36rem;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  position: relative;
+  height: 80vh;
+}

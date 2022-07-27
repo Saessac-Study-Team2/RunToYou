@@ -1,0 +1,77 @@
+@value RtyRed,RtyBrown,RtyPurple,RtyBlack,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
+.section {
+  width: 100%;
+  display: flex;
+  margin-right: 2rem;
+  align-items: start;
+  justify-content: space-between;
+}
+.places {
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+}
+
+.info {
+  margin-left: 2rem;
+  color: RtyBlack;
+  /* background-color: blue; */
+  white-space: nowrap;
+  font-size: 1.15rem;
+  width: 5rem;
+  height: 2rem;
+  line-height: 2rem;
+}
+
+.editPlaces {
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.editPlace {
+  box-sizing: content-box;
+  line-height: 2rem;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background-color: RtyGrey;
+  margin: 0 4px 2px 0;
+  color: RtyBlack;
+  display: flex;
+  justify-content: space-around;
+}
+
+.editPlace:hover {
+  background-color: RtyOrange;
+  color: white;
+}
+.xmark {
+  right: 6px;
+  color: RtyBrown;
+}
+.xmark:hover {
+  color: RtyRed;
+}
+
+.select {
+  width: 6rem;
+  height: 2rem;
+  background-color: RtyBrown;
+  padding: 5px 10px 5px 10px;
+  color: white;
+  border-radius: 0.5rem;
+  outline: #fff 1px;
+  margin-right: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px,
+    rgba(0, 0, 0, 0.3) 0px 6px 8px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.select:hover {
+  background-color: RtyOrange;
+}
+.select option {
+  background: dimBlack;
+  color: #fff;
+  padding: 3px 0;
+}
