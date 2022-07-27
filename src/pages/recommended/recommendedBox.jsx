@@ -3,11 +3,11 @@ import MapModal from "./mapModal";
 import styles from "./recommendedBox.module.css";
 
 function RecommendedBox(props) {
-  let [likeBtn, setLikeBtn] = useState(0);
+  // let [likeBtn, setLikeBtn] = useState(0);
 
-  function like() {
-    setLikeBtn(likeBtn + 1);
-  }
+  // function like() {
+  //   setLikeBtn(likeBtn + 1);
+  // }
   let [modal, setModal] = useState(false);
 
   return (
