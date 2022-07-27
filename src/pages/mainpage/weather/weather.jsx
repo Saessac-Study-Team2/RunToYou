@@ -134,6 +134,7 @@ function Weather() {
                 <img
                   className={styles.interval_weather_icons}
                   src={el.icon}
+                  alt="weather_icons"
                 ></img>
                 <dd className={styles.interval_temp}>{`${el.temp}°`}</dd>
               </dl>

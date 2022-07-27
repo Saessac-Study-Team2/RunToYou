@@ -14,21 +14,21 @@ import {
 import { getPosts } from "../../library/axios";
 
 const axios = require("axios");
-const MainPage = ({ isUser, setIsUser }) => {
+const MainPage = () => {
   const [posts, setPosts] = useRecoilState(postsState);
   const [locationList, setLocationList] = useRecoilState(locationListState);
-  const [userId, setUserId] = useRecoilState(userIDState);
+
   const [postsLength, setPostsLength] = useRecoilState(postsLengthState);
 
-  //장소 리스트 가져오기
-  useEffect(() => {
-    axios
-      .get("http://34.168.215.145/location/list")
-      .then((res) => {
-        setLocationList(res.data);
-      })
-      .catch((error) => console.log("error", error));
-  }, []);
+  // //장소 리스트 가져오기
+  // useEffect(() => {
+  //   axios
+  //     .get("http://34.168.215.145/location/list")
+  //     .then((res) => {
+  //       setLocationList(res.data);
+  //     })
+  //     .catch((error) => console.log("error", error));
+  // }, []);
 
   // 게시글 받아오기
   useEffect(() => {
@@ -54,7 +54,7 @@ const MainPage = ({ isUser, setIsUser }) => {
           </div>
         </div>
         {/* <Footer /> */}
-        <Header isUser={isUser} setIsUser={setIsUser} />
+        <Header />
       </div>
     </>
   );

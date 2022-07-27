@@ -1,1 +1,100 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
 
+.writeModal__content {
+  width: 370px;
+  height: 200px;
+  background-color: #f4f5f8;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.content__span {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+.title__span {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.title__input {
+  background-color: #f4f5f8;
+  width: 300px;
+  height: 45px;
+  border-radius: 15px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.location__span {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.selectLid {
+  background-color: #f4f5f8;
+  width: 300px;
+  height: 45px;
+  border-radius: 15px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+
+.recruit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.recruit__span {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.select__recruit {
+  background-color: #f4f5f8;
+  width: 300px;
+  height: 45px;
+  border-radius: 15px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+.submit {
+  background-color: #ff914d;
+  padding: 6px 12px;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.vaild {
+  margin-bottom: 10px;
+}
+
+.validationMessage {
+  color: red;
+  opacity: 0.8;
+}

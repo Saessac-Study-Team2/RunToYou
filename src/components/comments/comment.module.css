@@ -37,6 +37,7 @@
 
 .comment_text {
   font-size: 17px;
+  word-break: break-all;
 }
 
 /* .comment_actions {

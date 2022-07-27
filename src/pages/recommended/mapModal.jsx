@@ -9,7 +9,7 @@ const ModalBackdrop = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   display: grid;
   place-items: center;
 `;
@@ -17,7 +17,7 @@ const ModalBackdrop = styled.div`
 function MapModal(props) {
   console.log("mo");
   return (
-    <ModalBackdrop>
+    <ModalBackdrop onClick={() => props.setModal(false)}>
       <MapContainer data={props} />
     </ModalBackdrop>
   );

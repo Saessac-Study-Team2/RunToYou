@@ -52,7 +52,7 @@ const Post = ({ post, setPosts, locationList, userId }) => {
           width={100}
           src={`http://34.168.215.145/${post.userPicture}`}
         ></img>
-        <span className={styles.post__userName}>{post.userID}</span>
+        <span className={styles.post__userName}>{post.nickName}</span>
         <div className={styles.post__createAt}>{createdAt}</div>
       </div>
       <div className={styles.post__info__col4}>

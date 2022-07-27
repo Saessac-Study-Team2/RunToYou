@@ -8,6 +8,7 @@ import { postsState, locationListState, userIDState } from "../../library/atom";
 import Comments from "../../components/comments/comments";
 import Header from "../../components/header/header";
 import styles from "./postPage.module.css";
+import ConfirmAlert from "../../components/Modals/confirmAlert";
 const axios = require("axios");
 
 const PostPage = () => {
@@ -18,6 +19,8 @@ const PostPage = () => {
   const [posts, setPosts] = useRecoilState(postsState);
   const [locationList, setLocationList] = useRecoilState(locationListState);
   const [userId, setUserId] = useRecoilState(userIDState);
+  const [confirmModal, setConfirmModal] = useState(false);
+
   const navigate = useNavigate();
 
   // 날짜
@@ -61,8 +64,21 @@ const PostPage = () => {
       .catch((error) => console.log("error", error));
   }, []);
 
+  const openConfirm = () => {
+    setConfirmModal(!confirmModal);
+  };
+
+  const confirmDelete = (res) => {
+    if (res) {
+      openConfirm();
+      PostDelete();
+    } else {
+      openConfirm();
+    }
+  };
+
   // 글 삭제 요청
-  const handlePostDelete = () => {
+  const PostDelete = () => {
     axios
       .delete(`http://34.168.215.145/topic/${id}`, {
         headers: { Authorization: getLoginCookie() },
@@ -81,6 +97,12 @@ const PostPage = () => {
   };
   return (
     <div className={styles.post_page_container}>
+      {confirmModal && (
+        <ConfirmAlert
+          message={"삭제 하시겠습니까?"}
+          onComfirm={confirmDelete}
+        />
+      )}
       <Header />
       {!loading ? (
         <div className={styles.post_page_wrapper}>
@@ -102,7 +124,7 @@ const PostPage = () => {
               locationList={locationList}
             ></WriteModal>
             {userId === post[0].userID ? (
-              <button onClick={handlePostDelete}>삭제</button>
+              <button onClick={openConfirm}>삭제</button>
             ) : null}
             {userId === post[0].userID ? (
               <button onClick={openModal}>수정</button>

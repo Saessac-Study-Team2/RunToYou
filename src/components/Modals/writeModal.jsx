@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getPosts } from "../../library/axios";
 import { getLoginCookie } from "../../library/cookie";
 import { useParams, useNavigate } from "react-router";
+import styles from "./writeModal.module.css";
 import "./writeModal.css";
 const axios = require("axios");
 
@@ -45,25 +46,27 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
 
   // 게시글 작성 요청
   const handleRquestSubmit = (e) => {
+    console.log(locationLid);
     e.preventDefault();
+
     if (topicTitle.length === 0) {
       setTitleValidation(false);
       setValidationMessage("제목을 입력해주세요");
-      console.log(validationMessage);
+      return;
+    }
+    if (locationLid == 0) {
+      console.log("메시지는", validationMessage);
+      setLocationValidation(false);
+      setValidationMessage("지역을 선택해주세요");
       return;
     }
     if (
       topicTitle.length !== 0 &&
-      locationLid !== 0 &&
+      locationLid !== 129 &&
       topicContent.length === 0
     ) {
       setContentValidation(false);
       setValidationMessage("내용을 입력해주세요");
-      return;
-    }
-    if (topicTitle.length !== 0 && locationLid === 0) {
-      setLocationValidation(false);
-      setValidationMessage("지역을 선택해주세요");
       return;
     }
 
@@ -87,6 +90,7 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
               setTopicTitle("");
               setLocationLid(0);
               setTopicContent("");
+              setValidationMessage("");
             })
             .catch((error) => console.log("error", error));
           console.log("well done!");
@@ -107,6 +111,7 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
           { headers: { Authorization: getLoginCookie() } }
         )
         .then(() => {
+          setValidationMessage("");
           close();
           navigate(`/mainpage`);
         })
@@ -141,12 +146,13 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
           </header>
           <main>
             <form>
-              <div>
-                <span>{validationMessage}</span>
+              <div className={styles.vaild}>
+                <span className={styles.validationMessage}>
+                  {validationMessage}
+                </span>
               </div>
-
-              <div>
-                <span>제목</span>
+              <div className={styles.title}>
+                <span className={styles.title__span}>제목</span>
                 <input
                   type="text"
                   value={topicTitle}
@@ -154,12 +160,17 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
                   placeholder="제목을 입력해주세요"
                   maxlength="25"
                   required
+                  className={styles.title__input}
                 ></input>
               </div>
-              <div>
-                <span>지역</span>
-                <select onChange={handleLocationLid} value={locationLid}>
-                  <option>지역을 선택해주세요</option>
+              <div className={styles.location}>
+                <span className={styles.location__span}>지역</span>
+                <select
+                  className={styles.selectLid}
+                  onChange={handleLocationLid}
+                  value={locationLid}
+                >
+                  <option value={0}>지역을 선택해주세요</option>
                   {locationList.map((x, idx) => {
                     return (
                       <option key={idx} value={x.lid}>
@@ -170,9 +181,13 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
                 </select>
               </div>
               {header === "글수정" ? (
-                <div>
-                  <span>모집상태</span>
-                  <select onChange={handleRecruit} value={recruiting}>
+                <div className={styles.recruit}>
+                  <span className={styles.recruit__span}>모집상태</span>
+                  <select
+                    className={styles.select__recruit}
+                    onChange={handleRecruit}
+                    value={recruiting}
+                  >
                     {recruitList.map((el, idx) => {
                       return (
                         <option
@@ -186,19 +201,21 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
                   </select>
                 </div>
               ) : null}
-              <div>
-                <span>내용</span>
+              <div className={styles.content}>
+                <span className={styles.content__span}>내용</span>
                 <textarea
                   placeholder="내용을 입력해주세요"
                   type="text"
-                  className="writeModal__content"
+                  className={styles.writeModal__content}
                   value={topicContent}
                   onChange={handleTopicContent}
                   maxlength="150"
                   required
                 ></textarea>
               </div>
-              <button onClick={handleRquestSubmit}>전송</button>
+              <button className={styles.submit} onClick={handleRquestSubmit}>
+                전송
+              </button>
             </form>
           </main>
           <footer>
