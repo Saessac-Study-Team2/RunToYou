@@ -8,9 +8,9 @@ import styles from './myPage.module.css';
 const MyPage = () => {
   return (
     <section className={styles.mypage}>
-      <Header />
       {/* <div className={styles.main}> */}
       <Profile />
+      <Header />
       {/* </div> */}
     </section>
   );
