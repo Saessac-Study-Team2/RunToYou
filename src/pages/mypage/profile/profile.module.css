@@ -2,6 +2,7 @@
 @value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
 
 .profile {
+  position: relative;
   margin: auto;
   border-radius: 1rem;
   background-color: RtyIvory;
@@ -35,6 +36,9 @@
 }
 
 .btns {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 5.5rem;
   display: flex;
   justify-content: center;
   margin: 1rem;

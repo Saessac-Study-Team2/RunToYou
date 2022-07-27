@@ -12,7 +12,7 @@ const PreferPlace = () => {
   const placeRef = useRef();
 
   const handleDeleteLocation = event => {
-    event.preventDefault();
+    // event.preventDefault();
     const arr = [...userPlace];
     const deletedPlaces = arr.filter(el => {
       return Number(el[0]) !== event.target.value;
@@ -69,7 +69,6 @@ const PreferPlace = () => {
       </div>
       <select
         className={styles.select}
-        // size={8}
         ref={placeRef}
         name='place'
         onChange={handleAddLocation}
@@ -83,7 +82,6 @@ const PreferPlace = () => {
           </option>
         ))}
       </select>
-      {/* </div> */}
     </section>
   );
 };

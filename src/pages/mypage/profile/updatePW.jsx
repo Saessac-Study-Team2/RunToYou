@@ -50,15 +50,17 @@ const UpdatePW = props => {
   return (
     <section>
       {!modal && (
-        <button
-          className={styles.modalBtn}
-          type='submit'
-          onClick={() => {
-            setModal(!modal);
-          }}
-        >
-          비밀번호 변경하기
-        </button>
+        <div>
+          <button
+            className={styles.modalBtn}
+            type='submit'
+            onClick={() => {
+              setModal(!modal);
+            }}
+          >
+            비밀번호 변경
+          </button>
+        </div>
       )}
       {modal && (
         <div className={styles.modalWraper}>
