@@ -7,6 +7,7 @@ const MapContainer = (props) => {
     center: { lat: 37.49676871972202, lng: 127.02474726969814 },
     // 지도 위치 변경시 panto를 이용할지(부드럽게 이동)
     isPanto: true,
+    
   });
   const [searchAddress, SetSearchAddress] = useState();
 
@@ -41,6 +42,7 @@ console.log(props.data.data);
         isPanto={state.isPanto}
         style={{ width: "500px", height: "500px", position: "fixed",
                 top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
+        level={7}
       >
         {props.data.data.point.map((e, i) => (
         <MapMarker position={e}>
