@@ -49,22 +49,26 @@ const UpdatePW = props => {
 
   return (
     <section>
-      {!modal && (
-        <div>
-          <button
-            className={styles.modalBtn}
-            type='submit'
-            onClick={() => {
-              setModal(!modal);
-            }}
-          >
-            비밀번호 변경
-          </button>
-        </div>
-      )}
+      <div>
+        <button
+          className={styles.modalBtn}
+          type='submit'
+          onClick={() => {
+            setModal(!modal);
+          }}
+        >
+          비밀번호 변경
+        </button>
+      </div>
+
       {modal && (
-        <div className={styles.modalWraper}>
-          <div className={styles.modal}>
+        <div
+          className={styles.modalWraper}
+          onClick={() => {
+            setModal(!modal);
+          }}
+        >
+          <div className={styles.modal} onClick={e => e.stopPropagation()}>
             <p className={styles.info}>비밀 번호 변경</p>
             <p className={styles.info2}>모두 입력 해 주세요</p>
             <div className={styles.inputContainer}>
