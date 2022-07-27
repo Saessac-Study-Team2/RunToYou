@@ -25,6 +25,7 @@
   text-align: center;
 }
 .container {
+  position: relative;
   width: 50%;
   height: 100vh;
   background-color: dimBlack;
@@ -36,11 +37,15 @@
 
 .title {
   font-size: 48px;
+  color: RtyGrey;
+  font-weight: 700;
 }
-
+.formInput {
+  padding: 1rem;
+}
 .formInput,
 .button {
-  width: 60%;
+  width: 50%;
   margin: 10px 0px;
   height: 40px;
   font-size: fontSmall;
@@ -67,7 +72,7 @@
   color: RtyRed;
 }
 .link {
-  width: 60%;
+  width: 50%;
   text-align: center;
 }
 .link > a {
@@ -76,6 +81,7 @@
   color: RtyBlack;
 }
 .notice {
+  padding: 0.3rem;
   border-radius: 12px;
   font-size: 1rem;
   color: RtyWhite;
