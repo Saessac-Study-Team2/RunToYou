@@ -9,24 +9,20 @@ import {
   postsState,
   locationListState,
   userIDState,
-  postsLengthState,
   userState,
 } from '../../library/atom';
 import { getPosts, getUsers } from '../../library/axios';
-
 const axios = require('axios');
 const MainPage = () => {
   const [posts, setPosts] = useRecoilState(postsState);
   const [locationList, setLocationList] = useRecoilState(locationListState);
   const [users, setUsers] = useState([]);
-  const [postsLength, setPostsLength] = useRecoilState(postsLengthState);
 
   // 게시글 받아오기
   useEffect(() => {
     getPosts()
       .then(data => {
         setPosts(data.reverse());
-        setPostsLength(data.length);
       })
       .catch(error => console.log('error', error));
   }, []);

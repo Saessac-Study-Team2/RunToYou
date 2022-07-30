@@ -53,7 +53,4 @@ export const locationListState = atom({
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
-export const postsLengthState = atom({
-  key: 'postsLengthState',
-  default: 0,
-});
+
