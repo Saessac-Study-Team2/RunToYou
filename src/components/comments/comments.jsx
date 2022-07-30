@@ -8,14 +8,11 @@ import { isUserState } from "../../library/atom";
 import { getLoginCookie } from "../../library/cookie";
 import styles from "./comments.module.css";
 
-// TODO : 로그인을 안 했을 때 상세페이지에 들어갈 수 없게 설정, 코드 수정하기
-// TODO : 로딩 스테이트 추가 (+로딩화면)
-// sort=desc OR sort=asc 댓글 정렬 쿼리
-
 const Comments = ({ id }) => {
-  // 위의 props는 topic_id
+  // props는 topic_id
   const [comments, setComments] = useState([]);
   const [isLogin, setIsLogin] = useRecoilState(isUserState);
+  // 페이지네이션
   const [page, setPage] = useState(1);
   const limit = 10;
   const offset = (page - 1) * limit;
