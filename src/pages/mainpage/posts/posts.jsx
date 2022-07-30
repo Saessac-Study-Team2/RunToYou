@@ -1,10 +1,6 @@
 import { useRecoilState } from "recoil";
 import Post from "./post";
-import {
-  userIDState,
-  postsLengthState,
-  postsState,
-} from "../../../library/atom";
+import { userIDState, postsState } from "../../../library/atom";
 import { useEffect, useState } from "react";
 import Pagination from "../../../components/Pagination/Pagination";
 import Search from "../serch/search";
@@ -15,13 +11,11 @@ const Posts = ({ locationList, userId }) => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
-  const [postsLength, setPostsLength] = useRecoilState(postsLengthState);
   const [selected, setSelected] = useState("지역검색");
   const [recruit, setRecruit] = useState("모집상태");
   const [writer, setWriter] = useState("");
   const [myPosts, setMyPosts] = useState(false);
   const [posts, setPosts] = useRecoilState(postsState);
-  const [renderPosts, setRenderPosts] = useState(posts);
   let filteredPosts = posts;
 
   for (let i = 0; i < posts.length; i++) {
@@ -48,24 +42,7 @@ const Posts = ({ locationList, userId }) => {
       }
     }
   }
-
-  setPostsLength(filteredPosts.length);
-
-  useEffect(() => {
-    setPostsLength(filteredPosts.length);
-    setPage(1);
-    if (
-      recruit === "모집상태" &&
-      selected === "지역검색" &&
-      writer === "" &&
-      myPosts === false
-    ) {
-      setPostsLength(posts.length);
-      setPage(1);
-    }
-  }, [selected, writer, recruit, myPosts]);
-  // setPostsLength(filteredPosts.length);
-  filteredPosts = filteredPosts.slice(offset, offset + limit);
+  const renderList = filteredPosts.slice(offset, offset + limit);
 
   return (
     <>
@@ -85,7 +62,7 @@ const Posts = ({ locationList, userId }) => {
           locationList={locationList}
         />
         <ul className={styles.posts__ul}>
-          {filteredPosts.map((post, idx) => (
+          {renderList.map((post, idx) => (
             <Post
               locationList={locationList}
               setPosts={setPosts}
@@ -97,7 +74,7 @@ const Posts = ({ locationList, userId }) => {
         </ul>
 
         <Pagination
-          total={postsLength}
+          total={filteredPosts.length}
           limit={limit}
           page={page}
           setPage={setPage}
