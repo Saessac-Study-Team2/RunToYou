@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router";
-import { getPosts, getProfile } from "../../library/axios";
-import { getLoginCookie } from "../../library/cookie";
-import WriteModal from "../../components/Modals/writeModal";
-import { useRecoilState } from "recoil";
-import { postsState, locationListState, userIDState } from "../../library/atom";
-import Comments from "../../components/comments/comments";
-import Header from "../../components/header/header";
-import styles from "./postPage.module.css";
-import ConfirmAlert from "../../components/Modals/confirmAlert";
-const axios = require("axios");
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router';
+import { getPosts, getProfile } from '../../library/axios';
+import { getLoginCookie } from '../../library/cookie';
+import WriteModal from '../../components/Modals/writeModal';
+import { useRecoilState } from 'recoil';
+import { postsState, locationListState, userIDState } from '../../library/atom';
+import Comments from '../../components/comments/comments';
+import Header from '../../components/header/header';
+import styles from './postPage.module.css';
+import ConfirmAlert from '../../components/Modals/confirmAlert';
+const axios = require('axios');
 
 const PostPage = () => {
   let { id } = useParams();
@@ -24,29 +24,12 @@ const PostPage = () => {
   const navigate = useNavigate();
 
   // 서버 날짜 변환 함수
-  const toLocaleDate = (createdAt) => {
+  const toLocaleDate = createdAt => {
     const createdAtKr = new Date(createdAt);
-    const hours = String(createdAtKr.getHours()).padStart(2, "0");
-    const minutes = String(createdAtKr.getMinutes()).padStart(2, "0");
+    const hours = String(createdAtKr.getHours()).padStart(2, '0');
+    const minutes = String(createdAtKr.getMinutes()).padStart(2, '0');
     return `${createdAtKr.toLocaleDateString()} ${hours}:${minutes}`;
   };
-
-  // 자동적인 get 요청에 useEffect 없음, 리코일로 전역 관리되는 userState에서 userId 받아오면..
-  //userId 가져오기
-  // const getUserInfo = () => {
-  //   getProfile()
-  //     .then((res) => {
-  //       setUserId(res.userId);
-  //       console.log(userId);
-  //     })
-  //     .then((res) => {
-  //       console.log("user id가져오기");
-  //     })
-  //     .catch((error) => {
-  //       console.log("getUserInfo error", error);
-  //     });
-  // };
-  // getUserInfo();
 
   const openModal = () => {
     setModalOpen(true);
@@ -59,18 +42,18 @@ const PostPage = () => {
   useEffect(() => {
     axios
       .get(`http://34.168.215.145/topic/${id}`)
-      .then((res) => {
+      .then(res => {
         setPost(res.data);
         setLoading(!loading);
       })
-      .catch((error) => console.log("error", error));
+      .catch(error => console.log('error', error));
   }, []);
 
   const openConfirm = () => {
     setConfirmModal(!confirmModal);
   };
 
-  const confirmDelete = (res) => {
+  const confirmDelete = res => {
     if (res) {
       openConfirm();
       PostDelete();
@@ -87,22 +70,22 @@ const PostPage = () => {
       })
       .then(() => {
         getPosts()
-          .then((data) => {
+          .then(data => {
             setPosts(data);
           })
           .then(() => {
-            console.log("삭제 완료");
-            navigate("/mainpage");
+            console.log('삭제 완료');
+            navigate('/mainpage');
           });
       })
-      .catch((error) => console.log("error", error));
+      .catch(error => console.log('error', error));
   };
 
   return (
     <div className={styles.post_page_container}>
       {confirmModal && (
         <ConfirmAlert
-          message={"삭제 하시겠습니까?"}
+          message={'삭제 하시겠습니까?'}
           onComfirm={confirmDelete}
         />
       )}
@@ -113,10 +96,10 @@ const PostPage = () => {
             <h1 className={styles.post_page_title}>{post[0].topicTitle}</h1>
             <div className={styles.user_info}>
               <img
-                src={`${"http://34.168.215.145/"}${post[0].userPicture}`}
+                src={`${'http://34.168.215.145/'}${post[0].userPicture}`}
               ></img>
               <div className={styles.user_profile}>
-                <div className={styles.user_id}>{post[0].nickName}</div>{" "}
+                <div className={styles.user_id}>{post[0].nickName}</div>{' '}
                 <div className={styles.created_at}>
                   {toLocaleDate(post[0].created_at)}
                 </div>
@@ -143,7 +126,7 @@ const PostPage = () => {
             <WriteModal
               open={modalOpen}
               close={closeModal}
-              header="글수정"
+              header='글수정'
               setPosts={setPosts}
               post={post}
               locationList={locationList}
