@@ -159,7 +159,7 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
                   value={topicTitle}
                   onChange={handleTopicTitle}
                   placeholder="제목을 입력해주세요"
-                  maxlength="25"
+                  maxlength={25}
                   required
                   className={styles.title__input}
                 ></input>
@@ -210,7 +210,7 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
                   className={styles.writeModal__content}
                   value={topicContent}
                   onChange={handleTopicContent}
-                  maxlength="150"
+                  maxlength={150}
                   required
                 ></textarea>
               </div>
