@@ -57,6 +57,21 @@ export const getProfile = () => {
     .catch(error => console.log('getProfile error', error));
 };
 
+export const getUsers = () => {
+  const config = {
+    method: 'get',
+    url: `${DOMAIN}/user/list`,
+    headers: {},
+  };
+
+  return axios(config) //
+    .then(res => {
+      const data = res.data;
+      return data;
+    })
+    .catch(error => console.log('getUsers error', error));
+};
+
 export const getPlace = () => {
   const config = {
     method: 'get',

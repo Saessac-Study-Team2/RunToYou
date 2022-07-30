@@ -14,6 +14,7 @@ const axios = require('axios');
 const PostPage = () => {
   let { id } = useParams();
   const [post, setPost] = useState({});
+  console.log(post);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [posts, setPosts] = useRecoilState(postsState);
