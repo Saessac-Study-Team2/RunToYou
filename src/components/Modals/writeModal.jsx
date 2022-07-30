@@ -27,26 +27,8 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
       setRecruting(post[0].recruit);
     }
   }, []);
-
-  // const handleValidationMessage = () => {
-  //   if (titleValidation === false) {
-  //     setValidationMessage("제목을 입력해주세요");
-  //   }
-  //   if (titleValidation === true && locationValidation === false) {
-  //     setValidationMessage("지역을 선택해주세요");
-  //   }
-  //   if (
-  //     titleValidation === true &&
-  //     locationValidation === true &&
-  //     contentValidation === false
-  //   ) {
-  //     setValidationMessage("내용을 입력해주세요");
-  //   }
-  // };
-
   // 게시글 작성 요청
   const handleRquestSubmit = (e) => {
-    console.log(locationLid);
     e.preventDefault();
 
     if (topicTitle.length === 0) {
@@ -55,7 +37,6 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
       return;
     }
     if (locationLid == 0) {
-      console.log("메시지는", validationMessage);
       setLocationValidation(false);
       setValidationMessage("지역을 선택해주세요");
       return;
@@ -93,7 +74,6 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
               setValidationMessage("");
             })
             .catch((error) => console.log("error", error));
-          console.log("well done!");
         })
         .catch(function (error) {
           console.log("전송 실패");
@@ -123,9 +103,11 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
   };
 
   const handleTopicTitle = (e) => {
+    if (e.target.value.length == 30) return false;
     setTopicTitle(e.target.value);
   };
   const handleTopicContent = (e) => {
+    if (e.target.value.length == 350) return false;
     setTopicContent(e.target.value);
   };
   const handleLocationLid = (e) => {
@@ -159,10 +141,10 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
                   value={topicTitle}
                   onChange={handleTopicTitle}
                   placeholder="제목을 입력해주세요"
-                  maxlength={25}
                   required
                   className={styles.title__input}
                 ></input>
+                <span className={styles.limit__title}>30자 제한</span>
               </div>
               <div className={styles.location}>
                 <span className={styles.location__span}>지역</span>
@@ -210,10 +192,9 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
                   className={styles.writeModal__content}
                   value={topicContent}
                   onChange={handleTopicContent}
-                  maxlength={150}
-
                   required
                 ></textarea>
+                <span className={styles.limit__content}>300자 제한</span>
               </div>
               <button className={styles.submit} onClick={handleRquestSubmit}>
                 전송
