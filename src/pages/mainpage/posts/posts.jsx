@@ -7,7 +7,7 @@ import Search from "../serch/search";
 import { render } from "@testing-library/react";
 import styles from "./posts.module.css";
 
-const Posts = ({ locationList, userId }) => {
+const Posts = ({ locationList, userId, users }) => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
@@ -20,28 +20,29 @@ const Posts = ({ locationList, userId }) => {
 
   for (let i = 0; i < posts.length; i++) {
     for (let key in posts[i]) {
-      if (key === "recruit" && recruit !== "모집상태") {
-        filteredPosts = filteredPosts.filter((x) => {
+      if (key === 'recruit' && recruit !== '모집상태') {
+        filteredPosts = filteredPosts.filter(x => {
           return x[key] === recruit;
         });
       }
-      if (key === "locationName" && selected !== "지역검색") {
-        filteredPosts = filteredPosts.filter((x) => {
+      if (key === 'locationName' && selected !== '지역검색') {
+        filteredPosts = filteredPosts.filter(x => {
           return x[key] === selected;
         });
       }
-      if (key === "userID" && writer !== "") {
-        filteredPosts = filteredPosts.filter((x) => {
+      if (key === 'userID' && writer !== '') {
+        filteredPosts = filteredPosts.filter(x => {
           return x[key].indexOf(writer) !== -1;
         });
       }
-      if (key === "userID" && myPosts !== false) {
-        filteredPosts = filteredPosts.filter((x) => {
+      if (key === 'userID' && myPosts !== false) {
+        filteredPosts = filteredPosts.filter(x => {
           return x[key] === userId;
         });
       }
     }
   }
+
   const renderList = filteredPosts.slice(offset, offset + limit);
 
   return (
@@ -64,6 +65,7 @@ const Posts = ({ locationList, userId }) => {
         <ul className={styles.posts__ul}>
           {renderList.map((post, idx) => (
             <Post
+              users={users}
               locationList={locationList}
               setPosts={setPosts}
               key={idx}

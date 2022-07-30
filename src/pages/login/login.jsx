@@ -63,7 +63,6 @@ const Login = ({ setIsUser }) => {
     await getProfile()
       .then(res => {
         if (res !== undefined) {
-          console.log(res);
           setUser(res);
           setAboutMe(res.info);
           setUserPlace(res.favoritLocation);
@@ -144,7 +143,7 @@ const Login = ({ setIsUser }) => {
             <p className={styles.notice}>Guest로 둘러보기</p>
           </Link>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </section>
   );

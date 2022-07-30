@@ -211,6 +211,7 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
                   value={topicContent}
                   onChange={handleTopicContent}
                   maxlength={150}
+
                   required
                 ></textarea>
               </div>

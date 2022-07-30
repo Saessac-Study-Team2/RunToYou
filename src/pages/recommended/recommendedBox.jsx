@@ -3,12 +3,14 @@ import MapModal from "./mapModal";
 import styles from "./recommendedBox.module.css";
 
 function RecommendedBox(props) {
-  let [likeBtn, setLikeBtn] = useState(0);
+  // let [likeBtn, setLikeBtn] = useState(0);
 
-  function like() {
-    setLikeBtn(likeBtn + 1);
-  }
+
   let [modal, setModal] = useState(false);
+
+  // function like() {
+  //   setLikeBtn(likeBtn + 1);
+  // }
 
   return (
     <div className={styles.container}>
@@ -22,18 +24,19 @@ function RecommendedBox(props) {
           {props.data.content}
         </div>
         {/* <MapContainer data={props}/> */}
-        <div className={styles.like_Btn}>
+        {/* <div className={styles.like_Btn}>
           <button className={styles.container_left_like}>
             <span onClick={like}>좋아요👍🏻</span> {likeBtn}
           </button>
-        </div>
+        </div> */}
       </div>
       <div>
         <div className={styles.container_right}>
           <img src={props.data.picture} className={styles.picture}></img>
         </div>
         <div className={styles.api}>
-          <button className={styles.api_btn}
+          <button
+            className={styles.api_btn}
             onClick={() => {
               setModal(!modal);
             }}
@@ -41,7 +44,9 @@ function RecommendedBox(props) {
             지도보기
           </button>
         </div>
-        {modal === true ? <MapModal data={props.data} /> : null}
+        {modal === true ? (
+          <MapModal data={props.data} setModal={setModal} />
+        ) : null}
         {/* {modal === true ? '안녕디지몬' : null} */}
       </div>
     </div>
