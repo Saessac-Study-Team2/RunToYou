@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import WriteModal from "../../../components/Modals/writeModal";
-import PostPage from "../postPage";
-import styles from "./post.module.css";
-import { Link, useNavigate } from "react-router-dom";
-import { getLoginCookie } from "../../../library/cookie";
-import { getPosts, getProfile } from "../../../library/axios";
-const axios = require("axios");
+import React, { useState } from 'react';
+import WriteModal from '../../../components/Modals/writeModal';
+import PostPage from '../postPage';
+import styles from './post.module.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { getLoginCookie } from '../../../library/cookie';
+import { getPosts, getProfile } from '../../../library/axios';
+const axios = require('axios');
 
 // MainPage에 posts state에서 데이터를 받아서 게시글 하나를 만드는 컴포넌트
 const Post = ({ post, setPosts, locationList, userId }) => {
@@ -26,11 +26,11 @@ const Post = ({ post, setPosts, locationList, userId }) => {
       })
       .then(function (response) {
         getPosts()
-          .then((data) => {
+          .then(data => {
             setPosts(data);
           })
-          .catch((error) => console.log("error", error));
-        console.log("well done!");
+          .catch(error => console.log('error', error));
+        console.log('well done!');
       });
   };
 
@@ -41,8 +41,14 @@ const Post = ({ post, setPosts, locationList, userId }) => {
         <p className={styles.post__content}>{post.topicContents}</p>
       </div>
       <div className={styles.post__info__col2}>
-        <div className={styles.post__recruit}>
-          {post.recruit === "recruiting" ? "모집중" : "모집완료"}
+        <div
+          className={
+            post.recruit === 'recruiting'
+              ? styles.post__recruiting
+              : styles.post__recruited
+          }
+        >
+          {post.recruit === 'recruiting' ? '모집중' : '모집완료'}
         </div>
         <span className={styles.post__place}>{post.locationName}</span>
       </div>

@@ -1,7 +1,8 @@
 .writeBtn {
   background-color: #ff914d;
   width: 70px;
-  height: 30px;
+  height: 35px;
+
   border-radius: 10px;
   color: white;
   font-weight: 600;
@@ -9,7 +10,7 @@
 .myPosts {
   background-color: #ff914d;
   width: 70px;
-  height: 30px;
+  height: 35px;
   border-radius: 10px;
   color: white;
   font-weight: 600;
@@ -17,9 +18,8 @@
 
 .search__container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  flex-direction: column;
 }
 
 .container__col1 {
@@ -31,7 +31,6 @@
 
 .container__col2 {
   display: flex;
-  margin-top: 20px;
 }
 
 .selectBox {
@@ -84,6 +83,9 @@
   transform: rotate(180deg);
 }
 .writer {
+  width: 115px;
+  height: 35px;
+  border-radius: 4px;
   border: 1px solid #ff914d;
   text-align: center;
   width: 130px;
