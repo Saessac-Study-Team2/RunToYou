@@ -107,6 +107,7 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
             topictitle: topicTitle,
             topiccontents: topicContent,
             recruit: recruiting,
+            location_lid: locationLid,
           },
           { headers: { Authorization: getLoginCookie() } }
         )

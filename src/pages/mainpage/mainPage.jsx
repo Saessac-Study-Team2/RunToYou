@@ -11,13 +11,13 @@ import {
   userIDState,
   postsLengthState,
 } from "../../library/atom";
-import { getPosts } from "../../library/axios";
+import { getPosts, getProfile } from "../../library/axios";
 
 const axios = require("axios");
 const MainPage = () => {
   const [posts, setPosts] = useRecoilState(postsState);
   const [locationList, setLocationList] = useRecoilState(locationListState);
-
+  const [userId, setUserId] = useRecoilState(userIDState);
   const [postsLength, setPostsLength] = useRecoilState(postsLengthState);
 
   // //장소 리스트 가져오기
@@ -28,6 +28,16 @@ const MainPage = () => {
   //       setLocationList(res.data);
   //     })
   //     .catch((error) => console.log("error", error));
+  // }, []);
+
+  // useEffect(() => {
+  //   getProfile()
+  //     .then((res) => {
+  //       setUserId(res.userID);
+  //     })
+  //     .catch((error) => {
+  //       console.log("getUserInfo error", error);
+  //     });
   // }, []);
 
   // 게시글 받아오기
@@ -47,6 +57,7 @@ const MainPage = () => {
           <div className={styles.mainContents}>
             <Weather />
             <Posts
+              userId={userId}
               posts={posts}
               setPosts={setPosts}
               locationList={locationList}

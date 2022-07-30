@@ -11,8 +11,7 @@ import Search from "../serch/search";
 import { render } from "@testing-library/react";
 import styles from "./posts.module.css";
 
-const Posts = ({ locationList }) => {
-  const [userId, setUserId] = useRecoilState(userIDState);
+const Posts = ({ locationList, userId }) => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
@@ -28,7 +27,6 @@ const Posts = ({ locationList }) => {
   for (let i = 0; i < posts.length; i++) {
     for (let key in posts[i]) {
       if (key === "recruit" && recruit !== "모집상태") {
-        console.log("모집상태 뭐야 대체", recruit);
         filteredPosts = filteredPosts.filter((x) => {
           return x[key] === recruit;
         });
@@ -50,7 +48,9 @@ const Posts = ({ locationList }) => {
       }
     }
   }
-  // setPostsLength(filteredPosts.length);
+
+  setPostsLength(filteredPosts.length);
+
   useEffect(() => {
     setPostsLength(filteredPosts.length);
     setPage(1);
@@ -64,6 +64,7 @@ const Posts = ({ locationList }) => {
       setPage(1);
     }
   }, [selected, writer, recruit, myPosts]);
+  // setPostsLength(filteredPosts.length);
   filteredPosts = filteredPosts.slice(offset, offset + limit);
 
   return (
@@ -83,7 +84,6 @@ const Posts = ({ locationList }) => {
           userId={userId}
           locationList={locationList}
         />
-
         <ul className={styles.posts__ul}>
           {filteredPosts.map((post, idx) => (
             <Post
