@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Weather from './weather/weather';
 import Posts from './posts/posts';
 import Header from '../../components/header/header';
@@ -10,14 +10,15 @@ import {
   locationListState,
   userIDState,
   postsLengthState,
+  userState,
 } from '../../library/atom';
-import { getPosts } from '../../library/axios';
+import { getPosts, getUsers } from '../../library/axios';
 
 const axios = require('axios');
 const MainPage = () => {
   const [posts, setPosts] = useRecoilState(postsState);
   const [locationList, setLocationList] = useRecoilState(locationListState);
-
+  const [users, setUsers] = useState([]);
   const [postsLength, setPostsLength] = useRecoilState(postsLengthState);
 
   // 게시글 받아오기
@@ -30,6 +31,11 @@ const MainPage = () => {
       .catch(error => console.log('error', error));
   }, []);
 
+  useEffect(() => {
+    getUsers() //
+      .then(res => setUsers(res));
+  }, []);
+
   return (
     <>
       <div className={styles.mainPage}>
@@ -37,6 +43,7 @@ const MainPage = () => {
           <div className={styles.mainContents}>
             <Weather />
             <Posts
+              users={users}
               posts={posts}
               setPosts={setPosts}
               locationList={locationList}

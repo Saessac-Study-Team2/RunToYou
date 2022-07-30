@@ -1,24 +1,24 @@
-import { useRecoilState } from "recoil";
-import Post from "./post";
+import { useRecoilState } from 'recoil';
+import Post from './post';
 import {
   userIDState,
   postsLengthState,
   postsState,
-} from "../../../library/atom";
-import { useEffect, useState } from "react";
-import Pagination from "../../../components/Pagination/Pagination";
-import Search from "../serch/search";
-import { render } from "@testing-library/react";
-import styles from "./posts.module.css";
+} from '../../../library/atom';
+import { useEffect, useState } from 'react';
+import Pagination from '../../../components/Pagination/Pagination';
+import Search from '../serch/search';
+import { render } from '@testing-library/react';
+import styles from './posts.module.css';
 
-const Posts = ({ locationList, userId }) => {
+const Posts = ({ locationList, userId, users }) => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
   const [postsLength, setPostsLength] = useRecoilState(postsLengthState);
-  const [selected, setSelected] = useState("지역검색");
-  const [recruit, setRecruit] = useState("모집상태");
-  const [writer, setWriter] = useState("");
+  const [selected, setSelected] = useState('지역검색');
+  const [recruit, setRecruit] = useState('모집상태');
+  const [writer, setWriter] = useState('');
   const [myPosts, setMyPosts] = useState(false);
   const [posts, setPosts] = useRecoilState(postsState);
   const [renderPosts, setRenderPosts] = useState(posts);
@@ -26,23 +26,23 @@ const Posts = ({ locationList, userId }) => {
 
   for (let i = 0; i < posts.length; i++) {
     for (let key in posts[i]) {
-      if (key === "recruit" && recruit !== "모집상태") {
-        filteredPosts = filteredPosts.filter((x) => {
+      if (key === 'recruit' && recruit !== '모집상태') {
+        filteredPosts = filteredPosts.filter(x => {
           return x[key] === recruit;
         });
       }
-      if (key === "locationName" && selected !== "지역검색") {
-        filteredPosts = filteredPosts.filter((x) => {
+      if (key === 'locationName' && selected !== '지역검색') {
+        filteredPosts = filteredPosts.filter(x => {
           return x[key] === selected;
         });
       }
-      if (key === "userID" && writer !== "") {
-        filteredPosts = filteredPosts.filter((x) => {
+      if (key === 'userID' && writer !== '') {
+        filteredPosts = filteredPosts.filter(x => {
           return x[key].indexOf(writer) !== -1;
         });
       }
-      if (key === "userID" && myPosts !== false) {
-        filteredPosts = filteredPosts.filter((x) => {
+      if (key === 'userID' && myPosts !== false) {
+        filteredPosts = filteredPosts.filter(x => {
           return x[key] === userId;
         });
       }
@@ -53,9 +53,9 @@ const Posts = ({ locationList, userId }) => {
     setPostsLength(filteredPosts.length);
     setPage(1);
     if (
-      recruit === "모집상태" &&
-      selected === "지역검색" &&
-      writer === "" &&
+      recruit === '모집상태' &&
+      selected === '지역검색' &&
+      writer === '' &&
       myPosts === false
     ) {
       setPostsLength(posts.length);
@@ -85,6 +85,7 @@ const Posts = ({ locationList, userId }) => {
         <ul className={styles.posts__ul}>
           {filteredPosts.map((post, idx) => (
             <Post
+              users={users}
               locationList={locationList}
               setPosts={setPosts}
               key={idx}
