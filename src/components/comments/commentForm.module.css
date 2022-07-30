@@ -10,6 +10,11 @@
   outline-color: black;
 }
 
+.button_N_max_length {
+  display: flex;
+  justify-content: space-between;
+}
+
 .comment_form_button {
   font-size: 16px;
   padding: 8px 16px;
@@ -26,4 +31,9 @@
 .comment_form_button:disabled {
   opacity: 0.7;
   cursor: default;
+}
+
+.max_length {
+  font-size: 14px;
+  color: grey;
 }
