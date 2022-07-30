@@ -18,25 +18,25 @@ const PostPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [posts, setPosts] = useRecoilState(postsState);
   const [locationList, setLocationList] = useRecoilState(locationListState);
-  const [userId, setUserId] = useRecoilState(userIDState);
   const [confirmModal, setConfirmModal] = useState(false);
+  const [userId, setUserId] = useRecoilState(userIDState);
 
   const navigate = useNavigate();
 
-  console.log(userId);
+  // 서버 날짜 변환 함수
+  const toLocaleDate = (createdAt) => {
+    const createdAtKr = new Date(createdAt);
+    const hours = String(createdAtKr.getHours()).padStart(2, "0");
+    const minutes = String(createdAtKr.getMinutes()).padStart(2, "0");
+    return `${createdAtKr.toLocaleDateString()} ${hours}:${minutes}`;
+  };
 
-  // 날짜
-  // const createdAtKr = new Date(post[0].created_at);
-  // const hours = String(createdAtKr.getHours()).padStart(2, "0");
-  // const minutes = String(createdAtKr.getMinutes()).padStart(2, "0");
-  // const createdDateAndTime = `${createdAtKr.toLocaleDateString()} ${hours}:${minutes}`;
-
-  // 자동적인 get 요청에 useEffect 없음, 리코일로 전역 관리되는 userState에서 userID 받아오면..
-  //userID 가져오기
+  // 자동적인 get 요청에 useEffect 없음, 리코일로 전역 관리되는 userState에서 userId 받아오면..
+  //userId 가져오기
   // const getUserInfo = () => {
   //   getProfile()
   //     .then((res) => {
-  //       setUserId(res.userID);
+  //       setUserId(res.userId);
   //       console.log(userId);
   //     })
   //     .then((res) => {
@@ -61,7 +61,6 @@ const PostPage = () => {
       .get(`http://34.168.215.145/topic/${id}`)
       .then((res) => {
         setPost(res.data);
-        console.log(post);
         setLoading(!loading);
       })
       .catch((error) => console.log("error", error));
@@ -98,6 +97,7 @@ const PostPage = () => {
       })
       .catch((error) => console.log("error", error));
   };
+
   return (
     <div className={styles.post_page_container}>
       {confirmModal && (
@@ -116,9 +116,10 @@ const PostPage = () => {
                 src={`${"http://34.168.215.145/"}${post[0].userPicture}`}
               ></img>
               <div className={styles.user_profile}>
-                <div className={styles.user_id}>{post[0].userID}</div>{" "}
-                {/*위치 변경*/}
-                <div className={styles.created_at}>{post[0].created_at}</div>
+                <div className={styles.user_id}>{post[0].nickName}</div>{" "}
+                <div className={styles.created_at}>
+                  {toLocaleDate(post[0].created_at)}
+                </div>
               </div>
               <div className={styles.button_container}>
                 {userId === post[0].userID ? (
