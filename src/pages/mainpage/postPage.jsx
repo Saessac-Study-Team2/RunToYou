@@ -23,6 +23,8 @@ const PostPage = () => {
 
   const navigate = useNavigate();
 
+  console.log(userId);
+
   // 날짜
   // const createdAtKr = new Date(post[0].created_at);
   // const hours = String(createdAtKr.getHours()).padStart(2, "0");
@@ -31,19 +33,20 @@ const PostPage = () => {
 
   // 자동적인 get 요청에 useEffect 없음, 리코일로 전역 관리되는 userState에서 userID 받아오면..
   //userID 가져오기
-  const getUserInfo = () => {
-    getProfile()
-      .then((res) => {
-        setUserId(res.userID);
-      })
-      .then((res) => {
-        console.log("user id가져오기");
-      })
-      .catch((error) => {
-        console.log("getUserInfo error", error);
-      });
-  };
-  getUserInfo();
+  // const getUserInfo = () => {
+  //   getProfile()
+  //     .then((res) => {
+  //       setUserId(res.userID);
+  //       console.log(userId);
+  //     })
+  //     .then((res) => {
+  //       console.log("user id가져오기");
+  //     })
+  //     .catch((error) => {
+  //       console.log("getUserInfo error", error);
+  //     });
+  // };
+  // getUserInfo();
 
   const openModal = () => {
     setModalOpen(true);
@@ -107,14 +110,35 @@ const PostPage = () => {
       {!loading ? (
         <div className={styles.post_page_wrapper}>
           <div className={styles.post_page_contents}>
-            <h1>제목:{post[0].topicTitle}</h1>
-            <div>내용:{post[0].topicContents}</div>
-            <img
-              className={styles.user_image}
-              src={`${"http://34.168.215.145/"}${post[0].userPicture}`}
-            ></img>
-            <div>작성자:{post[0].userID}</div>
-            <div>{post[0].created_at}</div>
+            <h1 className={styles.post_page_title}>{post[0].topicTitle}</h1>
+            <div className={styles.user_info}>
+              <img
+                src={`${"http://34.168.215.145/"}${post[0].userPicture}`}
+              ></img>
+              <div className={styles.user_profile}>
+                <div className={styles.user_id}>{post[0].userID}</div>{" "}
+                {/*위치 변경*/}
+                <div className={styles.created_at}>{post[0].created_at}</div>
+              </div>
+              <div className={styles.button_container}>
+                {userId === post[0].userID ? (
+                  <button
+                    className={styles.button_delete}
+                    onClick={openConfirm}
+                  >
+                    삭제
+                  </button>
+                ) : null}
+                {userId === post[0].userID ? (
+                  <button className={styles.button_edit} onClick={openModal}>
+                    수정
+                  </button>
+                ) : null}
+              </div>
+            </div>
+            <div className={styles.post_page_main_text}>
+              {post[0].topicContents}
+            </div>
             <WriteModal
               open={modalOpen}
               close={closeModal}
@@ -123,12 +147,6 @@ const PostPage = () => {
               post={post}
               locationList={locationList}
             ></WriteModal>
-            {userId === post[0].userID ? (
-              <button onClick={openConfirm}>삭제</button>
-            ) : null}
-            {userId === post[0].userID ? (
-              <button onClick={openModal}>수정</button>
-            ) : null}
           </div>
         </div>
       ) : null}
