@@ -49,8 +49,6 @@ const Posts = ({ locationList, userId }) => {
     }
   }
 
-  setPostsLength(filteredPosts.length);
-
   useEffect(() => {
     setPostsLength(filteredPosts.length);
     setPage(1);
