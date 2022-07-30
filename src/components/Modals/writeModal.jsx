@@ -50,6 +50,16 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
       setValidationMessage("내용을 입력해주세요");
       return;
     }
+    if (topicContent.length > 300) {
+      setLocationValidation(false);
+      setValidationMessage("내용은 300자 이내로 작성해주세요");
+      return;
+    }
+    if (topicTitle.length > 30) {
+      setLocationValidation(false);
+      setValidationMessage("제목은 30자 이내로 작성해주세요");
+      return;
+    }
 
     if (header === "글쓰기") {
       axios
@@ -107,7 +117,7 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
     setTopicTitle(e.target.value);
   };
   const handleTopicContent = (e) => {
-    if (e.target.value.length == 350) return false;
+    if (e.target.value.length == 300) return false;
     setTopicContent(e.target.value);
   };
   const handleLocationLid = (e) => {
