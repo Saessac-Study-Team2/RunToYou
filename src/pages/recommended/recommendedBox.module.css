@@ -1,9 +1,9 @@
 .container {
   display: flex;
   margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 1px;
-   
+  margin-block-end: 1em;
+  margin-inline-start: 1px;
+  
     
   align-items: center;
   
