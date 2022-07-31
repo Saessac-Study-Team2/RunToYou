@@ -38,7 +38,7 @@ const MainPage = () => {
       <div className={styles.mainPage}>
         <div className={styles.main}>
           <div className={styles.mainContents}>
-            {/* <Weather /> */}
+            <Weather />
             <Posts
               userId={userId}
               users={users}
