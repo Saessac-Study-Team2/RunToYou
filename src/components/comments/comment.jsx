@@ -5,6 +5,7 @@ import { getLoginCookie } from "../../library/cookie";
 import { useRecoilState } from "recoil";
 import { userState } from "../../library/atom";
 import ConfirmAlert from "../Modals/confirmAlert";
+const url = "https://saessac.kro.kr:80/";
 
 const Comment = ({
   tcid,
@@ -25,7 +26,7 @@ const Comment = ({
 
   function deleteComment() {
     axios
-      .delete(`http://34.168.215.145/topiccomments/${tcid}`, {
+      .delete(`${url}topiccomments/${tcid}`, {
         headers: { Authorization: getLoginCookie() },
       })
       .then(() => {
@@ -58,7 +59,7 @@ const Comment = ({
         />
       )}
       <div className={styles.comment_image_container}>
-        <img src={`http://34.168.215.145/${userPicture}`} alt="user-picture" />
+        <img src={`${url}${userPicture}`} alt="user-picture" />
       </div>
       <div className={styles.comment_right_part}>
         <div className={styles.comment_content}>

@@ -10,6 +10,7 @@ const CommentForm = ({ topicId, getComments }) => {
   const isTextareaDisabled = text.length === 0;
   const [isLogin, setIsLogin] = useRecoilState(isUserState);
   const maxLength = 1000;
+  const url = "https://saessac.kro.kr:80/";
 
   const postComment = (topicId, topicComment) => {
     const newComment = {
@@ -18,7 +19,7 @@ const CommentForm = ({ topicId, getComments }) => {
     };
 
     return axios
-      .post(`http://34.168.215.145/topiccomments/insert`, newComment, {
+      .post(`${url}topiccomments/insert`, newComment, {
         headers: { Authorization: getLoginCookie() },
       })
       .then((res) => {
