@@ -46,7 +46,7 @@ const PostPage = () => {
   //id로 게시글 받아오기
   useEffect(() => {
     axios
-      .get(`http://34.168.215.145/topic/${id}`)
+      .get(`https://saessac.kro.kr:80/topic/${id}`)
       .then((res) => {
         setPost(res.data);
         setLoading(!loading);
@@ -70,7 +70,7 @@ const PostPage = () => {
   // 글 삭제 요청
   const PostDelete = () => {
     axios
-      .delete(`http://34.168.215.145/topic/${id}`, {
+      .delete(`https://saessac.kro.kr:80/topic/${id}`, {
         headers: { Authorization: getLoginCookie() },
       })
       .then(() => {
@@ -101,7 +101,7 @@ const PostPage = () => {
             <h1 className={styles.post_page_title}>{post[0].topicTitle}</h1>
             <div className={styles.user_info}>
               <img
-                src={`${"http://34.168.215.145/"}${post[0].userPicture}`}
+                src={`${"https://saessac.kro.kr:80/"}${post[0].userPicture}`}
               ></img>
               <div className={styles.user_profile}>
                 <div className={styles.user_id}>{post[0].nickName}</div>{" "}
