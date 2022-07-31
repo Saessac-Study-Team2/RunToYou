@@ -101,7 +101,7 @@ const PostPage = () => {
             <h1 className={styles.post_page_title}>{post[0].topicTitle}</h1>
             <div className={styles.user_info}>
               <img
-                src={`${"https://saessac.kro.kr:80/"}${post[0].userPicture}`}
+                src={`${"https://saessac.kro.kr:80"}${post[0].userPicture}`}
               ></img>
               <div className={styles.user_profile}>
                 <div className={styles.user_id}>{post[0].nickName}</div>{" "}
