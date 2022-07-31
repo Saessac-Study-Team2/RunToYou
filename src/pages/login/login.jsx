@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import {
   isUserState,
   UserAvataState,
@@ -10,17 +10,17 @@ import {
   nicknameState,
   aboutMeState,
   locationListState,
-} from '../../library/atom';
-import styles from '../signup/signUp.module.css';
-import { getLoginCookie, setLoginCookie } from '../../library/cookie';
-import Footer from '../../components/footer/footer';
-import { login, getProfile, getPlace } from '../../library/axios';
+} from "../../library/atom";
+import styles from "../signup/signUp.module.css";
+import { getLoginCookie, setLoginCookie } from "../../library/cookie";
+import Footer from "../../components/footer/footer";
+import { login, getProfile, getPlace } from "../../library/axios";
 
 const Login = ({ setIsUser }) => {
   const [error, setError] = useState([]);
   // const [loading, setLoading] = useState(false);
-  const [ID, setID] = useState('');
-  const [PW, setPW] = useState('');
+  const [ID, setID] = useState("");
+  const [PW, setPW] = useState("");
   const idRef = useRef();
   const passwordRef = useRef();
 
@@ -34,13 +34,13 @@ const Login = ({ setIsUser }) => {
   const [aboutMe, setAboutMe] = useRecoilState(aboutMeState);
   const [locationList, setLocationList] = useRecoilState(locationListState);
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const id = idRef.current.value;
     const password = passwordRef.current.value;
 
     if (!id || !password) {
-      setError('아이디와 비밀번호를 모두 입력해주세요');
+      setError("아이디와 비밀번호를 모두 입력해주세요");
       return;
     } else {
       setID(id);
@@ -50,18 +50,18 @@ const Login = ({ setIsUser }) => {
 
   const onLogin = async (ID, PW) => {
     await login(ID, PW)
-      .then(res => {
+      .then((res) => {
         if (res.msg) {
           setLoginCookie(res.token);
           setIsLogin(Boolean(getLoginCookie()));
         } else {
-          setError('아이디와 비밀번호를 확인 해 주세요');
+          setError("아이디와 비밀번호를 확인 해 주세요");
         }
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
 
     await getProfile()
-      .then(res => {
+      .then((res) => {
         if (res !== undefined) {
           setUser(res);
           setAboutMe(res.info);
@@ -71,13 +71,13 @@ const Login = ({ setIsUser }) => {
           setAvata(res.userPicture);
         }
       })
-      .catch(error => {
-        console.log('getUserInfo error', error);
+      .catch((error) => {
+        console.log("getUserInfo error", error);
       });
     await getPlace()
-      .then(res => setLocationList(res))
-      .catch(error => {
-        console.log('getPlaceList error', error);
+      .then((res) => setLocationList(res))
+      .catch((error) => {
+        console.log("getPlaceList error", error);
       });
   };
 
@@ -90,7 +90,10 @@ const Login = ({ setIsUser }) => {
   return (
     <section className={styles.sectionSignUp}>
       <div className={styles.container}>
-        <img className={styles.logo} src='/favicon.ico' />
+        <img
+          className={styles.logo}
+          src={process.env.PUBLIC_URL + "/favicon.ico"}
+        />
         <h1 className={styles.title}>로그인</h1>
         <div className={styles.inputContainer}>
           {error ? <div className={styles.error}>{error}</div> : null}
@@ -99,15 +102,15 @@ const Login = ({ setIsUser }) => {
             onChange={() => {
               setError(null);
             }}
-            placeholder='id'
-            name='id'
+            placeholder="id"
+            name="id"
             ref={idRef}
             required
-            label='id'
+            label="id"
             autoFocus
-            autoComplete='off'
-            onKeyUp={e => {
-              if (e.key === 'Enter') {
+            autoComplete="off"
+            onKeyUp={(e) => {
+              if (e.key === "Enter") {
                 handleSubmit(e);
               }
             }}
@@ -117,14 +120,14 @@ const Login = ({ setIsUser }) => {
             onChange={() => {
               setError(null);
             }}
-            placeholder='password'
-            name='password'
+            placeholder="password"
+            name="password"
             ref={passwordRef}
             required
-            label='password'
-            type='password'
-            onKeyUp={e => {
-              if (e.key === 'Enter') {
+            label="password"
+            type="password"
+            onKeyUp={(e) => {
+              if (e.key === "Enter") {
                 handleSubmit(e);
               }
             }}
@@ -132,14 +135,14 @@ const Login = ({ setIsUser }) => {
         </div>
 
         {/* {error ? <div>{error}</div> : null} */}
-        <button className={styles.button} type='submit' onClick={handleSubmit}>
+        <button className={styles.button} type="submit" onClick={handleSubmit}>
           로그인
         </button>
         <div className={styles.link}>
-          <Link to='/signup'>
+          <Link to="/signup">
             <p className={styles.notice}>계정이 없으신가요? 가입하기</p>
           </Link>
-          <Link to='/mainpage'>
+          <Link to="/mainpage">
             <p className={styles.notice}>Guest로 둘러보기</p>
           </Link>
         </div>
