@@ -53,7 +53,7 @@ const Header = () => {
           <div className={styles.avataWrapper}>
             <div className={styles.avataCentered}>
               <img
-                src={`http://34.168.215.145/${avata}`}
+                src={`https://saessac.kro.kr:80/${avata}`}
                 alt="profile img"
                 className={styles.avata}
               />

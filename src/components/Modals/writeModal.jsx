@@ -30,7 +30,6 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
   // 게시글 작성 요청
   const handleRquestSubmit = (e) => {
     e.preventDefault();
-
     if (topicTitle.length === 0) {
       setTitleValidation(false);
       setValidationMessage("제목을 입력해주세요");
@@ -64,7 +63,7 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
     if (header === "글쓰기") {
       axios
         .post(
-          "http://34.168.215.145/topic/insert",
+          "https://saessac.kro.kr:80/topic/insert",
           {
             topictitle: topicTitle,
             topiccontents: topicContent,
@@ -92,7 +91,7 @@ const WriteModal = ({ open, close, locationList, header, setPosts, post }) => {
     if (header === "글수정") {
       axios
         .put(
-          `http://34.168.215.145/topic/${post[0].tid}`,
+          `https://saessac.kro.kr:80/topic/${post[0].tid}`,
           {
             topictitle: topicTitle,
             topiccontents: topicContent,
