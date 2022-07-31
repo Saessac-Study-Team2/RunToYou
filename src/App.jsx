@@ -9,7 +9,6 @@ import MainPage from "./pages/mainpage/mainPage";
 import Recommended from "./pages/recommended/recommended";
 import MyPage from "./pages/mypage/myPage";
 import PostPage from "./pages/mainpage/postPage";
-import PostEdit from "./pages/mainpage/postEdit";
 import "./App.css";
 import { getLoginCookie } from "./library/cookie";
 const App = (props) => {
