@@ -17,6 +17,7 @@ const Comments = ({ id }) => {
   const limit = 10;
   const offset = (page - 1) * limit;
   const commentsLength = comments.length;
+  const url = "https://saessac.kro.kr:80/";
 
   useEffect(() => {
     getComments();
@@ -24,7 +25,7 @@ const Comments = ({ id }) => {
 
   const getComments = () => {
     return axios
-      .get(`http://34.168.215.145/topiccomments/${id}?sort=desc`, {
+      .get(`${url}topiccomments/${id}?sort=desc`, {
         headers: { Authorization: getLoginCookie() },
       })
       .then((res) => {
