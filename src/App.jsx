@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { isUserState } from './library/atom';
-import { useRecoilState } from 'recoil';
-import Intro from './pages/intro/intro';
-import SignUp from './pages/signup/signUp';
-import Login from './pages/login/login';
-import MainPage from './pages/mainpage/mainPage';
-import Recommended from './pages/recommended/recommended';
-import MyPage from './pages/mypage/myPage';
-import PostPage from './pages/mainpage/postPage';
-import PostEdit from './pages/mainpage/postEdit';
-import './App.css';
-import { getLoginCookie } from './library/cookie';
+import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { isUserState } from "./library/atom";
+import { useRecoilState } from "recoil";
+import Intro from "./pages/intro/intro";
+import SignUp from "./pages/signup/signUp";
+import Login from "./pages/login/login";
+import MainPage from "./pages/mainpage/mainPage";
+import Recommended from "./pages/recommended/recommended";
+import MyPage from "./pages/mypage/myPage";
+import PostPage from "./pages/mainpage/postPage";
+import PostEdit from "./pages/mainpage/postEdit";
+import "./App.css";
+import { getLoginCookie } from "./library/cookie";
 const App = props => {
   const [isLogin, setIsLogin] = useRecoilState(isUserState);
   useEffect(() => {
     setIsLogin(Boolean(getLoginCookie()));
   });
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className='App'>
         <Routes>
           <>
