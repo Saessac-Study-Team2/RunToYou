@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { isUserState } from '../../../library/atom';
-import { deleteAccount } from '../../../library/axios';
-import { deleteCookie, getLoginCookie } from '../../../library/cookie';
-import { useRecoilState } from 'recoil';
-import { useNavigate } from 'react-router-dom';
-import styles from './deleteAccount.module.css';
+import React, { useState } from "react";
+import { isUserState } from "../../../library/atom";
+import { deleteAccount } from "../../../library/axios";
+import { deleteCookie, getLoginCookie } from "../../../library/cookie";
+import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
+import styles from "./deleteAccount.module.css";
 
-const DeleteAccount = props => {
+const DeleteAccount = (props) => {
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const [isLogin, setIsLogin] = useRecoilState(isUserState);
@@ -14,7 +14,7 @@ const DeleteAccount = props => {
     deleteAccount();
     deleteCookie();
     setIsLogin(Boolean(getLoginCookie()));
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -28,7 +28,7 @@ const DeleteAccount = props => {
         >
           <section
             className={styles.dltAccountModal}
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
             <p className={styles.messasge1}>
               정말 떠나시는 건가요? 한 번 더 생각해 주시겠어요?
@@ -42,7 +42,11 @@ const DeleteAccount = props => {
             <p className={styles.messasge3}>
               더욱 발전하는 RunToYou가 되겠습니다
             </p>
-            <img className={styles.favicon} src='/favicon.ico' alt='favicon' />
+            <img
+              className={styles.favicon}
+              src={process.env.PUBLIC_URL + "/favicon.ico"}
+              alt="favicon"
+            />
             <div>
               <button className={styles.modalBtn} onClick={handleDltAccount}>
                 떠나기

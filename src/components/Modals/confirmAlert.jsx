@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Container = styled.div`
   position: fixed;
@@ -68,15 +68,15 @@ const Wraper = styled.div`
 const ConfirmAlert = ({ message, onComfirm, target }) => {
   return (
     <Container onClick={() => onComfirm(false)}>
-      <Wraper onClick={e => e.stopPropagation()}>
-        <h1 className='target'>{target}</h1>
-        <h3 className='msg'>{message}</h3>
-        <img src='/favicon.ico' alt='favicon' />
-        <div className='btns'>
-          <button className='true' onClick={() => onComfirm(true)}>
+      <Wraper onClick={(e) => e.stopPropagation()}>
+        <h1 className="target">{target}</h1>
+        <h3 className="msg">{message}</h3>
+        <img src={process.env.PUBLIC_URL + "/favicon.ico"} alt="favicon" />
+        <div className="btns">
+          <button className="true" onClick={() => onComfirm(true)}>
             Yes
           </button>
-          <button className='false' onClick={() => onComfirm(false)}>
+          <button className="false" onClick={() => onComfirm(false)}>
             No
           </button>
         </div>
