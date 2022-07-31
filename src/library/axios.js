@@ -1,11 +1,11 @@
 import axios from "axios";
 import { getLoginCookie } from "./cookie";
 
-const DOMAIN = "https://saessac.kro.kr:80/";
+const DOMAIN = "https://saessac.kro.kr:80";
 export const checkID = (id) => {
   const config = {
     method: "get",
-    url: `http://34.168.215.145/user/checkid?userid=${id} `,
+    url: `https://saessac.kro.kr:80/checkid?userid=${id} `,
     headers: {},
   };
 
