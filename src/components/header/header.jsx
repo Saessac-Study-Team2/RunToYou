@@ -41,7 +41,11 @@ const Header = () => {
         />
       )}
       <Link to="/mainpage">
-        <img src="/img/logo1.png" alt="logo img" className={styles.logo} />
+        <img
+          src={process.env.PUBLIC_URL + "/img/logo1.png"}
+          alt="logo img"
+          className={styles.logo}
+        />
       </Link>
       <Navbar />
       {isLogin ? (
