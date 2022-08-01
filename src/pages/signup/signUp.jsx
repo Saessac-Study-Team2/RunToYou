@@ -86,10 +86,12 @@ const SignUp = () => {
   return (
     <section className={styles.sectionSignUp}>
       <div className={styles.container}>
+
         <img
           className={styles.logo}
           src={process.env.PUBLIC_URL + "/favicon.ico"}
         />
+
         <h1 className={styles.title}>회원가입</h1>
         <div className={styles.inputContainer}>
           {error
