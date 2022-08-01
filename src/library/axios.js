@@ -5,7 +5,7 @@ const DOMAIN = "https://saessac.kro.kr:80";
 export const checkID = id => {
   const config = {
     method: "get",
-    url: `https://saessac.kro.kr:80/checkid?userid=${id} `,
+    url: `https://saessac.kro.kr:80/user/checkid?userid=${id} `,
     headers: {},
   };
 

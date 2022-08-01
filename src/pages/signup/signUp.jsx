@@ -32,7 +32,7 @@ const SignUp = () => {
     const confirmPW = confirmPWRef.current.value;
     console.log(ID, PW, confirmPW);
 
-    let isOK = checkID(ID);
+    let isOK = await checkID(ID);
     console.log(isOK);
     if (!ID || !PW || !confirmPW) {
       setError(prev => [...prev, "모든 항목을 입력해주세요."]);
@@ -86,7 +86,10 @@ const SignUp = () => {
   return (
     <section className={styles.sectionSignUp}>
       <div className={styles.container}>
-        <img className={styles.logo} src='/favicon.ico' />
+        <img
+          className={styles.logo}
+          src={process.env.PUBLIC_URL + "/favicon.ico"}
+        />
         <h1 className={styles.title}>회원가입</h1>
         <div className={styles.inputContainer}>
           {error
