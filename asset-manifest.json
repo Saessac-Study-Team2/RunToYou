@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/RunToYou/static/css/main.668deee3.css",
-    "main.js": "/RunToYou/static/js/main.c39ad56a.js",
+    "main.js": "/RunToYou/static/js/main.3fdda2f6.js",
     "static/media/6.png": "/RunToYou/static/media/6.8da5210567d91d1394f3.png",
     "index.html": "/RunToYou/index.html",
     "main.668deee3.css.map": "/RunToYou/static/css/main.668deee3.css.map",
-    "main.c39ad56a.js.map": "/RunToYou/static/js/main.c39ad56a.js.map"
+    "main.3fdda2f6.js.map": "/RunToYou/static/js/main.3fdda2f6.js.map"
   },
   "entrypoints": [
     "static/css/main.668deee3.css",
-    "static/js/main.c39ad56a.js"
+    "static/js/main.3fdda2f6.js"
   ]
 }
