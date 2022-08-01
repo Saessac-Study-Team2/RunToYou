@@ -1,0 +1,27 @@
+@value RtyBrown,RtyBlack,RtyIvory,RtyRed,dimBlack, RtyPurple, RtyOrange, dimWhite, RtyWhite, RtyGrey from '../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../common/size.css';
+
+.footer {
+  margin-left: 3rem;
+  margin-bottom: 0.5rem;
+  position: absolute;
+  bottom: 0;
+  /* background-color: dimBlack; */
+  width: 100%;
+  color: RtyWhite;
+}
+
+.title {
+  color: RtyOrange;
+}
+
+.gitLink {
+  color: RtyWhite;
+  background-color: transparent;
+}
+.gitLink:hover {
+  color: RtyOrange;
+}
+
+.member {
+}

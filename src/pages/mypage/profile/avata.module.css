@@ -1,0 +1,36 @@
+@value RtyBrown,RtyPurple,RtyOrange,dimWhite,RtyWhite,RtyGrey,dimBlack from '../../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
+
+.avata {
+  margin-top: 2rem;
+}
+
+.avataImg {
+  width: 11rem;
+  height: 11rem;
+  object-fit: cover;
+  border-radius: 5.5rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px,
+    rgba(0, 0, 0, 0.3) 0px 6px 8px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.imgInput {
+  display: none;
+}
+
+.modalBtn,
+.dltImgBtn,
+.changeImgBtn {
+  background-color: RtyBrown;
+  width: 6rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  color: RtyWhite;
+}
+
+.modalBtn:hover,
+.dltImgBtn:hover,
+.changeImgBtn:hover {
+  background-color: RtyOrange;
+}

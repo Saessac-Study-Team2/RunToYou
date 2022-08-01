@@ -1,0 +1,27 @@
+@value RtyBrown,RtyBlack,RtyIvory,RtyRed,dimBlack, RtyPurple, RtyOrange, dimWhite, RtyWhite, RtyGrey from '../../../common/colors.css';
+@value fontLarge,fontMedium,fontSmall from '../../../common/size.css';
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.navLink {
+  white-space: nowrap;
+  padding: 8px;
+  text-decoration: none;
+  color: RtyBlack;
+}
+
+.navLink span {
+  height: 90%;
+  padding: 1rem;
+  font-size: 1.3rem;
+}
+.navLink span:hover {
+  color: RtyOrange;
+  font-size: 1.4rem;
+}
