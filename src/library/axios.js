@@ -2,7 +2,7 @@ import axios from "axios";
 import { getLoginCookie } from "./cookie";
 
 const DOMAIN = "https://saessac.kro.kr:80";
-export const checkID = (id) => {
+export const checkID = id => {
   const config = {
     method: "get",
     url: `https://saessac.kro.kr:80/checkid?userid=${id} `,
@@ -10,8 +10,9 @@ export const checkID = (id) => {
   };
 
   return axios(config)
-    .then((res) => res.data.msg)
-    .catch((error) => console.log("signUp error", error));
+    .then(res => res.data.msg)
+    .then(res => console.log(res))
+    .catch(error => console.log("signUp error", error));
 };
 
 export const signup = (ID, PW) => {
@@ -24,8 +25,8 @@ export const signup = (ID, PW) => {
     },
   };
   return axios(config)
-    .then((res) => res.data.msg)
-    .catch((error) => console.log("signUp error", error));
+    .then(res => res.data.msg)
+    .catch(error => console.log("signUp error", error));
 };
 
 export const login = (ID, PW) => {
@@ -36,8 +37,8 @@ export const login = (ID, PW) => {
   };
 
   return axios(config)
-    .then((res) => res.data)
-    .catch((error) => console.log("login error", error));
+    .then(res => res.data)
+    .catch(error => console.log("login error", error));
 };
 
 export const getProfile = () => {
@@ -48,13 +49,13 @@ export const getProfile = () => {
   };
 
   return axios(config) //
-    .then((res) => {
+    .then(res => {
       if (res.data.msg) {
         const data = res.data.data;
         return data;
       }
     })
-    .catch((error) => console.log("getProfile error", error));
+    .catch(error => console.log("getProfile error", error));
 };
 
 export const getUsers = () => {
@@ -65,11 +66,11 @@ export const getUsers = () => {
   };
 
   return axios(config) //
-    .then((res) => {
+    .then(res => {
       const data = res.data;
       return data;
     })
-    .catch((error) => console.log("getUsers error", error));
+    .catch(error => console.log("getUsers error", error));
 };
 
 export const getPlace = () => {
@@ -80,10 +81,10 @@ export const getPlace = () => {
   };
 
   return axios(config)
-    .then((res) => {
+    .then(res => {
       return res.data;
     })
-    .catch((error) => {
+    .catch(error => {
       console.log("getPlace error", error);
     });
 };
@@ -95,10 +96,10 @@ export const deleteImg = () => {
     headers: { Authorization: getLoginCookie() },
     data: {},
   };
-  return axios(config).catch((error) => console.log("deletImg error", error));
+  return axios(config).catch(error => console.log("deletImg error", error));
 };
 
-export const addImg = (compressedFile) => {
+export const addImg = compressedFile => {
   const config = {
     method: "post",
     url: `${DOMAIN}/user/picture`,
@@ -110,18 +111,16 @@ export const addImg = (compressedFile) => {
       profileImg: compressedFile,
     },
   };
-  return axios(config).catch((error) => console.log("addImg error", error));
+  return axios(config).catch(error => console.log("addImg error", error));
 };
 
-export const deletePlace = (locationid) => {
+export const deletePlace = locationid => {
   const config = {
     method: "delete",
     url: `${DOMAIN}/favoritlocation?lid=${locationid}`,
     headers: { Authorization: getLoginCookie() },
   };
-  return axios(config).catch((error) =>
-    console.log("deletePlace error", error)
-  );
+  return axios(config).catch(error => console.log("deletePlace error", error));
 };
 
 export const addProfile = (nickname, info) => {
@@ -131,7 +130,7 @@ export const addProfile = (nickname, info) => {
     headers: { Authorization: getLoginCookie() },
     data: { nickname, info },
   };
-  return axios(config).catch((error) => console.log("addProfile error", error));
+  return axios(config).catch(error => console.log("addProfile error", error));
 };
 
 export const updatePW = (currentuserpassword, userpassword) => {
@@ -145,11 +144,11 @@ export const updatePW = (currentuserpassword, userpassword) => {
     },
   };
   return axios(config)
-    .then((res) => res.data.msg)
-    .catch((error) => console.log("updatePW error", error));
+    .then(res => res.data.msg)
+    .catch(error => console.log("updatePW error", error));
 };
 
-export const addPlace = (locationid) => {
+export const addPlace = locationid => {
   const config = {
     method: "post",
     url: `${DOMAIN}/favoritlocation/insert`,
@@ -158,8 +157,8 @@ export const addPlace = (locationid) => {
   };
 
   return axios(config)
-    .then((res) => console.log("addPlace success", res.data))
-    .catch((error) => console.log("addPlace error", error));
+    .then(res => console.log("addPlace success", res.data))
+    .catch(error => console.log("addPlace error", error));
 };
 
 export const deleteAccount = () => {
@@ -169,8 +168,8 @@ export const deleteAccount = () => {
     headers: { Authorization: getLoginCookie() },
   };
   return axios(config)
-    .then((res) => console.log("deleteAccount success", res))
-    .catch((error) => console.log("deleteAccount error", error));
+    .then(res => console.log("deleteAccount success", res))
+    .catch(error => console.log("deleteAccount error", error));
 };
 
 export const getPosts = () => {
@@ -180,10 +179,10 @@ export const getPosts = () => {
     headers: {},
   };
   return axios(config)
-    .then((res) => {
+    .then(res => {
       return res.data;
     })
-    .catch((error) => {
+    .catch(error => {
       console.log("getPlace error", error);
     });
 };
