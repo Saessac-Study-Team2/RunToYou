@@ -1,29 +1,29 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { signup, checkID } from '../../library/axios';
-import Footer from '../../components/footer/footer';
-import styles from './signUp.module.css';
+import React, { useEffect, useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { signup, checkID } from "../../library/axios";
+import Footer from "../../components/footer/footer";
+import styles from "./signUp.module.css";
 
 const IsValidID = id => {
-  const ID_REGEX = new RegExp('^[a-z0-9_-]{5,20}$');
+  const ID_REGEX = new RegExp("^[a-z0-9_-]{5,20}$");
   return ID_REGEX.test(id);
 };
 export const IsValidPW = (password, confirmPassword) => {
-  const PW_REGEX = new RegExp('^[a-zA-Z0-9]{8,16}$');
+  const PW_REGEX = new RegExp("^[a-zA-Z0-9]{8,16}$");
   return PW_REGEX.test(password);
 };
 const SignUp = () => {
   const [error, setError] = useState([]);
-  const [newID, setNewID] = useState('');
-  const [newPW, setNewPW] = useState('');
+  const [newID, setNewID] = useState("");
+  const [newPW, setNewPW] = useState("");
   const IDRef = useRef();
   const PWRef = useRef();
   const confirmPWRef = useRef();
   const navigate = useNavigate();
 
   const handleSubmit = async event => {
-    setNewID('');
-    setNewPW('');
+    setNewID("");
+    setNewPW("");
     setError([]);
 
     event.preventDefault();
@@ -33,31 +33,32 @@ const SignUp = () => {
     console.log(ID, PW, confirmPW);
 
     let isOK = await checkID(ID);
+    console.log(isOK);
     if (!ID || !PW || !confirmPW) {
-      setError(prev => [...prev, '모든 항목을 입력해주세요.']);
+      setError(prev => [...prev, "모든 항목을 입력해주세요."]);
       return;
     }
 
     if (!IsValidID(ID)) {
       setError(prev => [
         ...prev,
-        '아이디는 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.',
+        "아이디는 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.",
       ]);
     } else if (IsValidID(ID)) {
     }
 
     if (!isOK) {
-      setError(prev => [...prev, '중복된 아이디 입니다.']);
+      setError(prev => [...prev, "중복된 아이디 입니다."]);
     }
 
     if (PW !== confirmPW) {
-      setError(prev => [...prev, '비밀번호가 일치하지 않습니다.']);
+      setError(prev => [...prev, "비밀번호가 일치하지 않습니다."]);
     }
 
     if (!IsValidPW(PW)) {
       setError(prev => [
         ...prev,
-        '비밀번호는 8~16자 영문 대 소문자, 숫자를 사용하세요.',
+        "비밀번호는 8~16자 영문 대 소문자, 숫자를 사용하세요.",
       ]);
     }
     if (IsValidID(ID) && IsValidPW(PW) && isOK && PW === confirmPW) {
@@ -69,8 +70,8 @@ const SignUp = () => {
   const onSignUp = (ID, PW) => {
     signup(ID, PW) //
       .then(res => {
-        if (res === 'success') {
-          navigate('/login');
+        if (res === "success") {
+          navigate("/login");
         }
       });
   };
@@ -85,7 +86,12 @@ const SignUp = () => {
   return (
     <section className={styles.sectionSignUp}>
       <div className={styles.container}>
-        <img className={styles.logo} src={process.env.PUBLIC_URL + "/favicon.ico"} />
+
+        <img
+          className={styles.logo}
+          src={process.env.PUBLIC_URL + "/favicon.ico"}
+        />
+
         <h1 className={styles.title}>회원가입</h1>
         <div className={styles.inputContainer}>
           {error
@@ -119,7 +125,7 @@ const SignUp = () => {
             label='password'
             type='password'
             onKeyUp={e => {
-              if (e.key === 'Enter') {
+              if (e.key === "Enter") {
                 handleSubmit(e);
               }
             }}
